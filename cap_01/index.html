@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="JavaScript, tipos de datos, var vs let, const, string, template string, numbers, booleans"
+    />
+    <title>Referencias Javascript L2V2.- Tipos de datos</title>
+    <!-- Parámetros para CEO -->
+    <link rel="canonical" href="https://ing-l2v2.github.io/cv" />
+    <link
+      rel="icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta name="theme-color" content="#F60" />
+    <meta
+      property="og:title"
+      content="Referencias Javascript L2V2.- Tipos de Datos"
+    />
+    <meta
+      property="og:description"
+      content="JavaScript, tipos de datos, var vs let, const, string, template string, numbers, booleans"
+    />
+    <meta
+      property="og:image"
+      content="https://ing-l2v2.github.io/cv/assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta
+      property="og:url"
+      content="https://ing-l2v2.github.io/cv/index.html"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@leonelvilla" />
+    <!-- Fin de parámetros para CEO -->
+    <link rel="stylesheet" href="./assets/css/hamburgers.css" />
+    <link rel="stylesheet" href="./assets/css/style-cap-01.css" />
+    <link rel="stylesheet" href="../assets/css/style-inicial.css" />
+    <link rel="stylesheet" href="../assets/css/style-cv.css" />
+  </head>
+  <body>
+    <header class="cv-header">
+      <div class="cv-titular">
+        <p class="p-h1">Ing. Leonel Villa Vintimilla</p>
+        <p>Ingeniero en Computación</p>
+        <p>Especializado en Sistemas Tecnológicos</p>
+        <p>llvilla@espol.edu.ec &nbsp;&nbsp; - &nbsp;&nbsp; l2v2@outlook.com</p>
+        <p>
+          Teléfonos: (+593) 096 388 2510 &nbsp;&nbsp;-&nbsp;&nbsp; 099 690 2792
+        </p>
+        <p>
+          <a href="https://ing-l2v2.github.io/cv" target="_blank">
+            https://ing-l2v2.github.io/cv
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://www.senescyt.gob.ec/web/guest/consultas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            N° de registro del Senescyt 1021-14-1277156
+          </a>
+        </p>
+      </div>
+      <div class="cv-foto-l2v2">
+        <img src="../assets/img/l2v2.png" alt="" />
+      </div>
+    </header>
+    <main class="cv-main">
+      <section class="cv-seccion">
+        <div class="cv-seccion-h2">
+          <div class="hr-line"></div>
+          <h2>1. Tipos de Datos</h2>
+        </div>
+        <section id="seccion1" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <!--div class="hr-line"></div-->
+            <h3>1.1. var vs let</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                var genera variables globales mientras let genera variables de
+                ámbito. Con var la variable pertenece al objeto window en JS y
+                al objeto global en node js. No existía el ámbito de bloque y
+                esta característica se conoce como elevación o hoisting. Usar
+                var es una mala práctica.
+              </p>
+              <pre><code>        var hola = "Hola mundo";
+        let hello = "Hello world!";
+        {
+          var hola = "rock";
+          let hello = "Bloque";                
+        }
+        console.log("Contiene rock",hola);
+        console.log("Contiene Hello world!",hello)</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion2" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>1.2. Constantes (const)</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Con const se definen variables primitivos que no cambiarán
+                durante el flujo de la aplicación caso de string, number,
+                booleans, NaN, undefined, null. No se pueden definir const
+                vacias. En caso de valores compuestos como Objetos, clases,
+                array, funciones, etc, mantiene su referencia del tipo declarado
+                pudiendo agregarse propiedades o elementos.
+              </p>
+              <p>
+                Los objetos, arrays, funciones, clases son tipos mutables, en
+                tanto que string, numbers, booleans, undefined y null son tipos
+                inmutables.
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion3" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>1.3. Cadenas de texto (string)</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                En mdn se encuentra documentación no oficial sobre javascript.
+              </p>
+              <p>
+                Puede definir entre comillas dobles ("), simples (') o tilde
+                inversa (`), puede usarse el operador new String("Cadena de
+                texto"). Son inmutables, métodos como replace() y toUpperCase()
+                retornan nuevo string, ellos no modifican el string en que son
+                invocados.
+              </p>
+              <p>Funciones comunmente usadas</p>
+              <pre><code><b>cadena.includes(strBuscado)</b> //Cadena de texto puede ser encontrada dentro de otra, devolviendo true o false
+<b>s.indexOf(strBusqueda[, indiceDesde])</b> // Posición de primera ocurrencia desde indiceDesde, puede ser 0 u omitido. -1 si no encuentra.
+<b>s.lastIndexOf("l")</b> Posición de última letra l.
+<b>s.slice(iniTrozo[, finTrozo])</b> extrae sección de cadena y devuelve nueva. Ej. "Leonel Villa".slice(1, 4); resp "eon" 1°, 2° y 3° caracter.
+<b>s.substring(indiceA[, indiceB'])</b> extrae caracteres desde indiceA hasta indiceB sin incluirlo
+<b>s.charAt(indice)</b> Caracter de la posicion indice, si no se define regresa el indice 0.
+<b>s.split([separador][,limite])</b> divide cadena en array (vector) de subcadenas
+s = "Sebastián";
+<b>s.split("").reverse().join("")</b> Resultado náitsabeS, reverse y join son métodos de Array
+<b>s.codePointAt(indice)</b> Entero equivalente a valor Unicode del caracter en indice
+<b>s.replace(patrón, reemplazo)</b> Cadena con una, algunas, o todas las coincidencias de un patrón, siendo cada una de estas coincidencias reemplazadas por un reemplazo. El patrón puede ser una cadena o un objeto RegExp, y el reemplazo puede ser una cadena o una función que será llamada para cada coincidencia. Si el patrón es una cadena, sólo la primera coincidencia será reemplazada.
+<b>s.toUpperCase()</b> Devuelve el valor convertido en mayúsculas
+<b>s.toLowerCase()</b> Devuelve el valor en minúsculas</code></pre>
+              <p>Para concatenar texto se usa el operador de suma ( + )</p>
+              <script>
+                let cadena = "Sebastián";
+                console.log(cadena.split("").reverse().join(""));
+              </script>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion4" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>1.4. Plantillas de cadenas de texto (Template Strings)</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Para definir un template string se define el contenido de la
+                variable de tipo string usando un acento invertido --backtick--
+                ( ` ) y las variables embebidas dentro usando dolar y llaves
+                "${}" Las template string permiten saltos de lineas e
+                indentaciones lo que los string de texto no. <br />
+                Ej.:
+              </p>
+              <pre><code>&lt;script&gt;
+  let nom = "Leonel", apel = 'Villa', age = 52; 
+  let salida = `Hola, mi nombre es: ${nom} ${apel} y mi edad es ${age} años`;
+
+  let estaciones = ["Primavera", "Verano", "Otoño", "Invierno"];
+  let ulEstaciones = '&lt;ul&gt;';
+  for (let i = 0; i &lt; estaciones.lenght; i++) {
+    ulEstaciones += `&lt;li&gt; ${estaciones[i]}&lt;/li&gt;`;
+  }
+  ulEstaciones += `&lt;/ul&gt;`;
+  document.getElementById("idEstaciones").innerHTML = ulEstaciones;
+&lt;/script&gt;           </code></pre>
+              <p id="idEstaciones"></p>
+              <script>
+                let estaciones = ["Primavera", "Verano", "Otoño", "Invierno"];
+                let ulEstaciones = `<ul>`;
+                for (let i = 0; i < estaciones.length; i++) {
+                  ulEstaciones += `<li> ${estaciones[i]}</li>`;
+                }
+                ulEstaciones += `</ul>`;
+                document.getElementById("idEstaciones").innerHTML =
+                  ulEstaciones;
+              </script>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion5" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>1.5. Números (Numbers)</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                No distingue entre entero y punto flotante. Todo número es
+                representado como punto flotante formato 64-bit, pudiendo
+                representar números tan grandes como ±1.7976931348623157 x
+                10<sup>308</sup>
+                o tan pequeños como ±5 x 10<sup>-324</sup>.
+              </p>
+              <p>
+                Formato numérico permite representar exactamente todo entero
+                entre -9007199254740992 (-2<sup>53</sup>) y 9007199254740992
+                (2<sup>53</sup>), inclusive
+              </p>
+              <p>
+                Hexadecimales empiezan con 0x o con 0X. Octales empiezan con el
+                0. Ej.: 0Xff, 0xCAFE911 -> son hexadecimales. 0377 es un octal.
+                Un decimal nunca representar con un 0 al inicio.
+              </p>
+              <p>
+                Flotantes pueden ser representados con notación exponencial: un
+                número real seguido por una letra e (o E) un opcional signo (+ o
+                -) seguido por un exponente entero.
+                [digits][.digits][(E|e)[(+|-)]digits]
+              </p>
+              <p>
+                <b>Ejemplos:</b> 3.14; 2345.789; .33333333333; 6.02e23;
+                1.4738223E-32
+              </p>
+              <p>Funciones aritméticas comunes:</p>
+              <pre><code>    Math.pow(2,53) // => 9007199254740992: 2<sup>53</sup>
+    Math.round(.6) // => 1.0: redondeado al entero más próximo
+    Math.ceil(.6) // => 1.0: redondeado entero superior
+    Math.floor(.6) // => 0.0: redondeado entero inferior
+    Math.abs(-5) // => 5: valor absoluto
+    Math.max(x,y,z) // obtiene el mayor argumento
+    Math.min(x,y,z) // obtiene el menor argumento
+    Math.random() // Pseudo-random number x where 0 <= x < 1.0
+    Math.PI // π: circumference of a circle / diameter
+    Math.E // e: The base of the natural logarithm
+    Math.sqrt(3) // The square root of 3
+    Math.pow(3, 1/3) // The cube root of 3
+    Math.sin(0) // Trigonometry: also Math.cos, Math.atan, etc.
+    Math.log(10) // Natural logarithm of 10
+    Math.log(100)/Math.LN10 // Base 10 logarithm of 100
+    Math.log(512)/Math.LN2 // Base 2 logarithm of 512
+    Math.exp(3)  // e<sup>3</sup></code></pre>
+              <p>
+                Aritmética no genera errores por desbordamiento pero imprime por
+                overflow (<code>Infinity</code>) o por underflow
+                (<code>-Infinity</code>). NaN = Not a Number Value surge de
+                dividir cero por cero o infinito por infinito o la raiz cuadrada
+                de un valor negativo o usar operaciones con argumentos no
+                numéricos. <br />
+                Una variable puede ser inicializada a infinito como en los casos
+              </p>
+              <pre><code>let var_infinita = Infinity; let var_infinita = Number.POSITIVE_INFINITY; let var_infinita = 1/0; let var_infinita = Number.MAX_VALUE + 1;</code></pre>
+              <p>O inicializadas a menos infinito como en los casos</p>
+              <pre><code>    let var_infinita = Number.NEGATIVE_INFINITY; let var_infinita = -Infinity; let var_infinita = -1/0; let var_infinita = -Number.MAX_VALUE - 1;</code></pre>
+              <p>Infinity === -Infinity genera false, no son iguales</p>
+              <p>
+                Inicializadas a NaN. nunca compara igual con otro valor si x es
+                NaN, sin embargo al consultar x != x genera un true. Resultado
+                similar provoca la funcion isNaN(x)
+              </p>
+              <pre><code>let nan = NaN; let nan = Number.NaN; let nan = 0/0; let nan = Math.sqrt(-3);</code></pre>
+              <p>
+                Evaluaciones a cero o Negative zero, zero === negzero genera
+                true, son iguales
+              </p>
+              <pre><code>let zero = Number.MIN_VALUE / 2; let negzero = -Number.MIN_VALUE/2; let negzero = -1/Infinity; let negzero = -0;</code></pre>
+              <p>
+                La función isFinite(x) retorna true si su argumento es un número
+                distinto de NaN, Infinity, -Infinity.
+              </p>
+              <p>
+                Precisión solo para 18437736874454810627, números reales para
+                ser exactos puede representarse exactamente mediante el formato
+                de punto flotante
+              </p>
+              <pre><code id="precision_txt"></code></pre>
+              <script>
+                let var_infinita = Infinity;
+                console.log("Variable infinita con su", var_infinita);
+                console.log(isFinite(NaN), isFinite(var_infinita));
+
+                let precision_txt = `0.3 - 0.2 = x = ${
+                  0.3 - 0.2
+                }; 0.2 - 0.1 = y = ${0.2 - 0.1}; x === y = ${
+                  0.3 - 0.2 === 0.2 - 0.1
+                };`;
+                const idPrecision = document.getElementById("precision_txt");
+                idPrecision.innerHTML = precision_txt;
+              </script>
+              <pre><code>  <b>n.toFixed(5)</b> number con 5 decimales como string
+  <b>typeof n</b> retorna el tipo de dato
+  <b>Number.parseInt(varString | varNum)</b> Parte entera representable.
+  <b>Number.parseFloat(varString)</b> dato como flotante</code></pre>
+              <p>Suma de Number con String genera una concatenación string</p>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion6" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>1.6. Booleans</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>Valores que tienden a verdadero</p>
+              <pre><code>true, {}, [], 42, "foo", " ", new Date(), -3.14, 3.14, Infinity, -Infinity</code></pre>
+              <p>
+                Valores que tienden a falso.- document.all es un nodo no
+                existente
+              </p>
+              <pre><code>false, null, undefined, 0, NaN, '', "", document.all</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion7" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>1.7. Undefined, null y NaN</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Undefined significa que no se ha inicializado una variable y el
+                valor esta ausente entonces js asigna el undefined, si el
+                programador asigna intencionalmente el valor inicial de null a
+                la variable al crearla. Null valor especial que indica ausencia
+                de valor.
+              </p>
+              <pre><code>let indefinida;        let nulo = null;</code></pre>
+              <p>
+                NaN = Not a Number Value surge de dividir cero por cero o
+                infinito por infinito o la raiz cuadrada de un valor negativo o
+                usar operaciones con argumentos no numéricos.
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion8" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>1.8. Funciones</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Hay dos tipos de funciones: Funciones declaradas tienen un
+                nombre, pudiendo invocarse en cualquier parte del código incluso
+                antes de su declaración concepto hoisting y funciones expresadas
+                no llevan nombre pero la variable donde se define debe ser const
+                llamada función anónima. <br />
+                Ejemplo de función declarada:
+              </p>
+              <pre><code>  /**
+    * Metodo de ordenamiento simple de la burbuja o intercambio directo
+    */
+  function burbuja(arr, up = 1) {
+    let nelem = arr.length,
+      aux,
+      iter = 0,
+      pivot = 0,
+      posfinal = arr.length - 1;
+    while (iter < nelem) {
+      while (pivot < posfinal) {
+        if (up) {
+          if (arr[pivot] > arr[pivot + 1]) {
+            aux = arr[pivot];
+            arr[pivot] = arr[pivot + 1];
+            arr[pivot + 1] = aux;
+          }
+        } else {
+          if (arr[pivot] < arr[pivot + 1]) {
+            aux = arr[pivot];
+            arr[pivot] = arr[pivot + 1];
+            arr[pivot + 1] = aux;
+          }
+        }
+        pivot++;
+      }
+      pivot = 0;
+      posfinal--;
+      iter++;
+    }
+  }
+  console.log("* * * MÉTODO BRUBUJA * * *");
+  const lstNoOrd = [15, 67, 8, 16, 44, 27, 12, 35, 91];
+  console.log(lstNoOrd);
+  burbuja(lstNoOrd, 1);
+  console.log(lstNoOrd);      </code></pre>
+              <p>Ejemplo de función expresada o anonima</p>
+              <pre><code>  const funcionExpresada = () =&gt; {}
+
+  const funcionExpresada = function () {
+    console.log(
+      `Función en que se le ha asignado como valor a una variable, si invocamos la función antes de su definición JS nos dirá: 'Cannot access "funcionExpresada" before initialization'`
+    );
+  };
+  funcionExpresada();            </code></pre>
+
+              <p>
+                Las declaraciones de funciones pueden aparecer en el código
+                JavaScript de nivel superior o pueden estar anidadas dentro de
+                otras funciones. Sin embargo, cuando están anidadas, las
+                declaraciones de funciones solo pueden aparecer en el nivel
+                superior de la función en la que están anidadas. Es decir, las
+                definiciones de funciones no pueden aparecer dentro de
+                declaraciones if, bucles while o cualquier otra declaración.
+                Debido a esta restricción sobre dónde pueden aparecer las
+                declaraciones de funciones, la especificación ECMAScript no
+                clasifica las declaraciones de funciones como declaraciones
+                verdaderas. Algunas implementaciones de Java Script permiten que
+                las declaraciones de funciones aparezcan en cualquier lugar
+                donde pueda aparecer una declaración, pero diferentes
+                implementaciones manejan los detalles de manera diferente y
+                colocar declaraciones de funciones dentro de otras declaraciones
+                no es portátil.
+              </p>
+
+              <script>
+                const funcionExpresada = function () {
+                  console.log(
+                    `Función en que se le ha asignado como valor a una variable, si invocamos la función antes de su definición JS nos dirá: 'Cannot access "funcionExpresada" before initialization'`
+                  );
+                };
+                funcionExpresada();
+                const lstNoOrd = [15, 67, 8, 16, 44, 27, 12, 35, 91];
+                /**
+                 * Metodo de ordenamiento simple de la burbuja o intercambio directo
+                 */
+                function burbuja(arr, up = 1) {
+                  let nelem = arr.length,
+                    aux,
+                    iter = 0,
+                    pivot = 0,
+                    posfinal = arr.length - 1;
+                  while (iter < nelem) {
+                    while (pivot < posfinal) {
+                      if (up) {
+                        if (arr[pivot] > arr[pivot + 1]) {
+                          aux = arr[pivot];
+                          arr[pivot] = arr[pivot + 1];
+                          arr[pivot + 1] = aux;
+                        }
+                      } else {
+                        if (arr[pivot] < arr[pivot + 1]) {
+                          aux = arr[pivot];
+                          arr[pivot] = arr[pivot + 1];
+                          arr[pivot + 1] = aux;
+                        }
+                      }
+                      pivot++;
+                    }
+                    pivot = 0;
+                    posfinal--;
+                    iter++;
+                  }
+                }
+                console.log("* * * MÉTODO BRUBUJA * * *");
+                console.log(lstNoOrd);
+                burbuja(lstNoOrd, 1);
+                console.log(lstNoOrd);
+
+                function quicksort(arrDatos, up = 1) {
+                  if (arrDatos.length <= 1) {
+                    return arrDatos;
+                  }
+                  let arr = [],
+                    arrLeft = [],
+                    arrRight = [],
+                    arrAux = [],
+                    pivot;
+                  // pivot extrae el último elemento de arr y n obtiene la longitud nueva de arr, arr es un array anidado
+                  // arr = arr.concat(arrDatos);
+                  arr = [...arrDatos]; // Usando el operador de propagación [...Array]
+                  pivot = arr.pop();
+                  for (let i = 0; i < arr.length; i++) {
+                    if (arrDatos[i] <= pivot) {
+                      arrLeft.push(arr[i]);
+                    } else {
+                      arrRight.push(arr[i]);
+                    }
+                  }
+                  return arrAux.concat(
+                    quicksort(arrLeft),
+                    pivot,
+                    quicksort(arrRight)
+                  );
+                }
+                console.log("* * * MÉTODO QUICKSORT * * *");
+                const lstNoOrd2 = [15, 67, 8, 16, 44, 27, 91, 12, 35];
+                const qckSalida = quicksort(lstNoOrd2);
+                console.log(lstNoOrd2);
+                console.log(qckSalida);
+
+                function quicksortB(datos) {
+                  const auxiliar = [...datos];
+                  if (auxiliar < 2) {
+                    return auxiliar;
+                  }
+                  let indicePivote = Math.floor(auxiliar.length / 2);
+                  let pivote = auxiliar[indicePivote];
+                  let [arrLeft, arrRight] = auxiliar.reduce(
+                    (acumulador, valor, idx) => {
+                      if (
+                        valor < pivote ||
+                        (valor === pivote && idx != indicePivote)
+                      ) {
+                        acumulador[0].push(valor);
+                      } else if (valor > pivote) {
+                        acumulador[1].push(valor);
+                      }
+                      return acumulador;
+                    },
+                    [[], []]
+                  );
+                  return [
+                    ...quicksortB(arrLeft),
+                    pivote,
+                    ...quicksortB(arrRight),
+                  ];
+                }
+                console.log("* * * MÉTODO QUICKSORT B * * *");
+                const lstNoOrd3 = [15, 67, 7, 16, 43, 27, 99, 12, 35];
+                const qckSalidaB = quicksortB(lstNoOrd3);
+                console.log(lstNoOrd3);
+                console.log(qckSalidaB);
+                const lstWord = [
+                  "Villa Leonel",
+                  "Lopez Carlos",
+                  "Garcia Vicente",
+                  "Alcívar Manuel",
+                  "Villa Sebastián",
+                  "García Sebastia",
+                ];
+                const qckSalidaW = quicksortB(lstWord);
+                console.log(lstWord);
+                console.log(qckSalidaW);
+              </script>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion9" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>1.9. Arreglos (Arrays)</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Los arreglos empiezan en la posición 0 y son una colección de
+                elementos de cualquier tipo cuya longitud es una propiedad que
+                se obtiene arr.length. Las forma de creacion de arreglos:
+              </p>
+              <pre><code>const a = [];  const b = [1, true, ['a',"b"], {nom:"Leo"}];
+              a[0] = 25;  b[4] = 35+3;
+              const c = Array.of("x", 1, false, Array.of(23,'Leo',true));
+              const d = Array(100).fill(false);
+            </code></pre>
+              <p>Metodos comunes</p>
+              <pre><code><b>arr.push(arg1[, arg2, ...])</b> añade uno o más elementos al final de un array.
+            <b>arr.pop()</b> elimina el último elemento del array y lo retorna arreglo 
+            <b>arr.shift</b>  elimina el primer elemento del array y lo retorna 
+            <b>arr.unshift(arg1[, arg2, ...])</b> agrega uno o más elementos al inicio del array</code></pre>
+              <p>
+                Existen muchos métodos con un estilo más funcional como map,
+                reduce, filter, some, any, forEach
+              </p>
+              <pre><code>estaciones.forEach( (elemento, indice) => {console.log(`&lt;li id="idx-${indice}"&gt;${elemento}&lt;/li&gt;`)} );
+            cuadrado = arr.<b>map((elem) => Math.pow(elem, 2))</b>;
+            asc = arr.<b>map((el) => el)</b>.sort().reverse()
+            </code></pre>
+              <p>
+                Método map() crea un nuevo array con los resultados de la
+                llamada a la función indicada aplicados a cada uno de sus
+                elementos.
+              </p>
+              <pre><code></code></pre>
+              <p>
+                Método filter() crea nuevo array con todos los elementos que
+                cumplan la condición implementada por la función dada.
+              </p>
+              <pre><code>   const result = frases.filter((palabra) => palabra.length > 6);</code></pre>
+              <p>
+                Método reduce() ejecuta una función reductora sobre cada
+                elemento de un array, devolviendo como resultado un único valor.
+              </p>
+              <pre><code>    const valorInicial = 0;
+    const sumWithInitial = arreglo.<b>reduce(
+        (sumaTotal, elementoDelArreglo) => sumaTotal + elementoDelArreglo,
+        valorInicial,
+      )</b>;</code></pre>
+              <p>
+                Método some() comprueba si al menos un elemento del array cumple
+                con la condición implementada por la función proporcionada. Caso
+                siguiente retorna true.
+              </p>
+              <pre><code>    const pares = (elem) => elem % 2 === 0;
+
+    console.log(array.some(pares));</code></pre>
+              <p>
+                Caso ejemplo de arreglos en funciones, Método de ordenamiento
+                Quicksort
+              </p>
+              <pre><code>  function quicksort(arrDatos, up = 1) {
+    if (arrDatos.length <= 1) {
+      return arrDatos;
+    }
+    let arr = [],
+      arrLeft = [],
+      arrRight = [],
+      arrAux = [],
+      pivot;
+    // pivot extrae el último elemento de arr y n obtiene la longitud nueva de arr, arr es un array anidado
+    // arr = arr.concat(arrDatos);
+    arr = [...arrDatos]; // Usando el operador de propagación [...Array]
+    pivot = arr.pop();
+    for (let i = 0; i < arr.length; i++) {
+      if (arrDatos[i] <= pivot) {
+        arrLeft.push(arr[i]);
+      } else {
+        arrRight.push(arr[i]);
+      }
+    }
+    return arrAux.concat(
+      quicksort(arrLeft),
+      pivot,
+      quicksort(arrRight)
+    );
+  }
+  console.log("* * * MÉTODO QUICKSORT * * *");
+  const lstNoOrd2 = [15, 67, 8, 16, 44, 27, 91, 12, 35];
+  const qckSalida = quicksort(lstNoOrd2);
+  console.log(lstNoOrd2);
+  console.log(qckSalida);</code></pre>
+              <p>
+                Caso ejemplo de arreglos en funciones, Método de ordenamiento
+                Quicksort B
+              </p>
+              <pre><code>
+  function quicksortB(datos) {
+    const auxiliar = [...datos];
+    if (auxiliar < 2) {
+      return auxiliar;
+    }
+    let indicePivote = Math.floor(auxiliar.length / 2);
+    let pivote = auxiliar[indicePivote];
+    let [arrLeft, arrRight] = auxiliar.reduce(
+      (acumulador, valor, idx) => {
+        if (
+          valor < pivote ||
+          (valor === pivote && idx != indicePivote)
+        ) {
+          acumulador[0].push(valor);
+        } else if (valor > pivote) {
+          acumulador[1].push(valor);
+        }
+        return acumulador;
+      },
+      [[], []]
+    );
+    return [
+      ...quicksortB(arrLeft),
+      pivote,
+      ...quicksortB(arrRight),
+    ];
+  }
+  console.log("* * * MÉTODO QUICKSORT B * * *");
+  const lstNoOrd3 = [15, 67, 7, 16, 43, 27, 99, 12, 35];
+  const qckSalidaB = quicksortB(lstNoOrd3);
+  console.log(lstNoOrd3);
+  console.log(qckSalidaB);
+  const lstWord = ["Villa Leonel", "Lopez Carlos", 
+    "Garcia Vicente","Alcívar Manuel",
+    "Villa Sebastián", "García Sebastia"
+  ];
+  const qckSalidaW = quicksortB(lstWord);
+  console.log(lstWord);
+  console.log(qckSalidaW);              
+            </code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion10" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>1.10. Objetos literales</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                No es un tipo de dato primitivo o inmutable sin poder cambiar o
+                mutar su contenido, al igual que los array es un tipo de dato
+                referenciado y por tanto son mutables.
+                <br />
+                En JS todo es un objeto, puede contener atributos/propiedades y
+                métodos de diferentes tipos. La palabra const evita que otro
+                objeto ocupe la referencia de memoria ya asignada. Es una
+                colección de llaves - valores. La variable obj es un objeto
+                literal. <br />
+                Los objetos literales pueden tomar las variables definidas en el
+                objeto contenedor como la variable suelta profesion y
+                rellenarlas en los atributos del objeto literal caso del
+                atributo
+                <b>profesion</b> (mismo nombre) y la nueva forma de definir
+                métodos es como la de <b>profesional</b> del ejemplo siguiente
+                ECMA SCRIPT 2015.
+              </p>
+              <pre><code>  let profesion = "Ingeniero en Computación", age = 52;
+  function sayHi(){
+    console.log( ` HOLA ${this.nom} !! `);
+  }
+
+  const obj = {
+    nom: "Leonel Villa",
+    <b>age,
+    profesion,</b>
+    pasatiempos: ["correr", "hacer ejercicios", "leer"],
+    soltero: false,
+    contacto: {email: "l2v2@outlook.com",
+      twitter: "@demonioazul",
+      phone: "+593 963889966",
+    },
+    saludar: function (){
+      return `Hola, mi nombre es ${this.nom}`;
+    },
+    edad: function () {
+      return `La edad es ${this.age}`;
+    },
+    <b>profesional(){
+      return `Tiene titulo profesional en ${profesion}`;
+    }</b>,
+  }
+
+  obj.sayHi = sayHi;
+</code></pre>
+              <p>
+                Para referenciar a los elementos de un objeto se tienen dos
+                formas por corchetes (exclusivo solo para atributos no métodos)
+                o por el punto (notación más comunmente usada):
+                nom_obj["atributo"], nom_obj.atributo, nom_obj.metodo()
+              </p>
+              <pre><code>  console.log(obj);
+  console.log(obj["nom"]);
+  console.log(obj.age, obj.contacto.email, obj.pasatiempos[1]);              
+  console.log(obj.saludar());
+  console.log(obj.edad());            </code></pre>
+              <p>
+                Object.keys(obj) retorna un array de los nombre de atributos del
+                objeto obj <br />
+                Object.values(obj) retorna array de los contenidos de los
+                atributos de obj. <br />
+                obj.hashOwnProperty("age") true o false si el atributo existe en
+                el objeto obj.
+              </p>
+              <script>
+                let profesion = "Ingeniero en Computación";
+
+                const obj = {
+                  nom: "Leonel Villa",
+                  age: 52,
+                  profesion,
+                  pasatiempos: ["correr", "hacer ejercicios", "leer"],
+                  soltero: false,
+                  contacto: {
+                    email: "l2v2@outlook.com",
+                    twitter: "@demonioazul",
+                    phone: "+593 963889966",
+                  },
+                  saludar: function () {
+                    return `Hola, mi nombre es ${this.nom}`;
+                  },
+                  edad: function () {
+                    return `La edad es ${this.age}`;
+                  },
+                  profesional() {
+                    return `Tiene titulo profesional en ${profesion}`;
+                  },
+                };
+                console.log(obj);
+                console.log(obj["nom"]);
+                console.log(obj.age, obj.contacto.email, obj.pasatiempos[1]);
+                console.log(obj.profesion);
+                console.log(obj.saludar());
+                console.log(obj.edad());
+                console.log(obj.profesional());
+                console.log(Object.keys(obj));
+                console.log(Object.values(obj));
+                console.log(obj.hasOwnProperty("edad"));
+              </script>
+            </div>
+          </article>
+        </section>
+        <!-- 
+          section#seccion20.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
+        -->
+      </section>
+    </main>
+    <button class="panel-btn hamburger hamburger--vortex" type="button">
+      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+    </button>
+    <aside class="panel-dom">
+      <nav class="menu-dom">
+        <a href="#seccion1" data-scroll-spy>1.1. Var vs let</a>
+        <a href="#seccion2" data-scroll-spy>1.2. Constantes (const)</a>
+        <a href="#seccion3" data-scroll-spy>1.3. Cadenas de texto (string)</a>
+        <a href="#seccion4" data-scroll-spy
+          >1.4. Plantillas de cadenas de texto (Template Strings)</a
+        >
+        <a href="#seccion5" data-scroll-spy>1.5. Números (Numbers)</a>
+        <a href="#seccion6" data-scroll-spy>1.6. Booleans</a>
+        <a href="#seccion7" data-scroll-spy>1.7. Undefined, null y NaN</a>
+        <a href="#seccion8" data-scroll-spy>1.8. Funciones</a>
+        <a href="#seccion9" data-scroll-spy>1.9. Arreglos (Arrays)</a>
+        <a href="#seccion10" data-scroll-spy>1.10. Objetos literales</a>
+        <a href="../index.html">Indice de contenidos</a>
+      </nav>
+    </aside>
+    <button class="scroll-top-btn hidden">
+      <img src="./assets/img/toTop.png" alt="arrowUp" />
+    </button>
+    <script src="./assets/js/index_dom.js" type="module"></script>
+  </body>
+</html>

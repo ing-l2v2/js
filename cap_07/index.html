@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Symbols, sets, maps, weaksets & weakmaps, generators, proxies y propiedades dinámicas de los objetos"
+    />
+    <title>
+      Referencias Javascript L2V2 - Nuevos tipos de datos y características
+    </title>
+    <!-- Parámetros para CEO -->
+    <link rel="canonical" href="https://ing-l2v2.github.io/cv" />
+    <link
+      rel="icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta name="theme-color" content="#F60" />
+    <meta
+      property="og:title"
+      content="Referencias Javascript L2V2 - Nuevos tipos de datos y características"
+    />
+    <meta
+      property="og:description"
+      content="Symbols, sets, maps, weaksets & weakmaps, generators, proxies y propiedades dinámicas de los objetos"
+    />
+    <meta
+      property="og:image"
+      content="https://ing-l2v2.github.io/cv/assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta
+      property="og:url"
+      content="https://ing-l2v2.github.io/cv/index.html"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@leonelvilla" />
+    <!-- Fin de parámetros para CEO -->
+    <link rel="stylesheet" href="./assets/css/hamburgers.css" />
+    <link rel="stylesheet" href="./assets/css/style-cap-07.css" />
+    <link rel="stylesheet" href="../assets/css/style-inicial.css" />
+    <link rel="stylesheet" href="../assets/css/style-cv.css" />
+  </head>
+  <body>
+    <header class="cv-header">
+      <div class="cv-titular">
+        <p class="p-h1">Ing. Leonel Villa Vintimilla</p>
+        <p>Ingeniero en Computación</p>
+        <p>Especializado en Sistemas Tecnológicos</p>
+        <p>llvilla@espol.edu.ec &nbsp;&nbsp; - &nbsp;&nbsp; l2v2@outlook.com</p>
+        <p>
+          Teléfonos: (+593) 096 388 2510 &nbsp;&nbsp;-&nbsp;&nbsp; 099 690 2792
+        </p>
+        <p>
+          <a href="https://ing-l2v2.github.io/cv">
+            https://ing-l2v2.github.io/cv
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://www.senescyt.gob.ec/web/guest/consultas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            N° de registro del Senescyt 1021-14-1277156
+          </a>
+        </p>
+      </div>
+      <div class="cv-foto-l2v2">
+        <img src="../assets/img/l2v2.png" alt="" />
+      </div>
+    </header>
+    <main class="cv-main">
+      <section class="cv-seccion">
+        <div class="cv-seccion-h2">
+          <div class="hr-line"></div>
+          <h2>7. Nuevos tipos de datos y características</h2>
+        </div>
+
+        <section id="seccion1" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <!--div class="hr-line"></div-->
+          <h3>7.1. Symbols - propiedades y métodos privados</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Es un tipo de dato primitivo. No usar operador new. Por buena
+              práctica se debe crearlos como constantes. Se usa para crear
+              propiedades privadas de los objetos con referencia única.
+            </p>
+            <pre><code>    const NOMBRE = Symbol();
+    const SALUDAR = Symbol("MetodoPrivado");
+
+    const persona = {
+      [NOMBRE]: "leonel.villa",
+    };
+    persona.NOMBRE = "Leonel Villa Vintimilla";
+    persona[SALUDAR] = function () {
+      console.log(
+        `Hola como estas ${persona.NOMBRE} el correo privado es ${persona[NOMBRE]}`
+      );
+    };
+    console.log(persona);
+    persona.NOMBRE = "Leonel Leonardo Villa Vintimilla";
+    persona[NOMBRE] = "lvilla@fidenslat.com";
+    console.log(persona);
+    persona[SALUDAR]();</code></pre>
+            <p></p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion2" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>7.2. Sets Similar a los arreglos pero de datos únicos</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Son similares a los arreglos pero de datos únicos no repetidos.
+              <br />Propiedad size en lugar de length de los arrays. <br />Para
+              agregar elementos al set, método add <br />Es iterable puede
+              recorrerse con forof o foreach. <br />No se puede acceder a las
+              posiciones con la nomeclatura [] de los arrays, para lo cual
+              existe <b>const arr = Array.from(set)</b>;<br />Para eliminar un
+              elemento del set se debe especificar el elemento a eliminar ej.
+              set<b>.delete</b>("HOla"); <br />Comprobar si un valor existe
+              dentro del set set<b>.has</b>("HOla") retornando un booleano.
+              <br />
+              set.clear() Limpia los elementos del set.
+            </p>
+            <pre><code>    const set = new Set([1, 2, 3, 3, 4, 5, true, false, false, {}, {}, "hola", "HOla"]);
+
+    const set2 = new Set();
+    set2.add(1); set2.add(2); set2.add(2); set2.add(true);
+            </code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion3" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>7.3. Maps</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              El objeto Map mantiene pares clave-valor y recuerda el orden de
+              inserción original de las claves. Cualquier valor (tanto objetos
+              como valores primitivos ) se puede utilizar como clave o valor.
+              <br />Se crea con el operador new. <br />Se insertan elementos con
+              el método set <br />Método get para obtener el valor dada la
+              clave.<br />Propiedad size en lugar de length de los arrays.
+              <br />
+              Son objetos iteradores y pueden recorrerse con forof y foreach.
+              <br />mapa.has("nombre") busca en el mapa la clave "nombre" y
+              retorna booleano.
+            </p>
+            <pre><code>    const mapa2 = new Map([ ["nombre", "Tom"], ["edad", 7], ["genero","macho"] ]);
+    const mapa = new Map();
+    mapa.set("a", 1);       mapa.set("b", 2);     mapa.set("3", 3);
+    mapa.set("a", 97);
+    console.log(mapa.get("a"));
+    console.log(mapa.size);
+    for (let item of mapa) {
+      console.log(`Key = ${item[0]}, Value = ${item[1]}`);
+    }
+    for (let [key, valor] of mapa) {
+      console.log(`Key => ${key}, Value => ${valor}`);
+    }
+    mapa.forEach((valor, key) => {
+      console.log(`Key ${key}, Value ${valor}`);
+    });
+    mapa.delete("b"); </code></pre>
+            <p>
+              Mediante destructuración se puede obtener las keys y los valores
+            </p>
+            <pre><code>    const llavesMapa2 = [...mapa2.keys()];
+    const valoresMapa2 = [...mapa2.values()];</code></pre>
+          </div>
+        </article>
+
+        <section id="seccion4" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>7.4. WeakSets & WeakMaps - Conjuntos débiles & Mapas débiles</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Solo almacenan referencias débiles, es decir que las llaves deben
+              ser de tipo objeto, mejorando rendimiento por recoleccion de
+              basura del navegador, no acepta datos primitivos. <br />
+              Carencias: no se puede iterar sobre las claves o valores, no son
+              elementos iterables, no se pueden borrar todos los elementos, no
+              hay método clear, eliminar de uno en uno, no hay atributo size.
+              <br />Para almacenar los valores se realiza de uno a uno nunca
+              masivo.
+            </p>
+            <p>
+              weaksets posee los métodos: add, has y delete como en sets, no
+              posee get.
+            </p>
+            <p>
+              weakmap posee los mótodos: set para agregar, get, has y delete
+              como en maps.
+            </p>
+            <pre><code>    /* Weaksets & weakmaps */
+    const ws = new WeakSet();
+    let valor1 = { valor: 10 },  valor2 = { valor: "20" },  valor3 = { valor: 30 };
+    ws.add(valor1);    ws.add(valor2);    ws.add(valor3);
+    console.log(ws.has(valor2));
+    //console.log(ws.get(valor2));
+    console.log(ws);
+
+    const wm = new WeakMap();
+    let llave1 = {},  llave2 = {},  llave3 = {};
+    wm.set(llave1, 1);    wm.set(llave2, 2);    
+    console.log(wm.get(llave1));
+    console.log(wm.has(llave1));
+    wm.delete(llave2);
+    console.log(wm);  </code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion5" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>7.5. Iterables & Iterators - Característica</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Iterables - String, Arrays, Set, Map, Dom, NodeList, Collections.
+              Elemento el cual su contenido se puede recorrer.
+              <br />Iterador - Interfaz especie de apuntador que va recorriendo
+              los elementos de la misma estructura de datos. <br />Se tienen
+              diferentes mecanismos para recorrer un elemento iterable
+              (destructuración, for, forof, forin, Array.from, spread, promesas)
+              el propio next y para acceder se define una variable que se
+              inicializa con <b>varIterable[Symbol.iterator]()</b> .
+            </p>
+            <p>
+              En el código se crea un iterador al consultar su contenido indica
+              Array iterator {}
+            </p>
+            <pre><code>    const iterable = [1, 2, 3];
+    const iterador = <b>iterable[Symbol.iterator]()</b>;
+    console.log(iterador); </code></pre>
+            <p>
+              iterador posee método next() que retorna un obj con dos
+              propiedades value (el valor existente en la posición) y done
+              (false si no es fin y true si termino de recorrer los elementos).
+            </p>
+            <pre><code>  console.log(iterador);          // Array iterator {}
+  console.log(iterador<b>.next()</b>);   // return {value: 1, done: false}
+  console.log(iterador<b>.next()</b>);   // return {value: 2, done: false}
+  console.log(iterador<b>.next()</b>);   // return {value: 3, done: false}
+  console.log(iterador<b>.next()</b>);   // return {value: undefined, done: true} </code></pre>
+            <p>
+              Para el caso siguiente sobre un iterador de Set, trabajaria igual
+              que con otros iterables
+            </p>
+            <pre><code>    const iterableSet = new Set([10, 20, 30, 20, 40]);
+    const iteradorSet = iterableSet[Symbol.iterator]();
+    let itera = iteradorSet.next();
+    while (!itera.done) {
+      console.log(itera.value);
+      itera = iteradorSet.next();
+    }</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion6" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>7.6. Generators - Generadores (function* - yield)</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Sintaxis más sencilla para generar iteradores. Para crear un
+              generador se usa una funcion declarada con la particularidad de
+              que a continuación de la palabra <b>function*</b> lleva un
+              asterisco y en lugar de return usar <b>yield</b>. También permiten
+              manejar comportamiento asíncrono.
+            </p>
+            <p>Generador convierte el código de una función en iterable</p>
+            <pre><code>    <b>function*</b> generador() {
+      <b>yield</b> "hola";
+      console.log("Hola consola segundo dato iterable");
+      <b>yield</b> "hola 2";
+      console.log("Seguimos con mas intrucciones");
+      <b>yield</b> "hola 3";
+      <b>yield</b> "hola 4";
+    }
+    let iteradorGenerador = <u>generador()</u>;
+    /*
+    console.log(iteradorGenerador.next());  console.log(iteradorGenerador.next());
+    console.log(iteradorGenerador.next());  console.log(iteradorGenerador.next());
+    console.log(iteradorGenerador.next());
+    */
+    for (let y of <b>iteradorGenerador</b>) {
+      console.log(y);
+    }
+    const arrGenerador = [<b>...generador()</b>];
+    console.log(arrGenerador);</code></pre>
+            <p></p>
+            <pre><code>    /* Asincrono no bloqueante */
+    function cuadrado(valor) {
+      setTimeout(() => {
+        console.log(`${valor}, resultado: ${valor * valor}`);
+      }, Math.random() * 1000);
+      return { valor, resultado: valor * valor };
+    }
+    function* generadorCuadrado() {
+      console.log(`Inicia Generador`);
+      yield cuadrado(0);
+      yield cuadrado(1);
+      yield cuadrado(2);
+      yield cuadrado(3);
+      yield cuadrado(4);
+      yield cuadrado(5);
+      console.log(`Termina Generador`);
+    }
+    const arrGeneradorCuadrado = [...generadorCuadrado()];
+    console.log(arrGeneradorCuadrado);
+
+    let iteradorGeneradorCuadrado = generadorCuadrado();
+    for (let y of iteradorGeneradorCuadrado) {
+      console.log(y);
+    }</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion7" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>7.7. Proxies</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Relacionado con la POO. Proxie es un nuevo mecanismo que permite
+              crear un objeto basado en un objeto literal inicial, es decir, que
+              en lugar de usar clases como el modelo a seguir usa un objeto
+              literal. Proxie recibe el objeto literal, genera una copia, y
+              permite operaciones como validación de propiedades de tipo de
+              dato, osea, un medio de vinculación entre el objeto original y el
+              <b>Proxie</b>, y todo eso se administra a traves de un objeto
+              especial que recibe el proxie conocido como
+              <b>handler o manejador</b>
+            </p>
+            <p>
+              En handler se puede definir un
+              <b>set: (obj, props, valor)=>{}</b> el cual establece las
+              validaciones antes mencionadas, el set recibira el objeto como
+              tal, las propiedades y los valores correspondientes a esas
+              propiedades y debe retornar un booleano.
+            </p>
+            <ol>
+              <li>
+                <b>proxy.apply(objects, thisObject, argList)</b> - método para
+                atrapar la llamada a funcion.
+              </li>
+              <li>
+                <b>proxy.construct(object, argList, newTarget)</b> - método que
+                atrapa cuando una función es llamada con la palabra constructora
+                new.
+              </li>
+              <li>
+                <b>proxy.defineProperty(object, prop, descriptor)</b> - Método
+                que atrapa cuando una nueva propiedad es agregada a un objeto
+                usando <b>Object.defineProperty</b>.
+              </li>
+              <li>
+                <b>proxy.deleteProperty(object, prop)</b> - Método que atrapa
+                cuando una propiedad es eliminada de un objeto.
+              </li>
+              <li>
+                <b>proxy.get(object, prop, receiver)</b> - Método que atrapa
+                cuando algo trata que obtener una propiedad desde un objeto.
+              </li>
+              <li>
+                <b>proxy.set(object, prop, value, receiver)</b> - Método que
+                atrapa cuando a una propiedad es asignado un valor.
+              </li>
+              <li>
+                <b>proxy.has(object, prop)</b> - Método que atrapa el operador
+                in.
+              </li>
+            </ol>
+            <p>También existen otras operaciones:</p>
+            <ol>
+              <li>
+                <b>proxy.getPrototypeOf(object)</b>- Método para atrapar el
+                método <b>Object.getPrototypeOf</b>.
+              </li>
+              <li>
+                <b>proxy.getOwnPropertyDescriptor(object, prop)</b>- Método para
+                capturar el <b>getOwnPropertyDescriptor</b>, que devuelve un
+                descriptor de una propiedad específica; por ejemplo, si es
+                enumerable, etc.
+              </li>
+              <li>
+                <b>proxy.isExtensible(object)</b>- Método para atrapar cuando se
+                dispara <b>Object.isExtensible()</b> .
+              </li>
+              <li>
+                <b>proxy.preventExtensions(object)</b>- Método para atrapar
+                cuando se dispara <b>Object.preventExtensions()</b>.
+              </li>
+              <li>
+                <b>proxy.setPrototypeOf(object, prototype)</b>- Método para
+                atrapar cuando se dispara <b>Object.setPrototypeOf()</b>.
+              </li>
+              <li>
+                <b>proxy.ownKeys(object)</b>- Método para atrapar cuando se
+                activan métodos como <b>Object.getOwnPropertyNames()</b>.
+              </li>
+            </ol>
+            <p>
+              Con el handler vacio el objeto proxie se comporta como el objeto
+              original <b>const manejador = {};</b>.
+            </p>
+            <p>
+              Referencias sobre proxies
+              https://dev.to/smpnjn/using-javascript-proxies-like-a-pro-590
+              <br />https://dev.to/helderberto/decoding-proxies-in-javascript-291c
+            </p>
+            <pre><code>    const objPersona = { nom: "", apellido: "", edad: 0 };
+
+    const manejadorPersona = {
+      set(obj, prop, desc) {
+        if (prop in obj) {
+          console.log(
+            `Existe propiedad ${prop} en obj, se modifica contenido de "${obj[prop]}" a "${desc}"`
+          );
+          obj[prop] = desc;
+        } else {
+          console.error(
+            `No existe definida la propiedad ${prop} en el objeto, no asigna valor ${desc}`
+          );
+        }
+        return true;
+      },
+
+      defineProperty: (object, prop, descriptor) => {
+        console.log(`A property was set with defineProperty - ${prop}`);
+        object[prop] = descriptor.value;
+        return true;
+      },
+
+      has: (object, prop) => {
+        if (object[prop] === undefined) {
+          console.log(`Propiedad ${prop} no encontrada, con has `);
+        }
+        return object[prop];
+      },
+      
+      get(object, prop) {
+        return object[prop] || `Sorry :(( no existe prop ${prop}, get`;
+      },
+    };
+
+    const lv = new Proxy(objPersona, manejadorPersona);
+    lv.nom = "Leonel";
+    lv.apellido = "Villa";
+    lv.edad = 52;
+    console.log("Revisando contenido de nom", lv.nom);
+    console.log("Revisando contenido de genero", lv.genero);
+    console.log("address" in lv);
+    Object.defineProperty(lv, "socialMedia", {
+      value: "twitter socialMedia",
+      writable: true,
+    });
+    //lv["socialMedia"] = "twitter";
+    lv["edad"] = "123 Fake Street";
+    console.log("nom", objPersona.nom, lv.edad);
+    console.log("socialMedia", lv.socialMedia, lv.edad);</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion8" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>7.8. Propiedades Dinámicas de los Objetos</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Compute properties - Generar nombres de atributos dinámicamente
+              ej. id_1
+            </p>
+            <pre><code>    const obUsrs = {
+      propiedad: "valor",
+      [`id_${Math.round(Math.random() * 95) + 5}`]: "Valor aleatorio",
+    };
+    const usrs = ["leo", "sebastian", "edgar", "irene", "ruth"];
+    usrs.forEach((usr, idx) => {
+      obUsrs[`id_${idx}`] = usr;
+    });
+
+    console.log(obUsrs);</code></pre><br><br><br>
+          </div>
+        </article>
+        </section>
+
+        <!-- 
+          section#seccion20.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
+        -->
+      </section>
+    </main>
+    <button class="panel-btn hamburger hamburger--vortex" type="button">
+      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+    </button>
+    <aside class="panel-dom">
+      <nav class="menu-dom">
+        <a href="#seccion1" data-scroll-spy
+          >7.1. Symbols - propiedades y métodos privados</a
+        >
+        <a href="#seccion2" data-scroll-spy
+          >7.2. Sets Similar a los arreglos pero de datos únicos</a
+        >
+        <a href="#seccion3" data-scroll-spy>7.3. Maps</a>
+        <a href="#seccion4" data-scroll-spy
+          >7.4. WeakSets & WeakMaps - Conjuntos débiles & Mapas débiles</a
+        >
+        <a href="#seccion5" data-scroll-spy
+          >7.5. Iterables & Iterators - Característica</a
+        >
+        <a href="#seccion6" data-scroll-spy
+          >7.6. Generators - Generadores (function* - yield)</a
+        >
+        <a href="#seccion7" data-scroll-spy>7.7. Proxies</a>
+        <a href="#seccion8" data-scroll-spy
+        >7.8. Propiedades Dinámicas de los Objetos</a
+        >
+        <a href="../index.html">Indice de contenidos</a>
+      </nav>
+    </aside>
+    <button class="scroll-top-btn hidden">
+      <img src="./assets/img/toTop.png" alt="arrowUp" />
+    </button>
+    <script src="./assets/js/index_dom.js" type="module"></script>
+    <script type="module" src="./assets/js/new_tipos_datos.js"></script>
+  </body>
+</html>

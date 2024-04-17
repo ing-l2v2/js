@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Web Apis, Dom, nodos elementos y selectores, atributos y data, css, clases, texto y html, traversing recorriendo el dom, crear y modificar elementos, templates html, manejadores de eventos, flujo de eventos, stop propagación, delegación de eventos, BOM propiedades - eventos - metodos y url historial"
+    />
+    <title>Referencias JS L2V2 - DOM Document Object Model y BOM</title>
+    <!-- Parámetros para CEO -->
+    <link rel="canonical" href="https://ing-l2v2.github.io/cv" />
+    <link
+      rel="icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta name="theme-color" content="#F60" />
+    <meta
+      property="og:title"
+      content="Referencias JS L2V2 - DOM Document Object Model y BOM"
+    />
+    <meta
+      property="og:description"
+      content="Web Apis, Dom, nodos elementos y selectores, atributos y data, css, clases, texto y html, traversing recorriendo el dom, crear y modificar elementos, templates html, manejadores de eventos, flujo de eventos, stop propagación, delegación de eventos, BOM propiedades - eventos - metodos y url historial"
+    />
+    <meta
+      property="og:image"
+      content="https://ing-l2v2.github.io/cv/assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta
+      property="og:url"
+      content="https://ing-l2v2.github.io/cv/index.html"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@leonelvilla" />
+    <!-- Fin de parámetros para CEO -->
+    <link rel="stylesheet" href="./assets/css/hamburgers.css" />
+    <link rel="stylesheet" href="./assets/css/style-cap-09.css" />
+    <link rel="stylesheet" href="../assets/css/style-inicial.css" />
+    <link rel="stylesheet" href="../assets/css/style-cv.css" />
+    <style>
+      .card9 { display: inline-block; background-color: var(--dark-color); color: var(--yellow-color-practica);}
+      .card9 figcaption { padding: 1rem;}
+      .cards9 {border: thin solid var(--dark-color); padding: 1rem;}
+      .rotate-45 { transform: rotate(45deg);}
+      .rotate-135 { transform: rotate(135deg);}
+      .opacity-80 { opacity: .8;}
+      .sepia { filter: sepia(1);}
+      .eventos-flujo div { padding: 1rem; font-size: 0.8rem; text-align: center;}
+      .uno {background-color: yellow;}
+      .dos {background-color: gold;}
+      .tres {background-color: lightyellow;}
+    </style>    
+  </head>
+  <body>
+    <header class="cv-header">
+      <div class="cv-titular">
+        <p class="p-h1">Ing. Leonel Villa Vintimilla</p>
+        <p>Ingeniero en Computación</p>
+        <p>Especializado en Sistemas Tecnológicos</p>
+        <p>llvilla@espol.edu.ec &nbsp;&nbsp; - &nbsp;&nbsp; l2v2@outlook.com</p>
+        <p>
+          Teléfonos: (+593) 096 388 2510 &nbsp;&nbsp;-&nbsp;&nbsp; 099 690 2792
+        </p>
+        <p>
+          <a href="https://ing-l2v2.github.io/cv" target="_blank">
+            https://ing-l2v2.github.io/cv
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://www.senescyt.gob.ec/web/guest/consultas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            N° de registro del Senescyt 1021-14-1277156
+          </a>
+        </p>
+      </div>
+      <div class="cv-foto-l2v2">
+        <img src="../assets/img/l2v2.png" alt="Ing-L2V2" />
+      </div>
+    </header>
+    <main class="cv-main">
+      <section class="cv-seccion">
+        <div class="cv-seccion-h2">
+          <div class="hr-line"></div>
+          <h2>9. DOM Document Object Model</h2>
+        </div>
+        
+        <section id="seccion1" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <!--div class="hr-line"></div-->
+          <h3>9.1. WEB APIs</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              API - Application Program Interfaces. <br />DOM - Document Object
+              Model <br />
+              BOM - Browser Object Model <br />
+              CSSOM - CSS Object Model <br />
+              WEB APIs <br />
+              Dentro de objeto window está el objeto navigator donde se obtiene
+              información del navegador tal como lenguaje del documento html,
+              platform, userAgent "Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+              AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0
+              Safari/537.36", Geolocation; de window cuelga History que controla
+              el historial de la página, indexedDB pequeña BD en el navegador,
+              location la que controla las partes que conforman la url,
+              localstorage que es el almacenamiento local, document que es el
+              arbol del dom.
+            </p>
+            <p>
+              Se puede activar la interfaz de <b>speechSynthesis</b> para enviar
+              un comando de voz al pc
+            </p>
+            <pre><code>    <b>const hablar = (texto) => speechSynthesis.speak(new SpeechSynthesisUtterance(texto));</b>
+
+    let wordPronunciar = "La libreria speechSyntheis invoca al método speak el cual recibe como parámetro un nuevo objeto llamado SpeechSynthesisUtterance y a su vez recibe este texto";
+
+    hablar(wordPronunciar);</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion2" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.2. Dom Introducción</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Todo lo que deriva de window no requiere el prefijo,
+              window.document === document. Para obtener en variables los
+              elementos del document se realiza document.head document.body
+              <br />
+              document.html es undefined pero se lo puede obtener con
+              document.documentElement <br />
+              El tipo de documento se obtiene con document.doctype. <br />
+              Acceder al juego de caracteres con document.characterset UTF-8.
+              <br />
+              document.title para obtener el titulo de la html <br />
+              document.links obtiene coleccion de enlaces en un HTMLCollection,
+              no son arreglos se debe guardar en arreglo para poder
+              manipularlos. <br />
+              document.images - para colección de imagenes en HTMLCollection.
+              <br />
+              document.forms - para colección de formularios en HTMLCollection.
+              <br />
+              document.styleSheets - para colección de hojas de estilos css en
+              HTMLCollection. <br />
+              document.scripts - para colección de scripts de programacion en
+              HTMLCollection. <br />
+            </p>
+            <pre><code>    /* Elementos del documento */
+    console.log(document);
+    console.log(document.documentElement);
+    console.log(document.doctype);
+    console.log(document.characterSet);
+    console.log(document.title);
+    console.log(document.links);
+    console.log(document.images);
+    console.log(document.forms);
+    console.log(document.styleSheets);
+    console.log(document.scripts);
+    console.log(document.head);
+    console.log(document.body);</code></pre>
+            <p>
+              document.getSelection().toString() devuelve objeto representando
+              la selección de el documento que se está cargando del objeto
+              desplegado en la webpage.
+            </p>
+            <pre><code>    console.log("En espera 5seg. de que seleccione un bloque de la pagina para obtener la captura");
+    setTimeout(() => {console.log(document.getSelection().toString());}, 5000);</code></pre>
+            <p>
+              Mediante el método document.write("texto a agregar") se agrega
+              texto simple o html al final del documento, práctica no
+              recomentada
+            </p>
+            <pre><code>    document.write('&lt;p&gt;Mediante el método document.write("texto") se agrega texto al final del documento&lt;/p&gt;');</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion3" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.3. DOM - Nodos, Elementos (etiquetas html) y Selectores</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              No confundir una etiqueta html que para JS es un elemento con un
+              nodo, hay deferentes tipos de nodos: comentarios de html,
+              etiquetas son otro tipo de nodo, los textos como parrafos y
+              encabezados también son nodos, algunos son nodos que se encuentran
+              en documentos xml verlos en node.nodetype
+            </p>
+            <ol>
+              <li>ELEMENT_NODE 1</li>
+              <li>ATTRIBUTE_NODE Obsoleto 2</li>
+              <li>TEXT_NODE (en-US) 3</li>
+              <li>CDATA_SECTION_NODE Obsoleto 4</li>
+              <li>ENTITY_REFERENCE_NODE Obsoleto 5</li>
+              <li>ENTITY_NODE Obsoleto 6</li>
+              <li>PROCESSING_INSTRUCTION_NODE (en-US) 7</li>
+              <li>COMMENT_NODE (en-US) 8</li>
+              <li>DOCUMENT_NODE 9</li>
+              <li>DOCUMENT_TYPE_NODE (en-US) 10</li>
+              <li>DOCUMENT_FRAGMENT_NODE 11</li>
+              <li>NOTATION_NODE Obsoleto 12</li>
+            </ol>
+            <pre><code>    let nodo = document.documentElement.firstChild;
+    if (nodo.nodeType !== Node.COMMENT_NODE)
+      console.log("Debe comentar su código correctamente!");</code></pre>
+            <p>
+              Métodos del DOM para capturar elementos html en variables JS y que
+              genera HTMLCollection antiguos<br />
+              <b>document.getElementsByTagName("li")</b> con los elementos li
+              del documento. <br />
+              <b>document.getElementsByClassName("card9")</b> con los elementos
+              cuya clase coincide con la consultada "card9". <br />
+              <b>document.getElementsByName("nombre")</b> returna un NodeList,
+              accede a traves del atributo name, sobre todo en formularios
+              <br />
+              <b>document.getElementById("que-es")</b> o
+              <b>document.getElementById("menu")</b>
+              en singular retorna un solo item
+            </p>
+            <pre><code>    console.log(document.getElementsByTagName("li"));
+    console.log(document.getElementsByClassName("card9"));
+    console.log(document.getElementsByName("nombre"));
+    console.log(document.getElementById("que-es"));</code></pre>
+            <p>
+              Los métodos antes descritos han sido reemplazados por dos métodos:
+            </p>
+            <p>
+              <b>document.querySelector("menu")</b> recibe como parámetro un
+              selector válido: clase (con punto delante), id (con # delante,
+              menor rendimiento de getElementById), html tag y retorna el primer
+              selector del tipo solicitado que haya encontrado en el doc html
+              Ej. retorna primer elemento &lt;input name="login"/&gt; dentro de
+              &lt;div class="user-panel main"&gt;
+              <code>
+                let elem = document.querySelector("div.user-panel.main
+                input[name='login']");
+              </code>
+              <br />Las Pseudo-clases o pseudo-elementos CSS nunca devolverán
+              elementos <br />
+              Para que coincidan ID's o selectores que no siguen la sintáxis CSS
+              (usando inapropiadamente dos puntos o un espacio por ejemplo), se
+              debe 'escapar' el carácter con una barra invertida (\). Como la
+              barra invertida es un carácter de 'escape' en JavaScript, si estás
+              indicando una cadena de caracteres literal, debes 'escaparla' dos
+              veces (una para la cadena de caracteres JavaScript y otra para el
+              querySelector):
+            </p>
+            <pre><code>    &lt;div id="foo\bar"&gt;&lt;/div&gt;
+    &lt;div id="foo:bar"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+      console.log("#foo\bar"); // "#fooar"
+      document.querySelector("#foo\bar"); // No coincide con nada
+
+      console.log("#foo\\bar"); // "#foo\bar"
+      console.log("#foo\\\\bar"); // "#foo\\bar"
+      document.querySelector("#foo\\\\bar"); // Coincide con el primer div
+
+      document.querySelector("#foo:bar"); // No coincide con nada
+      document.querySelector("#foo\\:bar"); // Coincide con el segundo div
+    &lt;/script&gt;</code></pre>
+            <p>
+              <b>document.querySelectorAll("a")</b> Trae todas las ocurrencias
+              en un NodeList, estática no viva, encontradas del selector
+              solicitado, reemplaza a getElementsByTagName,
+              getElementsByClassName y getElementsByName
+            </p>
+            <pre><code>    console.log(document.querySelector("a"));
+    console.log(document.querySelectorAll("a"));
+    console.log("#menu li", document.querySelectorAll("#menu li"));
+    console.log("#menu li segunda ocurrencia", document.querySelectorAll("#menu li")[1]);</code></pre>
+            <p>
+              <b>Convertir un NodeList en Array</b> obtenido el NodeList se usa
+              <b>Array.prototype.slice.call( varConNodeList )</b> para
+              compatibilidad para IE y navegadores no tan modernos o una forma
+              menos verbosa <b>Array.from( varConNodeList )</b>
+            </p>
+            <pre><code>    let links = document.querySelectorAll("a");
+    let enlaces = Array.prototype.slice.call(links);
+    console.log(enlaces);
+    enlaces = Array.from(links);
+    console.log(enlaces);</code></pre>
+            <p>
+              <b>Convertir un HTMLCollection en Array</b> obtenido el
+              HTMLCollection se usa
+              <b>Array.prototype.slice.call( varConHTMLCollection )</b> para
+              compatibilidad para IE y navegadores no tan modernos o una forma
+              menos verbosa <b>Array.from( varConHTMLCollection )</b>
+            </p>
+            <pre><code>    let classes = document.getElementsByClassName("card9");
+    let clases = Array.prototype.slice.call(classes);
+    console.log(clases);
+    clases = Array.from(classes);
+    console.log(clases);</code></pre>
+            <p>
+              Para trabajar con nodos hay una etiqueta p tiene el id "que-es" y
+              adjunto un nav creado con el Emmet
+              nav#menu&gt;ul&gt;li*5&gt;a[href="#"]{Seccion $} y un input <br />
+              input:text[name="nombre" placeholder="Nombre" id="#"] <br />
+              a.link-dom[href="index.html" data=description="Document Object
+              Model"]{DOM} <br />
+              section.cards9>(figure.card9>img[src="https://source.unsplash.com/category/people/100x100"
+              alt="Imagen $"]^figcaption{Imagen $})*5 <br />
+              <a href="https://gersonlazaro.com/unsplash-api-miles-de-fotos-gratis-en-tu-sitio-web-o-aplicacion" target="_blank" rel="noopener noreferrer">gerzonlazaro.com</a>
+            </p>
+            <p id="que-es">
+              Para trabajar con nodos esta etiqueta p tiene el id "que-es" y
+              adjunto un nav creado con el Emmet
+              nav#menu&gt;ul&gt;li*5&gt;a[href="#"]{Seccion $} y un input <br />
+              input:text[name="nombre" placeholder="Nombre" id="#"] <br />
+              a.link-dom[href="index.html" data=description="Document Object
+              Model"]{DOM} <br />
+              section.cards9>(figure.card9>img[src="https://source.unsplash.com/category/people/100x100"
+              alt="Imagen $"]^figcaption{Imagen $})*5 <br />
+              https://gersonlazaro.com/unsplash-api-miles-de-fotos-gratis-en-tu-sitio-web-o-aplicacion/ <br>
+              Categorias: building, people, food, technology, nature .<br>
+              random . colletion de las siguientes https://unsplash.com/es/colecciones
+            </p>
+            <nav id="menu">
+              <ul>
+                <li><a href="#">Seccion 1</a></li>
+                <li><a href="#">Seccion 2</a></li>
+                <li><a href="#">Seccion 3</a></li>
+                <li><a href="#">Seccion 4</a></li>
+                <li><a href="#">Seccion 5</a></li>
+              </ul>
+            </nav>
+            <input type="text" name="nombre" id="#" placeholder="Nombre"/>
+            <a
+              href="index.html"
+              class="link-dom"
+              data-id = "2"
+              data-description="Document Object Model"
+              style="background-color: #F7DF1E; color: #222;"
+              >DOM</a
+            >
+            <section class="cards9">
+              <figure class="card9">
+                <img
+                  src="https://source.unsplash.com/category/people/100x100"
+                  alt="People - gente"
+                />
+                <figcaption>People</figcaption>
+              </figure>
+              <figure class="card9">
+                <img
+                  src="https://source.unsplash.com/category/object/100x100"
+                  alt="Object - objeto"
+                />
+                <figcaption>Object</figcaption>
+              </figure>
+              <figure class="card9">
+                <img
+                  src="https://source.unsplash.com/category/nature/100x100"
+                  alt="Nature - naturaleza"
+                />
+                <figcaption>Nature</figcaption>
+              </figure>
+              <figure class="card9">
+                <img
+                  src="https://source.unsplash.com/category/technology/100x100"
+                  alt="Technology - tecnología"
+                />
+                <figcaption>Technology</figcaption>
+              </figure>
+              <figure class="card9">
+                <img
+                  src="https://source.unsplash.com/category/food/100x100"
+                  alt="Food - comida"
+                />
+                <figcaption>Food</figcaption>
+              </figure>
+            </section>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion4" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.4. DOM - Atributos y Data Attributes</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              type, name, href, charset son atributos que tienen las etiquetas
+              (elementos) html y se pueden crear atributos propios conocidos
+              como Data attributes con la característica que como prefijo lleven
+              <b>data-</b> , ejemplo data-description.
+            </p>
+            <pre><code>    &lt;a href="index.html" class="link-dom" <b>data-description</b>="Document Object Model">DOM</a> </code></pre>
+            <p>
+              Se puede <b>obtener el valor de un atributo</b> con la notación del punto:
+              document.documentElement.lang o con uso del método <b>getAttribute("nom_attr")</b>
+              como el caso document.documentElement.getAttribute("lang")
+              preferentemente usar esta segunda forma. En las lineas siguientes
+              se observa la diferencia del retorno, asi como también opera para data attributes.
+            </p>
+            <pre><code>    document.querySelector(".link-dom").href    // http://127.0.0.1:5500/cap_09/index.html 
+    document.querySelector(".link-dom").getAttribute("href");   // index.html
+    document.querySelector(".link-dom").getAttribute("data-description");</code></pre>
+            <p>
+              Existe el <b>dataset</b> que obtiene los data attributes vinculados con el elemento html en un DOMStringMap o apuntar dentro del dataset el atributo puntual, si existe un atributo data-description, entonces sería, dataset.description
+            </p>
+            <pre><code>    console.log(document.querySelector(".link-dom").dataset);
+    console.log(document.querySelector(".link-dom").dataset.description);</code></pre>
+            <p>
+              Para <b>modificar o establecer un atributo</b> también con la notación del punto aún si no existe el atributo con el metodo <b>setAttribute("nom_attr", "valor_asignado")</b> <br>
+              Para un data atributo modificarlo o crealo se puede hacer mediante el dataset
+            </p>
+            <pre><code>    document.querySelector(".link-dom").href = "nueva-href.html";
+    document.querySelector(".link-dom").setAttribute("href", "nueva-href.html");
+    document.querySelector(".link-dom").setAttribute("target", "_blank");
+    document.querySelector(".link-dom").setAttribute("rel", "noopener");
+    document.querySelector(".link-dom").setAttribute("data-description", "Modelo de Objeto del Documento");
+    document.querySelector(".link-dom").<b>setAttribute("data-referencia", "Un data attr creado data-referencia")</b>;
+    document.querySelector(".link-dom").<b>dataset.info = "data attribute data-info creado con dataset"</b>;
+    document.documentElement.lang = "en";
+    document.documentElement.setAttribute("lang", "es");</code></pre>
+            <p>
+              Para eliminar elementos se tiene el método <b>removeAttribute("nom_attr")</b>, también pudiendo validar si un atributo existe o no en el elemento con <b>hasAttribute("nom_attr")</b> mismo que retorna un booleano true o false.
+            </p>
+            <pre><code>    document.querySelector(".link-dom").<b>removeAttribute</b>("data-description");
+    console.log( document.querySelector(".link-dom").<b>hasAttribute</b>("data-description") );</code></pre>
+            <p></p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion5" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.5. DOM - Estilos y variables CSS</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Para obtener los estilos existe la propiedad <b>style</b> que retorna un objeto <b>CSSStyleDeclaration</b> con todas las propiedades definibles para el elemento seleccionado <b>document.querySelector(".link-dom").style</b>, otra forma sería con el <b>getAttribute("nom_attr")</b> pero el retorno es la lista en String de estilos definidos asociados (background-color: #F7DF1E; color: #222;) equivalente a la propiedad cssText del objeto CSSStyleDeclaration, no un objeto CSSStyleDeclaration.
+            </p>
+            <pre><code>    const $linkDom = document.querySelector(".link-dom");
+    console.log($linkDom<b>.style</b>);
+    console.log($linkDom<b>.getAttribute("style")</b>);</code></pre>
+            <p>
+              Otra forma de mostrar las propiedades CSS son con las compute properties o propiedades dinámicas <b>window.getComputedStyle($linkDom)</b> que retorna un objeto CSSStyleDeclaration diferente al descrito en el parrafo previo. Al final de este objeto se observan todas las propiedades css con los valores que el navegador asigna por omisión. Para acceder a una propiedad en particular a partir del compute properties se usa el método <b>getPropertyValue("attr_particular")</b>
+            </p>
+            <pre><code>    console.log(window.<b>getComputedStyle($linkDom)</b>);
+    console.log( window.<b>getComputedStyle($linkDom).getPropertyValue("background-color")</b> );</code></pre>
+            <p>
+              Para establecer valores CSS se usa el método <b>setProperty("nom_propiedad_css", "valor") o la notación del punto</b>
+            </p>
+            <pre><code>    $linkDom.<b>style.setProperty("text-decoration", "none")</b>;
+    $linkDom.<b>style.textDecoration</b> = "none";
+    $linkDom.style.display = "block";    
+    $linkDom.style.width = "50%";
+    $linkDom.<b>style.textAlign</b> = "center";
+    $linkDom.style.marginLeft = "auto";
+    $linkDom.style.marginRight = "auto";</code></pre>
+            <p id="cssproperties">
+              <b>Variables CSS - Custom Properties CSS</b> - <br>
+              Para una variable declarada en la hoja de estilo style-inicial.css identificada como --yellow-color-practica: #F7DF1E; y otra --dark-color: #222; dentro del <b>:root{}</b><br>
+              Se establece el elemento con document.documentElement para el html y $idcssproperties = document.querySelector("#cssproperties") para el selector <br> Se obtiene el valor de la variable css getComputedStyle($html).getPropertyValue( "--yellow-color-practica" ) <br>
+              Se define una variable CSS $html.style.setProperty("--dark-color", "#222"); <br>
+              Se establece el atributo css $idcssproperties.style.backgroundColor = varDarkColor; <br>
+              Otra forma de establecer el atributo CSS $idcssproperties.style.setProperty("color", varYellowPractica); <br>
+              Nunca establecera un atributo CSS mediante esta forma, es errada:  window.getComputedStyle($idcssproperties).setProperty("color", varYellowPractica);
+            </p>
+            <pre><code>    const $html = document.documentElement,
+      $body = document.body,
+      $idcssproperties = document.querySelector("#cssproperties");
+    let varYellowPractica = getComputedStyle($html).<b>getPropertyValue</b>( "--yellow-color-practica" ),
+      varDarkColor = "";
+    $html.style.setProperty("--dark-color", "#222");
+    varDarkColor = getComputedStyle($html).<b>getPropertyValue</b>("--dark-color");
+    console.log(varYellowPractica, varDarkColor);
+    $idcssproperties.<b>style.backgroundColor</b> = varDarkColor;
+    $idcssproperties.<b>style.setProperty</b>("color", varYellowPractica);
+    // <s>window.getComputedStyle($idcssproperties).setProperty("color", varYellowPractica);</s>
+    varDarkColor = getComputedStyle($html).<b>getPropertyValue</b>("--bg-hard-1-7");
+    console.log(varDarkColor);
+    $html.<b>style.setProperty</b>("--dark-color", varDarkColor);
+    $idcssproperties.<b>style.backgroundColor</b> = varDarkColor;</code></pre>
+            <p></p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion6" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.6. DOM - Clases CSS</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Class es una palabra reservada del lenguaje por tanto no podría usarse querySelector().class en ningun momento. <br>Se puede acceder a la cadena de texto que describe las clases a traves de la propiedad <b>className</b>, presentando los nombres de las clases separadas por un espacio, o a un objeto especial DOMTokenList que es como un arreglo con posiciones con cada una de las clases definidas del elemento en cuestion mediante <b>classList</b>. <b>classList.value</b> retorna string igual a className. Desde classList acceder a un elemento puntual se usa el método <b>classList.item(posición)</b> y por parametro un dato numérico de posición
+            </p>
+            <pre><code>    const $card = document.querySelector(".card9");
+    console.log($card<b>.className</b>); // String de clases separadas por espacio
+    console.log($card<b>.classList</b>); // DOMTokenList</code></pre>
+            <p>
+              La propiedad classList tiene un método <b>contains</b> que retorna booleano si contiene o no una clase consultada
+            </p>
+            <pre><code>    console.log($card.<b>classList.contains("card9")</b>); // true</code></pre>
+            <p>
+              Para inyectar una clase invocamos al classList y a su método <b>add</b> con parámetro el nombre de la clase a agregar. para inyectar varias clases se puede agregar los parametros separados por comas
+            </p>
+            <pre><code>    $card.<b>classList.add("rotate-45")</b>
+    $card.<b>classList.add("rotate-45", "sepia", opacity-80)</b></code></pre>
+            <p>
+              El método <b>remove</b> del classList permite quitar una clase al elemento o varias clases separadas por comas
+            </p>
+            <pre><code>    $card.<b>classList.remove("rotate-45")</b>;
+    $card.<b>classList.remove("rotate-45", "sepia")</b>;</code></pre>
+            <p>
+              El método <b>toggle</b> del classList actua como interruptor biestable, si la clase existe entonces la quita pero si no existe entonces la agrega, retorna boolean, solo admite una clase.
+            </p>
+            <pre><code>    $card.classList.toggle("rotate-45");
+        setInterval(() => {
+          $card.classList.toggle("rotate-45");
+        }, 1000);</code></pre>
+            <p>El método <b>replace</b> del classList reemplaza una clase por otra</p>
+            <pre><code>    $card.classList.replace("rotate-45", "rotate-135");</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion7" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.7. DOM - Texto y html</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>Para modificar el contenido de un selector y reemplar su texto, se tienen varias propiedades.</p>
+            <pre><code>    const $whatIsDOM = document.getElementById("que-es");</code></pre>
+            <ol>
+              <li>
+                No es parte del estandar, fue creada para IE es <b>innerText</b> e imprime las etiquetas html de la variable de texto como texto.
+                <pre><code>    $whatIsDOM<b>.innerText</b> = $whatIsDOM<b>.innerText</b> + texto;</code></pre>
+              </li>
+              <li>
+                Parte del estandar es la propiedad <b>textContent</b>, sin interpretar las etiquetas html del texto agregado.
+                <pre><code>    $whatIsDOM<b>.textContent</b> = texto;</code></pre>
+              </li>
+              <li>
+                La propiedad <b>innerHTML</b> reemplaza lo que tenga y agrega el contenido variable con las tag html. Si el selector es un parrafo y el texto contiene tag de parrafo provocaría una estructura incorrecta, p que contiene p
+                <pre><code>    $whatIsDOM<b>.innerHTML</b> = texto;</code></pre>
+              </li>
+              <li>
+                Similar a innerHTML visualmente es <b>outerHTML</b> con la diferencia que reemplaza el selector por las tags del texto.
+                <pre><code>    $whatIsDOM<b>.outerHTML</b> = texto;</code></pre>
+              </li>
+            </ol>
+            <p></p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion8" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.8. DOM Traversing - Recorriendo el DOM</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Tomando como referencia un nodo poder recorrer diferentes elementos exclusivos para etiquetas html como tal.
+            </p>
+            <pre><code>    const $cards = document.querySelector(".cards9");</code></pre>
+            <p>Obtener los nodos elementos hijos del .cards9 en un HTMLCollection. Seleccionar el tercer elemento hijo</p>
+            <pre><code>    $cards.children
+    $cards.children[2]</code></pre>
+            <p>Obtener un NodeList de todos los nodos contenidos en el elemento, incluido los textos, no gestiona los nodos de tipo elementos exclusivos</p>
+            <pre><code>   $cards.childNodes</code></pre>
+            <p>Obtener el primer nodo de tipo elemento hijo</p>
+            <pre><code>   $cards.firstElementChild</code></pre>
+            <p>Obtener el último nodo de tipo elemento hijo</p>
+            <pre><code>   $cards.lastElementChild</code></pre>
+            <p>Obtener el primer nodo hijo no es de tipo elemento necesariamente, puede ser text de salto de linea.</p>
+            <pre><code>   $cards.firstChild</code></pre>
+            <p>Obtener el último nodo hijo no es de tipo elemento necesariamente, puede ser text de salto de linea.</p>
+            <pre><code>   $cards.lastChild</code></pre>
+            <p>Obtener el nodo hermano previo de tipo elemento</p>
+            <pre><code>   $cards.previousElementSibling</code></pre>
+            <p>Obtener el nodo hermano siguiente de tipo elemento</p>
+            <pre><code>   $cards.nextElementSibling</code></pre>
+            <p>Obtener el nodo hermano previo no necesariamente de tipo elemento</p>
+            <pre><code>   $cards.previousSibling</code></pre>
+            <p>Obtener el nodo hermano siguiente no necesariamente de tipo elemento</p>
+            <pre><code>   $cards.nextSibling</code></pre>
+            <p>Obtener el nodo elemento padre o contenedor del elemento que lo invoca, puede coincidir con parentNode</p>
+            <pre><code>   $cards.parentElement</code></pre>
+            <p>Obtener el nodo padre o contenedor del seleccionado que lo invoca, puede no ser un nodo de tipo elemento lo retornado</p>
+            <pre><code>   $cards.parentNode</code></pre>
+            <p>Busca el ancestro tag html más próximo contenedor del nodo elemento que invoca</p>
+            <pre><code>   $cards.closest("article")</code></pre>
+            <p>Busca el ancestro tag html mas cercado que lo contiene</p>
+            <pre><code>   $cards.children[3].closest("section")</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion9" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.9. DOM - Creando elementos y fragmentos</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>Inicialmente se deben definir los elementos que se crearan y el selector donde se ubicará, para crear un nodo de tipo elemento se usa el método <b>document.createElement("nodo_elemento")</b> y para los nodos de tipo texto se usa el método <b>document.createTextNode("Texto definido")</b></p>
+            <pre><code>    const $figure = document.createElement("figure"),
+      $img = <b>document.createElement("img")</b>,
+      $figcaption = document.createElement("figcaption"),
+      $figcaptionText = <b>document.createTextNode("People")</b>;
+      // o podría usarse 
+      <b>$figcaption.textContent = "People";</b>
+    $cards = document.querySelector(".cards9");</code></pre>
+            <p>
+              Las etiquetas creadas aún no están incorporadas en el árbol del DOM, para agregarla se usa el método <b>appendChild(elemento_creado)</b> se arma de adentro hacia afuera, definiendo atributos, luego agregando clases y agregando nodos elementos hijos. El orden es importante
+            </p>
+            <pre><code>    $img<b>.setAttribute("src", "https://source.unsplash.com/category/people/120x120")</b>;
+    $img.setAttribute("alt", "Gente - People");
+    $figcaption.<b>appendChild($figcaptionText)</b>;
+    $figure.appendChild($img);
+    $figure.appendChild($figcaption);
+    $figure.<b>classList.add("card9")</b>;
+    $cards9<b>.appendChild($figure)</b>;</code></pre>
+            <p>
+              Hay otra forma valida, aprovechando el innerHTML para agregar el contenido dinámicamente con la desventaje de que al hacerlo como texto, entonces, JS no lo considera como un nodo pero se esta generando contenido dinámico, no recomendado.
+            </p>
+            <pre><code>    const $figure2 = document.createElement("figure");
+    $figure2.innerHTML = `
+      &lt;img src = "https://source.unsplash.com/category/nature/110x110" alt="Nature"&gt;
+      &lt;figcaption&gt;Naturaleza&lt;/figcaption&gt;
+    `;
+    $figure2.classList.add("card9");
+    $cards9.appendChild($figure2);</code></pre>
+            <p>Que sucede si se requiere crear muchos nodos de elementos masivamente?</p>
+            <pre><code>    const estaciones = ["primavera", "verano", "otoño", "invierno"];
+    $ul = document.createElement("ul");
+    document.write("&lt;h3&gt;Estaciones del año&lt;/h3&gt;");
+    document.body.appendChild($ul);
+    estaciones.forEach((elem) => {
+      const $li = document.createElement("li");
+      $li.textContent = elem;
+      $ul.appendChild($li);
+    });</code></pre>
+            <p>
+              Otra forma usando el innerHTML con la caracteristica de inicializar el innerHTML = ""
+            </p>
+            <pre><code>    const continentes = ["Africa", "Asia", "Europa", "Oceanía", "América"];
+    $ul2 = document.createElement("ul");
+    document.write("&lt;h3&gt;Continentes&lt;/h3&gt;");
+    document.body.appendChild($ul2);
+    //$ul2.innerHTML = "";
+    continentes.forEach((elem) => {
+      $ul2.innerHTML += `&lt;li&gt;${elem}&lt;/li&gt;`;
+    });</code></pre>
+            <p>
+              Las inserciones al DOM son altamente demandantes, con la solución de fragmentos dinámicos mediante el método <b>document.createDocumentFragment()</b> sin parámetros, no se puede usar innerHTML sino usar la técnica de crear elementos nodos con document.CreateElement("nodoElement"). La estrategia más recomendada los fragment 
+            </p>
+            <pre><code>
+    const meses = ["Enero", "Febrero", "Marzo", "Abril",
+      "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
+      "Octubre", "Noviembre", "Diciembre"];
+    const $ul3 = document.createElement("ul"),
+      $fragmento = <b>document.createDocumentFragment()</b>;
+    meses.forEach((elem) => {
+      const $li = document.<b>createElement("li")</b>;
+      $li<b>.textContent = elem</b>;
+      $fragmento<b>.appendChild($li)</b>;
+    });
+    document.write("&lt;h3&gt;Meses del año&lt;/h3&gt;");
+    $ul3<b>.appendChild($fragmento)</b>;
+    document.body<b>.appendChild($ul3)</b>;
+            </code></pre>
+            <p></p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion10" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.10. DOM - Templates HTML</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Etiqueta nueva en el estandar a partir de html5, modelo a seguir donde se estructura el contenido html que se convertirá en dinámico mediante JS y es otra forma de interactuar con el DOM en conbinación con los fragmentos. La etiqueta template no se visualiza o renderiza en el DOM aunque si en la pestaña elements del navegador. la template se la defina luego de todo el codigo html antes de las declaraciones de scripts, al template se le asigna un id
+            </p>
+            <pre><code>    &lt;<b>template id=</b>"template-card"&gt;
+      &lt;figure class="card9"&gt;
+        &lt;img&gt;
+        &lt;figcaption&gt;&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/<b>template</b>&gt;</code></pre>
+            <p>
+              Desde el js del dom crear una variable que apunte a .cards9, otra variable que apunte al #template-card pero a su content, una para la creación de fragmento (fragment), y una para la simulación de recepción de datos.
+            </p>
+            <pre><code>    const $cards9_2 = document.querySelector(".cards9"),
+      $template = <b>document.getElementById("template-card")<u>.content</u></b>,
+      $fragment = document.createDocumentFragment(),
+      cardContent = [
+        {title: "Tecnología", img: "https://source.unsplash.com/category/technology/120x120"},
+        {title: "Aleatorio", img: "https://source.unsplash.com/random/120x120"},
+        {title: "Comida", img: "https://source.unsplash.com/category/food/120x120"},
+        {title: "Construcción", img: "https://source.unsplash.com/category/buildings/120x120"},
+        {title: "Gente", img: "https://source.unsplash.com/category/people/120x120"},
+        {title: "Naturaleza", img: "https://source.unsplash.com/category/nature/120x120"},
+        {title: "1BHfsOyLer8", img: "https://source.unsplash.com/collection/1BHfsOyLer8/120x120"},
+        {title: "881002", img: "https://source.unsplash.com/collection/881002/120x120"},
+        {title: "fGPRnpEt4yM", img: "https://source.unsplash.com/collection/fGPRnpEt4yM/120x120"}
+      ];</code></pre>
+            <p>
+              El template es único, es decir, se tiene una sola tag template en el html por tanto es necesario clonar el nodo template ubicandolo en una variable, mediante el método <b>document.importNode($template, true)</b>, el primer parámetro es el selector del nodo elemento a clonar y el segundo parámetro true si se incluye toda la estructura o false si solo la etiqueta principal y no el cuerpo.
+            </p>
+            <pre><code>    let $cloneTemplate = <b>document.importNode($template, true)</b>;</code></pre>
+            <p>
+              En el template clonado se establecen los atributos y los textos para cada elemento con setAttribute, textContent y classList.add y se agrega el template clonado al fragmento creado. Finalmente luego que todos los fragmentos han sido armados el $fragment se agrega al DOM del html con $cards9_2.appendChild($fragment);
+            </p>
+            <pre><code>    cardContent.forEach((elem) => {
+      let $cloneTemplate = <b>document.importNode</b>($template, true);
+      $cloneTemplate.querySelector("img")<b>.setAttribute("src", elem.img)</b>;
+      $cloneTemplate.querySelector("img")<b>.setAttribute("alt", elem.title)</b>;
+      $cloneTemplate.querySelector("figcaption")<b>.textContent = elem.title</b>;
+      $cloneTemplate.querySelector("figure")<b>.classList.add("card9")</b>;
+
+      $fragment<b>.appendChild($cloneTemplate)</b>;
+    });
+
+    $cards9_2<b>.appendChild($fragment);</b></code></pre>
+            <p></p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion11" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.11. DOM - Modificando Elementos (Old Style)</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              appendChild siempre agrega elemento al final del selector objetivo. Se tienen otros métodos que permiten reemplazar o insertar al inicio o en una posición particular mediante propiedades del dom traversing, para ello existen los métodos de antaño y el siguiente tema se revisan las nuevas formas o cool style. <br>Preparamos las variables en el fragmento, también se podria generar el innerHTML.
+            </p>
+            <pre><code>    const $cards9_3 = document.querySelector(".cards9"),
+      $template = document.getElementById("template-card").content,
+      $fragment2 = document.createDocumentFragment();
+    $cloneTemplate = document.importNode($template, true);
+    $cloneTemplate
+      .querySelector("img")
+      .setAttribute("src", "https://source.unsplash.com/random/120x120");
+    $cloneTemplate.querySelector("img").setAttribute("alt", "Random");
+    $cloneTemplate.querySelector("figcaption").textContent = "Random";
+    $cloneTemplate.querySelector("figure").classList.add("card9");
+    $fragment2.appendChild($cloneTemplate);</code></pre>
+            <p>
+              Primero veremos el reemplazar un nodo elemento, el tercer hijo, la imagen Nature el método es el <b>replaceChild</b> aplicado al padre .cards9 con dos parámetros, el nuevo nodo y la el nodo a reemplazar
+            </p>
+            <pre><code>    $cards9_3<b>.replaceChild($fragment2, $cards9_3.children[2])</b>;</code></pre>
+            <p>
+              Para insertar antes de un nodo referencia se usa el método insertBefore(newElem, nodoreferencia), en el caso se inserta en la posicion 0 deplazando la 0 a la 1
+            </p>
+            <pre><code>    $cards9_3<b>.insertBefore($fragment2, $cards9_3.children[0])</b>;
+    o su equivalente
+    $cards9_3<b>.insertBefore($fragment2, $cards9_3.firstElementChild)</b>;</code></pre>
+            <p>
+              Para eliminar un elemento por ejemplo la última con el método removeChild(elemento_a_eliminar)
+            </p>
+            <pre><code>    $cards9_3<b>.removeChild($cards9_3.lastElementChild)</b>;</code></pre>
+            <p>El método cloneNode genera dinámicamente un nodo a partir de otro es similar a importNode (importar templete), importante para clonar con el contenido el parámetro debe ser true </p>
+            <pre><code>    const $cloneCards = $cards9_3.<b>children[0].cloneNode(true)</b>;
+    $cards9_3.<u>replaceChild($cloneCards, $cards9_3.children[3])</u>;
+    otro ejemplo
+    const $cloneCards = $cards9_3.<b>cloneNode(true)</b>
+    document.body<b>.appendChild($cloneCards)</b>;</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion12" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.12. DOM - Modificando Elementos (Cool Style)</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Los métodos insertAdjacent... insertan de manera adyacente. <br>
+            </p>
+            <ol>
+              <li>.insertAdjacentElement(posición, elemento definido con createElement)</li>
+              <li>.insertAdjacentHTLM(posición, elemento definido con createElement)</li>
+              <li>.insertAdjacentText(posición, elemento definido con createElement)</li>
+            </ol>
+            <p>donde las posiciones</p>
+            <ol>
+              <li>beforebegin --&gt; (hermano anterior) antes del elemento mismo</li>
+              <li>afterbegin --&gt; (primer hijo) dentro del elemento, antes del primer elemetno hijo</li>
+              <li>beforeend --&gt; (último hijo) dentro del elemento, luego de su último elemento hijo</li>
+              <li>afterend --&gt; (hermano siguiente) después del elemento mismo</li>
+            </ol>
+            <p>Si se presenta con inner HTML pueden surgir cambios en visualización, lo ideal es que se aplique con createElement de adentro hacia afuera, como el siguiente caso.</p>
+            <pre><code>    const $figure_4 = document.createElement("figure"),
+      $img_4 = document.createElement("img"),
+      $figcaption_4 = document.createElement("figcaption"),
+      $figcaptionText_4 = document.createTextNode("Any");
+    $cards9 = document.querySelector(".cards9");
+
+    $img_4.setAttribute("src", "https://source.unsplash.com/random/120x120");
+    $img_4.setAttribute("alt", "Any");
+    $figcaption_4.appendChild($figcaptionText_4);
+    $figure_4.appendChild($img_4);
+    $figure_4.appendChild($figcaption_4);
+    $figure_4.classList.add("card9");
+
+    $cards9<b>.insertAdjacentElement("afterbegin", $figure_4);</b>
+    $cards9<b>.insertAdjacentElement("beforebegin", $figure_4);</b>
+    $cards9<b>.insertAdjacentElement("beforeend", $figure_4);</b>
+    $cards9<b>.insertAdjacentElement("afterend", $figure_4);</b></code></pre>
+            <p>Aca un caso de ejemplo con innerHTML</p>
+            <pre><code>   const $newCard = document.createElement("figure");
+    $newCard.innerHTML = `
+      &lt;img src="https://source.unsplash.com/random/120x120" alt="AnyR"&gt;
+      &lt;figcation&gt;AnyR&lt;/figcaption&gt;
+    `;
+    $newCard.classList.add("card9");
+
+    $cards9.<b>insertAdjacentElement("beforebegin", $newCard)</b>;
+    $cards9<b>.insertAdjacentElement("afterbegin", $newCard)</b>;
+    $cards9<b>.insertAdjacentElement("beforeend", $newCard)</b>;
+    $cards9<b>.insertAdjacentElement("afterend", $newCard);</b></code></pre>
+            <p>insertAdjacentHTLM e insertAdjacentText pero no se obtiene lo imaginado</p>
+            <pre><code>    const $newCard_2 = document.createElement("figure");
+    let $contentCard = `
+      &lt;img src="https://source.unsplash.com/random/130x130" alt="adjacentHTML"&gt;
+      &lt;figcation&gt;&lt;/figcaption&gt;
+    `;
+    $newCard_2.classList.add("card9");
+    $newCard_2<b>.insertAdjacentHTML("afterbegin", $contentCard)</b>;
+    $newCard_2<b>.insertAdjacentText("beforeend", "texto")</b>;
+    $cards9.insertAdjacentElement("afterbegin", $newCard_2);</code></pre>
+            <p>
+              Recordando de jquery que tiene unos métodos before (beforebegin) hermanos previos, after (afterend) hermanos siguientes, prepend (afterbegin) primeros hijos y append (beforeend) últimos hijos que hacen algo similar a las posiciones beforebegin, afterend, afterbegin y beforeend
+            </p>
+            <p>
+              El método <b>nodoPadre.prepend(nodeElem1, nodeElem2, ... , nodeElemN)</b> agrega o inserta un juego de objetos nodoElementos y/o nodoTextos antes del primer hijo del nodoPadre.
+            </p>
+            <pre><code>    $cards9<b>.prepend($newCard_2);</b></code></pre>
+            <p>
+              El método <b>nodoPadre.append(nodeElem1, nodeElem2, ... , nodeElemN)</b> agrega o inserta un juego de objetos nodoElementos y/o nodoTextos despues del último hijo del nodoPadre.
+            </p>
+            <pre><code>    $cards9<b>.append($newCard_2);</b></code></pre>
+            <p>
+              El método <b>Element.before(nodeElem1, nodeElem2, ... , nodeElemN)</b> inserta un juego de Nodos u Objetos String en la lista de hijos del elemento padre, justo antes de este Element. Objetos String son insertados como Nodos Texto equivalentes.
+            </p>
+            <pre><code>    $cards9<b>.before($newCard_2);</b></code></pre>
+            <p>
+              El método <b>Element.after(nodeElem1, nodeElem2, ... , nodeElemN)</b> inserta un juego de Nodo u Objetos String en la lista de hijos del elemento padre, justo luego de este Element. Objetos String son insertados como Nodos Texto equivalentes.
+            </p>
+            <pre><code>    $cards9<b>.after($newCard_2);</b></code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion13" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.13. DOM - Manejadores de eventos</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Son aquellos mecanismos proporcionados por JS para controlar las acciones del usuario cliente y definir ciertos comportamientos del documento que sucedan en determinado momento o cuando se cumplan algunas condiciones.
+            </p>
+            <p>
+              Las funciones que se ejecutan en un evento se conoce como <b>Event Handler</b> o manejadores de eventos o escuchadores. Hay tres maneras de definir los eventos en js. Buscar en el navegador "event mdn". Cuando una <b>función se convierte en un manejador de eventos</b> se tiene acceso a un objeto llamado event en el cual se puede ver la propiedad <b>type</b> que es el tipo de evento desencadenado, osea, "click"; el elemento que desencadeno el evento <b>target</b> que sería "button"; la propiedad <b>currentTarget</b> es elemento que maneja el evento. Lo que exactamente igual a this, a menos que el handler sea una función de flecha o su this esté vinculado a otra cosa.
+            </p>
+            <p><b>Asignación handlers por Atributos HTML</b></p>
+            <pre><code>    &lt;button onclick="fncComoEventHandler()"&gt;Evento como atributo del html&lt;/button&gt;</code></pre>
+            <button onclick="fncComoEventHandler()">Evento como atributo del html</button>
+            <pre><code>    function fncComoEventHandler() {
+      alert("Esta función se convertiría en el Event Handler fncComoEventHandler");
+      console.log(<b>event</b>);
+    }</code></pre>
+            <p><b>Asignación handlers por Propiedades del DOM</b></p>
+            <p>
+              Como un <b>manejador de eventos o event handler semántico por Propiedad del DOM</b> basado en un id. El eventoSemantico.onclick invoca a la funcion fncComoEventHandler generada en el item previo sin los parentesis (). Nota el event.target ahora es "button#evento-semantico". Inconveniente de los eventos semánticos: agrega métodos al prototipo del modelo de eventos del evento del dom que se esta manejando. Una vez definido el evento semántico solo puede manejar una sola función. No se pueden definir  función con parámetros ni en el caso de función expresada o una arrow function el único parámetro sería (event) o (e).
+            </p>
+            <pre><code>    &lt;button id="evento-semantico"&gt;Evento con manejador semántico&lt;/button&gt;</code></pre>
+            <button id="evento-semantico">Evento con manejador semántico o Propiedad del DOM</button>
+            <pre><code>    const eventoSemantico = document.getElementById("evento-semantico");
+    eventoSemantico.onclick = fncComoEventHandler;
+    eventoSemantico.onclick = function (e) {
+      alert(`Hola mundo, Manejador de eventos semantico ${event.target}`);
+    };</code></pre>
+            <p><b>Asignación handlers por Métodos addEventListener y removeEventListener</b></p>
+            <p>
+              Habrá necesidad de a un mismo elemento HTML se tenga que asignar diferentes manejadores de eventos, es decir, diferentes funciones que hagan diferentes cosas mediante <b>Manejador de Eventos Múltiples</b>. En la declaración se usa el método addEventListener que recibe como parametro el nombre del evento sin el prefijo "on", sería "click" y la función event handler sin parámetros y sin paréntesis
+            </p>
+            <pre><code>    &lt;button id="evento-multiple"&gt;Evento con manejador múltiple&lt;/button&gt;</code></pre>
+            <button id="evento-multiple">Evento con manejador múltiple</button>
+            <pre><code>    const eventoMultiple = document.getElementById("evento-multiple");
+    eventoMultiple.<b>addEventListener("click", fncComoEventHandler)</b>;
+    eventoMultiple.<b>addEventListener("click", () => {
+        alert(`Hola mundo, manejador de eventos múltiples ${event.target}`);
+      })</b>;</code></pre>
+            <p>
+              Podemos asignar no solo una función, sino un objeto como handler del evento usando addEventListener. Cuando el evento ocurre, el método <b>handleEvent</b> es llamado. O una clase personalizada como la del ejemplo con clase Menu
+            </p>
+            <pre><code>    let obj = {
+      <b>handleEvent</b>(event) { alert(event.type + " en " + event.currentTarget);}
+    };
+
+    elem.addEventListener('click', obj);
+
+    class Menu {
+      <b>handleEvent</b>(event) {
+        switch(event.type) {
+          case 'mousedown':
+            elem.innerHTML = "Botón del mouse presionado";
+            break;
+          case 'mouseup':
+            elem.innerHTML += "...y soltado.";
+            break;
+        }
+      }
+    }
+    let menu = new Menu();
+    elem.addEventListener('mousedown', menu);
+    elem.addEventListener('mouseup', menu);</code></pre>
+            <p>O no cargar todo el trabajo al método hanleEvent</p>
+            <pre><code>    class Menu {
+      <b>handleEvent</b>(event) {
+        // mousedown -> onMousedown
+        let method = 'on' + event.type[0].toUpperCase() + event.type.slice(1);
+        this[method](event);
+      }
+
+      onMousedown() {
+        elem.innerHTML = "Botón del mouse presionado";
+      }
+
+      onMouseup() {
+        elem.innerHTML += "...y soltado.";
+      }
+    }
+
+    let menu = new Menu();
+    elem.addEventListener('mousedown', menu);
+    elem.addEventListener('mouseup', menu);</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion14" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.14. DOM - Eventos con parámetros y remover eventos</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Generando un artificio de envolver en una arrow function, dado que ninguna función manejadora de evento puede recibir parámetros que no sea únicamente el e de event.
+            </p>
+            <pre><code>    function saludarDeEvento(nombre = "Desconocid@") {
+      alert(`Hola ${nombre} - ${event}`);
+      console.log(`Hola, ${nombre} - ${event}`);
+    }
+
+    eventoMultiple.addEventListener("click", () => {
+      saludarDeEvento();
+      saludarDeEvento("Leonel");
+    });</code></pre>
+            <p>
+              Para remover eventos de un elemento, en el addEventListener la función manejadora no puede ser una arrow function, sino, solo puede con funcion declarada o expresada y participa el método <b>removeEventListener</b>.
+            </p>
+            <pre><code>    &lt;button id="evento-remover"&gt;Removiendo eventos con manejadores múltiples&lt;/button&gt; </code></pre>
+            <button id="evento-remover">Removiendo eventos con manejadores múltiples</button>
+            <p>Ejemplo con función expresada, la función expresada debe ir antes del addEventListener</p>
+            <pre><code>    const eventoRemover = document.getElementById("evento-remover");
+    const removerDobleClick = (e) => {
+      alert(`Removiendo el evento "${e.type}"`);
+      console.log(e);
+      eventoRemover<b>.removeEventListener("dblclick", removerDobleClick)</b>;
+    };
+    eventoRemover<b>.addEventListener("dblclick", removerDobleClick)</b>;</code></pre>
+            <p>
+              Caso ejemplo con función controladora declarada, luego de 6 seg se remueve la función controladora declarada, la cual puede ir antes o despues del codigo de agregar o remover escuchas
+            </p>
+            <pre><code>    &lt;button id="evento-remover-2"&gt;Removiendo eventos con manejadores múltiples&lt;/button&gt;</code></pre>
+            <button id="evento-remover-2">Removiendo eventos con manejadores múltiples</button>
+            <pre><code>    const eventoRemover2 = document.getElementById("evento-remover-2");
+    eventoRemover2.addEventListener("dblclick", removerDobleClic);
+    setTimeout(() => {
+      eventoRemover2.removeEventListener("dblclick", removerDobleClic);
+      document.getElementById("evento-removido").innerHTML = "&lt;b&gt;Evento removido, trascurrieron 6 segundos desde la carga de la página.&lt;/b&gt;";
+    }, 6000);
+
+    function removerDobleClic(e) {
+      alert(`Removiendo el evento "${e.type}"`);
+      console.log(e);
+    }</code></pre>
+            <p id="evento-removido"></p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion15" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.15. DOM - Flujo de eventos (Burbuja y Captura)</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Escencialmente se analiza el tercer parámetro dentro del <b>addEventListener("accion", funcionControladora, <u>opciones</u>)</b> que se lo puede definir como un objeto.
+            </p>
+            <button id="btn-detallar-opcion">Ver el detalle de parámetro opciones</button>
+            <p id="detallar-opcion">
+              Un objeto adicional, opcional, con las propiedades: <br>
+              <b>once:</b> true entonces listener es removido automáticamente después de activarlo.<br>
+              <b>capture:</b> la fase en la que se controla el evento, false burbuja | true captura, lo que es igual a {capture: false|true}. <br>
+              <b>passive:</b> si es true entonces el handler no llamará a preventDefault().
+            </p>
+            <p>
+              A partir de la estructura <br> section.eventos-flujo>.uno{1}>.dos{2}>.tres{3} <br> y del style las clases <br> .eventos-flujo div { padding: 4rem; font-size: 2rem; text-align: center;} <br>.uno {background-color: yellow;} <br>.dos {background-color: gold;} <br>.tres {background-color: lightyellow;}
+            </p>
+            <section class="eventos-flujo">
+              <div class="uno">1
+                <div class="dos">2
+                  <div class="tres">3 <a href="https://ing-l2v2.github.io/cv" target="_blank" rel="noopener noreferrer">ing-l2v2.github.io/cv</a> </div>
+                </div>
+              </div>
+            </section>
+            <p>
+              Hay dos formas en como se propaga el evento, por omisión del más interno al más externo, <b>fase de burbuja</b>. Al pulsar en div 3 se ejecutaría el log tres veces, dos veces si se pulsa en div 2 y una vez si se ejecuta en div 1, por la burbuja de adentro hacia afuera, el tercer parámetro de addEventListener estaría en false.
+            </p>
+            <pre><code>    const $divsEventos = document.querySelectorAll(".eventos-flujo div");
+    console.log($divsEventos);
+    $divsEventos.forEach((divElem) => {
+      divElem.addEventListener("click", flujoEventos, <b>false</b>);
+    });
+    function flujoEventos(e) {
+      console.log(
+        `Hola te saluda la clase ${this.className}, el click lo origino el div ${e.target.className}`
+      );
+    }</code></pre>
+            <p>
+              Si se quiere el modelo contrario que es la <b>fase de captura</b> el parámatro opcion del addEventListener se establece en true
+            </p>
+            <pre><code>    const $divsEventos = document.querySelectorAll(".eventos-flujo div");
+    console.log($divsEventos);
+    $divsEventos.forEach((divElem) => {
+      divElem.addEventListener("click", flujoEventos, <b>true</b>);
+    });
+    function flujoEventos(e) {
+      console.log(
+        `Hola te saluda la clase ${this.className}, el click lo origino el div ${e.target.className}`
+      );
+    }</code></pre>
+            <p>
+              En lugar de true o false puede ubicarse en el objeto {capture: true|false}
+            </p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion16" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.16. DOM - stopPropagation & preventDefault</h3>
+        </div>        
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Si no se requiere propagación hacia elementos padres o hijos dependiendo de la fase burbuja o captura y que solo se ejecute una vez la programación de la función manejadora, se dispone de método event.stopPropagation() que detiene la propagación, tomar en consideración que este en modo omisión fase de Burbuja
+            </p>
+            <pre><code>    const $divsEventos = document.querySelectorAll(".eventos-flujo div");
+    $divsEventos.forEach((divElem) => {
+      divElem<b>.addEventListener("click", flujoEventos)</b>;
+    });
+    function flujoEventos(e) {
+      console.log(
+        `Hola te saluda la clase ${this.className}, el click lo origino el div ${e.target.className}`
+      );
+      <b>e.stopPropagation()</b>;
+    }</code></pre>
+            <p>
+              En algunos elementos del DOM que tienen comportamientos por omisión como el botón submit, los enlaces, scroll direccionales y para esos casos existe el método event.preventDefault(), el cual cancela la acción que tenga por default el elemento.
+            </p>
+            <pre><code>    const $link = document.querySelector(".eventos-flujo a");
+    $link.addEventListener("click", (e) => {
+      alert(`Mensaje en a antes del href`);
+      <b>e.preventDefault()</b>;
+      e.stopPropagation();
+    });</code></pre>
+            <p></p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion17" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.17. DOM - Delegación de Eventos</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Consiste en asignar a un elemento padre superior el evento escucha y evitar asignar a todos los hijos eventos escuchas y a partir del padre buscar el selector que coincida con el originador del evento y desencadenar la programación necesaria al momento del evento. O incluso asignarle el escucha al documnt raiz. Ojo con esto se evita la propagación. Muy util con peticiones asincronas para codigo html que se va agregando. El this en cualquier funcion a ser usada sería la del padre o del window si fuese el caso del docoment o raiz. Optimiza el trabajar con eventos en js.
+            </p>
+            <pre><code>    document.addEventListener("click", (e) => {
+      console.log("Click en", e.target);
+      if (e.target.matches(".eventos-flujo div")) {
+        flujoEventos(e);
+      }
+      if (e.target.matches(".eventos-flujo a")) {
+        alert(`Mensaje en a antes del href`);
+        e.preventDefault();
+      }
+    });</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion18" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.18. BOM - Propiedades y Eventos</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Viendo un par de propiedades del window.innerWidth - tamaño del ancho del viewport de la ventana y la propiedad window.innerHeight, window.outerWidth y outerHeight para el tamaño de la ventana del navegador
+            </p>
+            <p><span id="inner"></span> <br> <span id="outer"></span> </p>
+            <pre><code>    <b>window</b>.addEventListener("<b>resize</b>", (e) => {
+      document.getElementById(
+        "inner"
+      ).textContent = `window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`;
+      document.getElementById(
+        "outer"
+      ).textContent = `windows.outerWidth: ${window.outerWidth} x windows.outerHeight: ${window.outerHeight}`;
+    });</code></pre>
+            <p>El scroll de la barra lateral y horizontal respecto al top 0 y al left 0</p>
+            <pre><code>    <b>window</b>.addEventListener("<b>scroll</b>", (e) => {
+      console.clear();
+      console.log(window.scrollX);
+      console.log(window.scrollY);
+      console.log(e.type);
+    });</code></pre>
+            <p>Similar en el jquery al $(window).load(function) Revisando que este cargadas todos los elementos del document incluso los css y scripts.</p>
+            <pre><code>    <b>window</b>.addEventListener("<b>load</b>", (e) => {
+      console.clear();
+      console.log(window.screenX);
+      console.log(window.screenY);
+      console.log(e.type);
+    });</code></pre>
+            <p>Similar en el jquery al $(document).ready(function) osea similr al anterior load pero es más eficiente dado que no espera la carga del css ni de scripts el DOMContentLoaded, su timeStamp es mucho menor al de Load</p>
+            <pre><code>    <b>document</b>.addEventListener("<b>DOMContentLoaded</b>", (e) => {
+      console.log(window.screenX);
+      console.log(window.screenY);
+      console.log(e.type);
+    });</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion19" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.19. BOM - Métodos</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              En el capítulo 4 se vio los métodos alert(), confirm() y prompt() esos forman parte de los métodos del BOM.
+              Se crearan tres botones en el de Abrir ventana invocaría al método <b>window.open(url) o solo open(url) este se debe guardar en una referencia para poder cerrarla con el boton Cerrar Ventana mediante el método close() o window.close()</b>
+            </p>
+            <pre><code>    button#abrir-ventana{Abrir Ventana}
+    button#cerrar-ventana{Cerrar Ventana}
+    button#imprimir-ventana{Imprimir Ventana}</code></pre>
+            <button id="abrir-ventana">Abrir Ventana</button>
+            <button id="cerrar-ventana">Cerrar Ventana</button>
+            <button id="imprimir-ventana">Imprimir Ventana</button>
+            <pre><code>    const btnAbrir = document.getElementById("abrir-ventana"),
+      btnCerrar = document.getElementById("cerrar-ventana"),
+      btnImprimir = document.getElementById("imprimir-ventana");
+    let referenciaWindowOpen;
+    btnAbrir.addEventListener("click", (e) => {
+      referenciaWindowOpen = window.open("https://ing-l2v2.github.io/cv");
+    });
+    btnCerrar.addEventListener("click", (e) => {
+      //referenciaWindowOpen.window.close();
+      referenciaWindowOpen.close();
+    });
+    btnImprimir.addEventListener("click", (e) => {
+      window.print();
+    });</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion20" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>9.20. BOM - Objetos URL, Historial y Navegador</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Tres objetos muy importantes que cuelgan de window, se recuerda que no se necesita poner "window." antes de ellos.
+            </p>
+            <p>
+              El objeto url (location) algunos métodos interesantes el location.reload() para recargar la página, método location.asign(), location.replace() y los atributos
+            </p>
+            <pre><code>    console.log("location ", location);
+    console.log("origen ", location.origin);
+    console.log("protocol ", location.protocol);
+    console.log("host ", location.host);
+    console.log("hostname ", location.hostname);
+    console.log("port ", location.port);
+    console.log("href ", location.href);
+    console.log("hash ", location.hash);
+    console.log("hash ", location.search); // Almacena lo del paso de parámetros
+    console.log("pathname ", location.pathname);</code></pre>
+            <p>
+              El objeto history revisa cuantas paginas hay presentes en el historial de la pestaña del browser. Con el método del <b>hitory.back(3)</b> regresaria tres paginas previas si length es mayor que 3. El método opuesto es <b>history.forward(3)</b> avanzar tres páginas, <b>history.go(positivos|negativos)</b> con este método los positivos son forwards, mientras los negativos son backs.
+            </p>
+            <pre><code>    console.log("history ", history);
+    console.log("history ", history.length);
+    history.back(2);
+    history.forward(1);</code></pre>
+            <p>
+              El objeto navigator, tiene api para interactuar con el bluetooth, con el clipboard (copy page), credentials (caso que se tenga cookies de validación autenticación), geolocation,
+            </p>
+            <pre><code>    console.log("navigator ", navigator);
+    console.log("connection ", navigator.connection); // tipo de conexión 4g
+    console.log("geolocation ", navigator.geolocation);
+    console.log("mediaDevices ", navigator.mediaDevices);
+    console.log("mimeTypes (deprecada) ", navigator.mimeTypes);
+    console.log("onLine ", navigator.onLine);
+    console.log("serviceWorker ", navigator.serviceWorker); // ayudar a hacer progressive webapps, para convertir un simple sitio web en una app instalable
+    console.log("storage ", navigator.storage);
+    console.log("usb ", navigator.usb);
+    console.log("userAgent ", navigator.userAgent);</code></pre>
+          </div>
+        </article>
+        </section>
+        <!-- 
+          section#seccion20.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
+        -->
+      </section>
+    </main>
+    <template id="template-card">
+      <figure class="card9">
+        <img>
+        <figcaption></figcaption>
+      </figure>
+    </template>
+    <button class="panel-btn hamburger hamburger--vortex" type="button">
+      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+    </button>
+    <aside class="panel-dom">
+      <nav class="menu-dom">
+        <a href="#seccion1" data-scroll-spy>9.1 WEB APIs</a>
+        <a href="#seccion2" data-scroll-spy>9.2 Introducción</a>
+        <a href="#seccion3" data-scroll-spy>9.3 Nodos, Elementos (etiquetas html) y Selectores</a>
+        <a href="#seccion4" data-scroll-spy>9.4 Atributos y Data Attributes</a>
+        <a href="#seccion5" data-scroll-spy>9.5 Estilos y variables CSS</a>
+        <a href="#seccion6" data-scroll-spy>9.6 Clases CSS</a>
+        <a href="#seccion7" data-scroll-spy>9.7 Texto y html</a>
+        <a href="#seccion8" data-scroll-spy>9.8 Traversing - Recorriendo el DOM</a>
+        <a href="#seccion9" data-scroll-spy>9.9 Creando elementos y fragmentos</a>
+        <a href="#seccion10" data-scroll-spy>9.10 Templates HTML</a>
+        <a href="#seccion11" data-scroll-spy>9.11 Modificando Elementos (Old Style)</a>
+        <a href="#seccion12" data-scroll-spy>9.12 Modificando Elementos (Cool Style)</a>
+        <a href="#seccion13" data-scroll-spy>9.13 Manejadores de eventos</a>
+        <a href="#seccion14" data-scroll-spy>9.14 Eventos con parámetros y remover eventos</a>
+        <a href="#seccion15" data-scroll-spy>9.15 Flujo de eventos (Burbuja y Captura)</a>
+        <a href="#seccion16" data-scroll-spy>9.16 stopPropagation & preventDefault</a>
+        <a href="#seccion17" data-scroll-spy>9.17 Delegación de Eventos</a>
+        <a href="#seccion18" data-scroll-spy>9.18 BOM - Propiedades y Eventos</a>
+        <a href="#seccion19" data-scroll-spy>9.19 BOM - Métodos</a>
+        <a href="#seccion20" data-scroll-spy>9.20 BOM - Objetos URL, Historial y Navegador</a>
+        <a href="../index.html">Indice de contenidos</a>
+      </nav>
+    </aside>
+    <button class="scroll-top-btn hidden">
+      <img src="./assets/img/toTop.png" alt="arrowUp" />
+    </button>
+    <script src="./assets/js/index_dom.js" type="module"></script>
+    <script src="./assets/js/dom.js"></script>
+  </body>
+</html>

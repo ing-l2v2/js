@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="es" data-dark-mode>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Prácticas JS DOM, 20 Soluciones" />
+    <title>Referencias JS L2V2 - Ejercicios Prácticos DOM</title>
+    <!-- Parámetros para CEO -->
+    <link rel="canonical" href="https://ing-l2v2.github.io/cv" />
+    <link
+      rel="icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta name="theme-color" content="#F60" />
+    <meta
+      property="og:title"
+      content="Referencias JS L2V2 - Ejercicios Prácticos DOM"
+    />
+    <meta property="og:description" content="Prácticas JS DOM, 20 Soluciones" />
+    <meta
+      property="og:image"
+      content="https://ing-l2v2.github.io/cv/assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta
+      property="og:url"
+      content="https://ing-l2v2.github.io/cv/index.html"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@leonelvilla" />
+    <!-- Fin de parámetros para CEO -->
+    <link rel="stylesheet" href="./assets/css/hamburgers.css" />
+    <link rel="stylesheet" href="../assets/css/style-inicial.css" />
+    <link rel="stylesheet" href="../assets/css/style-cv.css" />
+    <link rel="stylesheet" href="./assets/css/dom_ejercicios.css" />
+  </head>
+  <body data-dark-mode>
+    <header class="cv-header">
+      <div class="cv-titular">
+        <p class="p-h1">Ing. Leonel Villa Vintimilla</p>
+        <p>Ingeniero en Computación</p>
+        <p>Especializado en Sistemas Tecnológicos</p>
+        <p>llvilla@espol.edu.ec &nbsp;&nbsp; - &nbsp;&nbsp; l2v2@outlook.com</p>
+        <p>
+          Teléfonos: (+593) 096 388 2510 &nbsp;&nbsp;-&nbsp;&nbsp; 099 690 2792
+        </p>
+        <p>
+          <a href="https://ing-l2v2.github.io/front-end">
+            https://ing-l2v2.github.io/front-end
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://www.senescyt.gob.ec/web/guest/consultas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            N° de registro del Senescyt 1021-14-1277156
+          </a>
+        </p>
+      </div>
+      <div class="cv-foto-l2v2">
+        <img src="../assets/img/l2v2.png" alt="" />
+      </div>
+    </header>
+    <main class="cv-main">
+      <section class="cv-seccion">
+        <div class="cv-seccion-h2">
+          <div class="hr-line"></div>
+          <h2>10. Ejercicios Prácticos del DOM</h2>
+        </div>
+        <section id="seccion1" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <!--div class="hr-line"></div-->
+            <h3>10.1. Menu navegación tipo hamburgesa</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Se requiere descargar una libreria de css del sitio
+                <a
+                  href="https://jonsuh.com/hamburgers/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >hamburger css</a
+                >
+                de Jonathan Suh, luego agregar la librería css con
+                <b>
+                  &lt;link rel="stylesheet" href="./assets/css/hamburgers.css"
+                  /&gt; </b
+                ><br />
+                Plataforma recomendada
+                <a
+                  href="http://codepen.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >codepen</a
+                >
+                para compartir codigo html, css y js
+              </p>
+              <pre><code>    button.hamburger.hamburger--vortex[type="button"]>span.hamburger-box>span.hamburger-inner
+    aside.panel-dom>nav.menu-dom>a[href="#seccion$"]*5{Seccion $}
+    menu
+    Dentro de menu van las section
+    section#seccion2.seccion>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
+
+    script[src="./assets/js/index_dom.js" type="module"]
+            </code></pre>
+              <p>
+                En vscode instalar las extensiones
+                <b>ES7 React/Redux/GraphQL/React-Native sni</b> y
+                <b>Simple React Snippets</b>
+              </p>
+              <p>Código css aplicado en dom_ejercicios.css</p>
+              <pre><code>    :root {  --container-width: 1200px;  }
+    .seccion {
+      /*padding: 2rem;      padding-top: 2rem; */
+      margin-left: auto;    margin-right: auto;
+      width: 100%;          min-height: 100vh;
+    }
+    .seccion h3 {    text-align: center;    }
+
+    .panel-btn {
+      position: fixed;
+      z-index: 99;
+      bottom: 0.8vh;      right: 0.8vw;
+      width: 3.4rem;      height: 3.4rem;
+      border-radius: 50%;
+      padding: 0;
+      display: flex;      justify-content: center;
+      align-items: center;
+      background-color: var(--bg-light-5);
+    }
+    .panel-dom {
+      position: fixed;
+      z-index: 98;
+      width: 100%;
+      top: 0;       bottom: 0;
+      left: 0;      right: 0;
+      <b>overflow-y: auto;</b>
+      background-color: var(--bg-hard-1-95);
+      color: var(--bg-light-5-7);
+      /* Ubicar el panel -100% en y para desaparecerlo*/
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.5s ease, opacity 1.2s ease;
+      /* transform: translate(0, 100%);      transform: translate(100%, 0);
+      transform: translate(-100%, 0);       */
+      transform: translate(0, -100%);
+    }
+    .panel-dom.esta-activo {
+      transform: translate(0, 0);
+      opacity: 1;
+      visibility: visible;
+    }
+    .menu-dom {
+      width: inherit;
+      display: flex;                  flex-direction: column;
+      justify-content: space-evenly;  align-items: center;
+      text-align: center;
+    }
+    .menu-dom a {
+      padding: 5vh;
+      width: inherit;
+      display: block;
+      font-size: 5vh;      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .menu-dom a:hover {
+      font-weight: bolder;
+      color: var(--bg-hard-1-95);
+      background-color: var(--bg-light-4);
+    }</code></pre>
+              <p>Código del módulo importable menu_hamburgesa.js</p>
+              <pre><code>    export default function hamburgesaMenu(
+      panelBtn, panel, claseToggleMenu, classToggleHamburger, menuLink
+    ) {
+      const d = document;
+      d.addEventListener("click", (e) => {
+        if (e.target.matches(panelBtn) || e.target.matches(`${panelBtn} *`)) {
+          d.querySelector(panel).classList.toggle(claseToggleMenu);
+          d.querySelector(panelBtn).classList.toggle(classToggleHamburger);
+        }
+        if (e.target.matches(menuLink)) {
+          d.querySelector(panel).classList.remove(claseToggleMenu);
+          d.querySelector(panelBtn).classList.remove(classToggleHamburger);
+        }
+      });
+    }</code></pre>
+              <p>
+                Código del js, index_dom.js, vinculado a la página que importa
+                el codigo del menu_hamburgesa.js
+              </p>
+              <pre><code>    import hamburgesaMenu from "./dom/menu_hamburguesa.js";
+
+    const d = document;
+    d.addEventListener("DOMContentLoaded", (e) => {
+      hamburgesaMenu(
+        ".panel-btn",
+        ".panel-dom",
+        "esta-activo",
+        "is-active",
+        ".menu-dom a"
+      );
+    });</code></pre>
+            </div>
+          </article>
+        </section>
+        <section id="seccion2" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.2. Reloj digital y alarma sonora</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Cuatro botones para Iniciar reloj; Detener reloj; Iniciar
+                alarma; Detener alarma.
+              </p>
+              <pre><code>    div#reloj-digital 
+    div>(button#activar-reloj{Activar reloj}^button#desactivar-reloj{Desactivar reloj}^button#activar-alarma{Activar alarma}^button#desactivar-alarma{Desactivar alarma})</code></pre>
+              <p>
+                En el dom_ejercicio.css se agrega la regla para el id
+                "reloj-digital"
+              </p>
+              <pre><code>    #reloj-digital {
+      text-align: center;
+      font-weight: bold;
+    }</code></pre>
+              <p>
+                En el archivo exportable reloj.js se implementa la funcionalidad
+                digitalClock(divClock, btnPlay, btnStop) que será importable
+                desde otros archivos js y la funcionalidad alarma() por
+                implementar para los botones activar alarma y desactivar alarma.
+              </p>
+              <pre><code>    const d = document;
+    export function digitalClock(divClock, btnPlay, btnStop) {
+      let clockTmp;
+      d.addEventListener("click", (e) => {
+        if (e.target.matches(btnPlay)) {
+          clockTmp = setInterval(() => {
+            let clockHour = new Date().toLocaleTimeString();
+            d.querySelector(divClock).setAttribute("visibility", "visible");
+            d.querySelector(divClock).innerHTML = `${clockHour}`;
+          }, 1000);
+          e.target.disabled = true;
+          d.querySelector(btnStop).disabled = false;
+        }
+        if (e.target.matches(btnStop)) {
+          clearInterval(clockTmp);
+          d.querySelector(divClock).innerHTML = null;
+          d.querySelector(divClock).setAttribute("visibility", "hidden");
+          e.target.disabled = true;
+          d.querySelector(btnPlay).disabled = false;
+        }
+      });
+    }
+    export function alarma() {}
+              </code></pre>
+              <p>
+                Para la alarma se requiere crear dinamicamente una etiqueta html
+                de tipo audio para la reproducción de archivo mp3 de alarma con
+                d.createElement para acceder a la API del audio y reproducir
+                sonido aunque el elemento no sea visible osea sin atributo
+                control. <br />
+                Se implementa la funcionalidad de alarma dentro del js
+                exportable reloj.js.
+              </p>
+              <pre><code>    export function alarma(sonido, btnPlay, btnStop) {
+      let alarmTmp;
+      const $audioAlarma = d.createElement("audio");
+      $audioAlarma.setAttribute("src", sonido);
+      //$audioAlarma.src = sonido;
+      d.addEventListener("click", (e) => {
+        if (e.target.matches(btnPlay)) {
+          alarmTmp = setTimeout(() => {
+            $audioAlarma.play();
+          }, 2000);
+          e.target.disabled = true;
+          d.querySelector(btnStop).disabled = false;
+        }
+        if (e.target.matches(btnStop)) {
+          clearTimeout(alarmTmp);
+          $audioAlarma.pause();
+          $audioAlarma.currentTime = 0;
+          e.target.disabled = true;
+          d.querySelector(btnPlay).disabled = false;
+        }
+      });
+    }</code></pre>
+              <p>
+                Se agrega en el archivo index_dom.js la linea <br />
+                <b>
+                  alarma("./assets/sound/alarma.mp3", "#activar-alarma",
+                  "#desactivar-alarma");
+                </b>
+              </p>
+              <p>El archivo index_dom.js con las lineas</p>
+              <pre><code>
+    import hamburgesaMenu from "./dom/menu_hamburguesa.js";
+    import { digitalClock, alarma } from "./dom/reloj.js";
+
+    const d = document;
+    d.addEventListener("DOMContentLoaded", (e) => {
+      hamburgesaMenu(
+        ".panel-btn",
+        ".panel-dom",
+        "esta-activo",
+        "is-active",
+        ".menu-dom a"
+      );
+      d.getElementById("reloj-digital").setAttribute("visibility", "hidden");
+      d.getElementById("desactivar-reloj").disabled = true;
+      d.getElementById("desactivar-alarma").disabled = true;
+      digitalClock("#reloj-digital", "#activar-reloj", "#desactivar-reloj");
+      alarma("./assets/sound/alarma.mp3", "#activar-alarma", "#desactivar-alarma");
+    });
+              </code></pre>
+            </div>
+            <div id="reloj-digital"></div>
+            <div>
+              <button id="activar-reloj">Activar reloj</button
+              ><button id="desactivar-reloj">Desactivar reloj</button
+              ><button id="activar-alarma">Activar alarma</button
+              ><button id="desactivar-alarma">Desactivar alarma</button>
+            </div>
+          </article>
+        </section>
+        <section id="seccion3" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.3. Eventos del teclado y atajos personalizados</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Principalmente el teclado tiene tres eventos keyup (cuando
+                soltamos la tecla), keydown (cuando pulsamos la tecla) y
+                keypress (mientras presionamos) en cualquiera de ellos genera un
+                objeto KeyboardEvent que contiene atributos tales como keyCode
+                (13), code ("Enter"),
+                <b>key</b> ("Enter"), which (13), type ("keydown"), location (en
+                caso de teclas ubicadas en izquierda|derecha, alterna entre 1|2,
+                ej. Shift).
+              </p>
+              <p>
+                Para el caso de la letra q [key("q") code("codeQ") keyCode(81)
+                which(81) location(0)] <br />tecla arriba [key("ArrowUp")
+                code("ArrowUp") keyCode(38) which(38)]<br />tecla abajo
+                [key("ArrowDown") code("ArrowDown") keyCode(40) which(40)]<br />tecla
+                izquierda [key("ArrowLeft") code("ArrowLeft") keyCode(37)
+                which(37)]<br />tecla derecha [key("ArrowRight")
+                code("ArrowRight") keyCode(39) which(39)]
+              </p>
+              <p>
+                Para los shortcuts se implementa usando los atributos del
+                KeyboardEvent altKey, ctrlKey o shiftKey <br />
+                En el archivo teclado.js se implementa la función exportable
+                shortcuts(e), la cual es invocada desde el index_dom.js mediante
+                las sentencia agregada
+                <b> d.addEventListener("keydown", (e) => shortcuts(e) ); </b> y
+                contando previamente con la importación mediante
+                <b>import { shortcuts } from "./dom/teclado.js";</b>
+              </p>
+              <pre><code>    const d = document;
+    export function shortcuts(e) {
+      console.log(e.type);         console.log(e.key);
+      console.log(e.keyCode);      console.log(e.ctrlKey);
+      console.log(e.altKey);       console.log(e.shiftKey);
+      if (e.key === "a" && e.altKey) {
+        alert(`Lanzaste una alerta con el teclado Alt + "${e.key}"`);
+      }
+      if (e.key === "c" && e.altKey) {
+        let $confirm = confirm(
+          `Lanzaste una confirmación con el teclado Alt + "${e.key}"`
+        );
+        alert(`Resultado de la confirmación ${$confirm}`);
+      }
+      if (e.key === "p" && e.altKey) {
+        let $prompt = prompt(`Lanzaste un aviso con el teclado Alt + "${e.key}"`);
+        alert(`Resultado del prompt "${$prompt}"`);
+      }
+    }</code></pre>
+              <p>
+                Movimiento de objetos y colisiones (detectar que un objeto choca
+                con otro o se tocan)
+              </p>
+              <pre><code>   article.stage>.ball</code></pre>
+              <p>En el dom_ejercicios.css se agregan las reglas</p>
+              <pre><code>    /***************** Eventos del teclado *************/
+    .stage {display: flex;  min-height: 50vh;  background-color: var(--bg-half-3-7);}
+    .ball {
+      margin: auto;      width: 3rem;
+      height: 3rem;      border-radius: 50%;
+      background-color: var(--bg-hard-1);
+    }</code></pre>
+              <p>
+                Para el teclado.js se define una funcion exportable moveBall con
+                los parametros event, selector de la pelota y selector del
+                escenario. En el index-dom.js se importa las funcionalidades
+                <b>import { shortcuts, moveBall } from "./dom/teclado.js";</b> y
+                se modifica la línea de código invocando a la función moveBall
+              </p>
+              <pre><code>    d.addEventListener("keydown", (e) => {
+      shortcuts(e);
+      <b>moveBall(e, ".ball", ".stage");</b>
+    });</code></pre>
+              <p>
+                Todos los elementos del Dom tienen un método
+                getBoundingClientRect() que produce un objeto DOMRect el cual
+                provee alto, ancho, posX, posY y que tan alejando esta de los
+                margenes top, right, bottom y left. Código implementado en
+                teclado.js
+              </p>
+              <pre><code>    let x = 0,  y = 0;    // variables para control del movimiento
+    <b>export function moveBall(e, ball, stage, pxMove)</b> {
+      const $ball = d.querySelector(ball),
+        $stage = d.querySelector(stage),
+        $limitBall = $ball<b>.getBoundingClientRect()</b>,
+        $limitStage = $stage<b>.getBoundingClientRect()</b>;
+      //console.log($limitBall);
+      if (e.keyCode >= 37 && e.keyCode <= 40) {
+        console.log(`movimiento cod: ${e.keyCode}, key: ${e.key}`);
+        //e.preventDefault();
+      }      
+      // Para no aplicar preventDefault y hacerlo con un atajo shift + ArrowUp,Down,etc.
+      // ArrowUp
+      if (e.keyCode === 38 && e.shiftKey) 
+        if ($limitBall.top > $limitStage.top) y--;
+      
+      // ArrowDown
+      if (e.keyCode === 40 && e.shiftKey) 
+        if ($limitBall.bottom + pxMove < $limitStage.bottom) y++;
+      
+      // ArrowLeft
+      if (e.keyCode === 37 && e.shiftKey) 
+        if ($limitBall.left > $limitStage.left) x--;
+      
+      // ArrowRight
+      if (e.keyCode === 39 && e.shiftKey) 
+        if ($limitBall.right < $limitStage.right - pxMove) x++;
+      
+      /*
+      switch (e.keyCode) {
+        case 37:      // ArrowLeft
+        x--;      break;
+        case 38:      // ArrowUp 
+        y--;      break;
+        case 39:      // ArrowRight 
+        x++;      break;
+        case 40:      // ArrowDown 
+        y++;      break;
+      }
+      */
+      $ball.style.transform = `translate(${x * pxMove}px, ${y * pxMove}px)`;
+    }</code></pre>
+              <article class="stage">
+                <div class="ball"></div>
+              </article>
+            </div>
+          </article>
+        </section>
+        <section id="seccion4" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.4. Cuenta regresiva (countdown)</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                A nivel de html se requiere un div con un id countdown <br />
+                <b>#countdown</b> <br />
+                En el archivo de modulación cuenta_regresiva.js se implementa la
+                función exportable countdown(idSelector, limitDate, finalMsj),
+                en index_dom.js se la invoca dentro del bloque de escucha
+                DOMContentLoaded, como se usará getElementById entonces no
+                participa el # en el parámetro de invocación. <br />
+                Del sitio
+                <a
+                  href="http://emojipedia.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >emojipedia.org</a
+                >
+                se puede descargar Nerd Face 🤓 <br />
+                El código de cuenta_regresiva.js es
+              </p>
+              <pre><code>    const d = document;
+    export default function countdown(idSelector, limitDate, finalMsj) {
+      const $countdown = d.getElementById(idSelector),
+        countdownDate = new Date(limitDate).getTime();
+      let countdownInterval = setInterval(() => {
+        let now = new Date().getTime(),
+          limitTime = countdownDate - now,
+          dias = Math.floor(limitTime / (1000 * 60 * 60 * 24)),
+          horas = (
+            "0" + Math.floor((limitTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+          ).slice(-2),
+          minutos = (
+            "0" + Math.floor((limitTime % (1000 * 60 * 60)) / (1000 * 60))
+          ).slice(-2),
+          segundos = ("0" + Math.floor((limitTime % (1000 * 60)) / 1000)).slice(-2);
+        $countdown.textContent = `Faltan: ${dias} días ${horas} horas ${minutos} minutos ${segundos} segundos`;
+        if (limitTime < 0) {
+          clearInterval(countdownInterval);
+          $countdown.textContent = `${finalMsj}`;
+        }
+      }, 1000);
+    }</code></pre>
+              <p>
+                El código de index_dom.js para la importación e invocacion es
+              </p>
+              <pre><code>    import countdown from "./dom/cuenta_regresiva.js";
+    ...
+    countdown("countdown", "Apr 12,2024 05:00:00", "Feliz cumpleaños a mi 🤓 !!!");</code></pre>
+            </div>
+            <div id="countdown"></div>
+          </article>
+        </section>
+        <section id="seccion5" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.5. Botón de scroll top</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>Elemento html creado con el emmet</p>
+              <pre><code>    button.scroll-top-btn.hidden>img[src="./assets/img/arrowTop.png" alt="ArrowUp"] </code></pre>
+              <p>Reglas css en dom_ejercicios.css</p>
+              <pre><code>    /********** ScrollTopButton *********/
+    .scroll-top-btn {
+      position: fixed;            z-index: 99;
+      padding: 0;                 bottom: 0.8vh;
+      width: 3.4rem;              height: 3.4rem;
+      outline: 0;                 border: 0;
+      cursor: pointer;            right: calc(3.65rem + 0.8vw);
+      border-radius: 50%;         justify-content: center;
+      background-color: var(--bg-light-5);
+    }
+    .scroll-top-btn:hover {
+      background-color: var(--bg-half-3-7);
+      transition: all 0.3s ease-out;
+    }
+    .hidden {
+      visibility: hidden;           opacity: 0;
+    }</code></pre>
+              <p>
+                El botón se ejecutará a la carga del documento por tanto la
+                funcion debe estar en el index_dom.js en el DOMContentLoaded
+              </p>
+              <pre><code>    import scrollTopButton from "./dom/scroll_top.js";
+    ...
+    d.addEventListener("DOMContentLoaded", (e) => {
+      ...
+      scrollTopButton(".scroll-top-btn");
+    }</code></pre>
+              <p>
+                Nota importante sobre los botones con span o img representativos
+                del contenido, el método matches debe condicionarse con un ||.
+                <br />
+                Para posicionar el scroll en la parte alta efecto scroll top se
+                usa el metodo window.scrollTo el cual recibe un objeto resaltado
+                en el codigo.
+              </p>
+              <pre><code>    const d = document,  w = window;
+    export default function scrollTopButton(btnSelector) {
+      const $scrollBtn = d.querySelector(btnSelector);
+      /* Para resolver si botón es visible o no en base al scroll vertical
+      mediante las propiedades w.pageYOffset (deprecada) o d.documentElement.scrollTop (vigente) */
+      w.addEventListener("scroll", (e) => {
+        let scrollTop = w.pageYOffset || <b>d.documentElement.scrollTop</b>;
+        if (scrollTop >= 500) $scrollBtn.classList.remove("hidden");
+        else $scrollBtn.classList.add("hidden");
+      });
+      d.addEventListener("click", (e) => {
+        if ( <b>e.target.matches(btnSelector) || e.target.matches(`${btnSelector} *`)</b> ) {
+          console.log(`${e.type}, ${btnSelector}, ${btnSelector} *`);
+          w.scrollTo(<b>
+            {
+              behavior: "smooth",
+              top: 0,
+              //left: 0,
+            }
+          </b>);
+        }
+      });
+    }
+              </code></pre>
+            </div>
+          </article>
+        </section>
+        <section id="seccion6" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.6. Cambio entre Dark-Ligth mode</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Partiendo del trozo html tipo emmet
+                <b>button.dark-theme-btn{🌞🌙}</b>. <br />
+                Se establece un data-dark-mode en el html Las reglas css son muy
+                similares a las de scroll-top-btn
+              </p>
+              <pre><code>    /********** Dark-theme *********/
+    .dark-theme-btn {
+      position: fixed;            z-index: 99;
+      padding: 0;                 bottom: 0.8vh;
+      left: 0.8vw;                width: 3.4rem;
+      height: 3.4rem;             border-radius: 50%;
+      justify-content: center;    text-align: center;
+      font-size: 2rem;            background-color: var(--bg-light-5);
+      outline: 0;                 border: 0;
+      cursor: pointer;
+    }
+    .dark-theme-btn:hover {
+      background-color: var(--bg-half-3-7);
+      transition: all 0.3s ease-out;
+    }
+    .dark-mode {
+      background-color: var(--bg-hard-1);
+      color: var(--bg-light-5);
+    }</code></pre>
+              <p>Contenedor modular en tema_oscuro.js</p>
+              <pre><code>    const d = document;
+    export default function darkTheme(btnSelector, classDarkSelectores) {
+      const $themeBtn = d.querySelector(btnSelector),
+        $selectores = d.querySelectorAll("[data-dark-mode]");
+      let moon = "🌙",        sun = "🌞";
+      d.addEventListener("click", (e) => {
+        if (e.target.matches(btnSelector) || e.target.matches(`${btnSelector} *`)) {
+          if ($themeBtn.textContent === moon) {
+            $selectores.forEach( item => item.classList.add(classDarkSelectores) );
+            $themeBtn.textContent = sun;
+          } else {
+            $selectores.forEach( item => item.classList.remove(classDarkSelectores) );
+            $themeBtn.textContent = moon;
+          }
+        }
+      });
+    }</code></pre>
+              <p>En el index_dom.js se ubica en el "DOMContentLoaded"</p>
+              <pre><code>    import darkTheme from "./dom/tema_oscuro.js";
+    d.addEventListener("DOMContentLoaded", (e) => {
+      ...
+      darkTheme(".dark-theme-btn", "dark-mode");
+    }</code></pre>
+              <p></p>
+            </div>
+          </article>
+        </section>
+        <section id="seccion7" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.7. API localStorage</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Permite guardar información en el navegador cliente. En
+                inspección hay la "pestaña Application" y dentro hay el item
+                "Local Storage". En localStorage puedes guardar hasta 5mb de
+                información. Se necesitan dos métodos de localStorage, uno para
+                obtener el valor de una variable del localStorage
+                <b>(ls.getItem("key"))</b> y otro para establecer o actualizar
+                un valor en localStorage <b>(ls.setItem("key","valor"))</b>,
+                para esto se necesita desencadenar un evento de tipo
+                DOMContentLoaded. Dado que un evento de un tipo no puede
+                desencadenar otro evento del mismo tipo entonces en el
+                tema_oscuro.js del tema previo se agrega un DOMContentLoaded y
+                la función darkTheme(".dark-theme-btn", "dark-mode"); debe salir
+                del DOMContentLoaded ubicada en el index_dom.js
+              </p>
+              <p>Cambios en tema_oscuro.js para aplicar el localStorage</p>
+              <pre><code>    const d = document,   <b>ls</b> = <b>localStorage</b>;
+    export default function darkTheme(btnSelector, classDarkSelectores) {
+      const $themeBtn = d.querySelector(btnSelector),
+        $selectores = d.querySelectorAll("[data-dark-mode]");
+      let moon = "🌙",  sun = "🌞";
+      <b>const ligthMode = () => {
+          $selectores.forEach((item) => item.classList.remove(classDarkSelectores));
+          $themeBtn.textContent = moon;
+          <u>ls.setItem("themeDark", "ligth");</u>
+        };
+        const darkMode = () => {
+          $selectores.forEach((item) => item.classList.add(classDarkSelectores));
+          $themeBtn.textContent = sun;
+          <u>ls.setItem("themeDark", "dark");</u>
+        };</b>
+      d.addEventListener("click", (e) => {
+        if (e.target.matches(btnSelector) || e.target.matches(`${btnSelector} *`)) {
+          if ($themeBtn.textContent === moon) {
+            darkMode();
+          } else {
+            ligthMode();
+          }
+        }
+      });
+
+      <b>d.addEventListener("DOMContentLoaded", (e) => {          
+          if (<u>ls.getItem("themeDark")</u> === null) ls<u>.setItem("themeDark", "ligth")</u>;
+          if (<u>ls.getItem("themeDark")</u> === "ligth") ligthMode();
+          if (<u>ls.getItem("themeDark")</u> === "dark") darkMode();
+        });</b>
+    }</code></pre>
+              <p>Cambios en index_dom.js sacando la funcion</p>
+              <pre><code>    import hamburgesaMenu from "./dom/menu_hamburguesa.js";
+    import { digitalClock, alarma } from "./dom/reloj.js";
+    import { shortcuts, moveBall } from "./dom/teclado.js";
+    import countdown from "./dom/cuenta_regresiva.js";
+    import scrollTopButton from "./dom/scroll_top.js";
+    import darkTheme from "./dom/tema_oscuro.js";
+    import { storageLocal } from "./dom/local_storage.js";
+
+    const d = document;
+    d.addEventListener("DOMContentLoaded", (e) => {
+      hamburgesaMenu(".panel-btn", ".panel-dom", "esta-activo", "is-active", ".menu-dom a" );
+      d.getElementById("reloj-digital").setAttribute("visibility", "hidden");
+      d.getElementById("desactivar-reloj").disabled = true;
+      d.getElementById("desactivar-alarma").disabled = true;
+      digitalClock("#reloj-digital", "#activar-reloj", "#desactivar-reloj");
+      alarma("./assets/sound/alarma.mp3", "#activar-alarma", "#desactivar-alarma");
+      countdown("countdown", "Apr 12,2024 05:00:00", "Feliz cumpleaños a mi 🤓 !!!");
+      scrollTopButton(".scroll-top-btn");
+    });
+
+    d.addEventListener("keydown", (e) => {
+      shortcuts(e);
+      moveBall(e, ".ball", ".stage", 10);
+    });
+
+    <b>darkTheme(".dark-theme-btn", "dark-mode");</b></code></pre>
+              <p>
+                Referencia para revisar
+                <a
+                  href="https://ed.team/blog/que-es-y-como-utilizar-localstorage-y-sessionstorage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >localStorage y sessionStorage</a
+                >
+                <br />
+                Para revisar sobre js
+                <a
+                  href="https://es.javascript.info/indexeddb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Indexeddb</a
+                >
+              </p>
+            </div>
+          </article>
+        </section>
+        <section id="seccion8" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.8. Responsive Design con JS</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Las div a nivel de html <br />
+                <b>#youtube</b> y <b>#gmaps</b> a los matchMedia se puede
+                agregar un Listener (no un addEventListener) para que revise la
+                mediaQuery
+              </p>
+              <p>Desarrollo modular en objeto_responsive.js</p>
+              <pre><code>    const w = window,   d = document;
+    export function responsiveMedia(id, mediaQuery, htmlMobileContent, htmlDesktopContent) {
+      let breakpoint = w.matchMedia(mediaQuery);
+      //console.log(breakpoint);
+      const responsive = (e) => {
+        if (e.matches) {
+          d.getElementById(id).innerHTML = htmlDesktopContent;
+        } else {
+          d.getElementById(id).innerHTML = htmlMobileContent;
+        }
+        console.log(breakpoint, e.matches);
+      };
+      //breakpoint.addEventListener("change", responsive(breakpoint));
+      //breakpoint.addListener(responsive);
+
+      try {
+        breakpoint.addEventListener("change", responsive);
+      } catch (e) {
+        try {
+          breakpoint.addListener(responsive);
+        } catch (e2) {
+          console.log(e2);
+        }
+      }
+      responsive(breakpoint);
+    }</code></pre>
+              <p>
+                La función importada en index_dom.js opera solo en
+                MozillaFirefox no en Chrome
+              </p>
+              <pre><code>    responsiveMedia(
+      "youtube",
+      "(min-width: 1024px)",
+      `&lt;a href="https://www.youtube.com/watch?v=FLIJx-gOBuw" target="_blank" rel="noopener noreferrer"&gt;Ver video&lt;/a&gt;`,
+      `&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/4MwiQ66zqhg?si=CS1fWkPmjpnssZdo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen&gt;&lt;/iframe&gt;`
+    );
+    responsiveMedia(
+      "gmaps",
+      "(min-width: 1024px)",
+      `&lt;a href="https://www.youtube.com/watch?v=4MwiQ66zqhg" target="_blank" rel="noopener noreferrer"&gt;Ver mapa&lt;/a&gt;`,
+      `&lt;iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2045.390102391041!2d-79.89048336656883!3d-2.115964350019626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMsKwMDYnNTQuMyJTIDc5wrA1MycyOC44Ilc!5e0!3m2!1ses!2sec!4v1712192932495!5m2!1ses!2sec" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"&gt;&lt;/iframe&gt;`
+    );</code></pre>
+            </div>
+            <div id="youtube"></div>
+            <div id="gmaps"></div>
+          </article>
+        </section>
+        <section id="seccion9" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.9. Responsive Tester</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Se requiere parte html para formulario sin action con el Emmet
+                del código siguiente
+              </p>
+              <pre><code>    #div-responsive-tester>form#responsive-tester>(input[type="url" name="direccion" placeholder="URL" required]^br^input[type="text" name="ancho" placeholder="ANCHO" required]^br^input[type="text" name="alto" placeholder="ALTO" required]^br^input[type="submit" name="probar" value="Probar"]^input[type="button" name="cerrar" value="Cerrar"])</code></pre>
+              <p>El js para la funcionalidad esta en prueba_responsive.js</p>
+              <pre><code>    const d = document, w = window;
+    export default function responsiveTester(idForm) {
+      const $form = d.getElementById(idForm);
+      let referenciaVentana;
+      d.addEventListener(<b>"submit"</b>, (e) => {
+        if (<b>e.target === $form</b>) {
+          <b>e.preventDefault();</b>
+          console.log(`ancho=${$form.ancho.value}, alto=${$form.alto.value}`);
+          referenciaVentana = w.open(
+            $form.direccion.value, "referenciaVentana",
+            `innerWidth=${<b>$form.ancho.value</b>},innerHeight=${<b>$form.alto.value</b>},menubar=no,location=no,resizable=no,scrollbars=no,status=no,top=50,left=100`
+          );
+        }
+      });
+      d.addEventListener("click", (e) => {
+        if (e.target === $form.cerrar) referenciaVentana.close();
+      });
+    }</code></pre>
+              <p>
+                La invocacion a la funcionalidad realizada desde index_dom.js
+                estan en el evento DOMContentLoaded y la llamada es al id
+                #responsive-tester :
+              </p>
+              <pre><code>    responsiveTester("responsive-tester");</code></pre>
+            </div>
+            <div id="div-responsive-tester">
+              <form id="responsive-tester">
+                <input
+                  type="url"
+                  name="direccion"
+                  placeholder="URL"
+                  value="https://www.eluniverso.com"
+                  required="required"
+                /><br /><input
+                  type="text"
+                  name="ancho"
+                  placeholder="ANCHO"
+                  value="700"
+                  required="required"
+                /><br /><input
+                  type="text"
+                  name="alto"
+                  placeholder="ALTO"
+                  value="400"
+                  required="required"
+                /><br /><input
+                  type="submit"
+                  name="probar"
+                  value="Probar"
+                /><input type="button" name="cerrar" value="Cerrar" />
+              </form>
+            </div>
+          </article>
+        </section>
+        <section id="seccion10" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.10. Detección de dispositivos (User agent)</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                User agent forma parte del objeto window.navigator.
+                Redirecciones y contenido exclusivo. La parte html consiste en
+                el emmet <b>#user-device</b> y en archivo
+                deteccion_dispositivos.js la programación modular. En el
+                index_dom.js en el evento DOMContentLoaded se aplica la
+                ejecución de la función <b>userDeviceInfo("user-device");</b>
+                <br />
+                Sitio de descarga de editor de video gratuito
+                <a
+                  href="https://obsproject.com/es/download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >obs Studio</a
+                ><br />Desarrollo de la funcionalidad modular
+                deteccion_dispositivos.js
+              </p>
+              <pre><code>    const w = window, d = document, n = navigator, ua = n.userAgent;
+    export default function userDeviceInfo(idDivRetorno) {
+      const $idSalida = d.getElementById(idDivRetorno),
+        isMobile = {
+          android: () => ua.match(/android/i),
+          ios: () => ua.match(/iphone|ipad|ipod/i),
+          windows: () => ua.match(/windows phone/i),
+          any: function () {
+            return this.android() || this.ios() || this.windows();
+          },
+        },
+        isDesktop = {
+          linux: () => ua.match(/linux/i),
+          mac: () => ua.match(/mac os/i),
+          windows: () => ua.match(/windows nt/i),
+          any: function () {
+            return this.linux() || this.mac() || this.windows();
+          },
+        },
+        isBrowser = {
+          chrome: () => ua.match(/chrome/i),
+          safari: () => ua.match(/safari/i),
+          firefox: () => ua.match(/firefox/i),
+          opera: () => ua.match(/opera|opera mini/i),
+          ie: () => ua.match(/msie|iemobile/i),
+          edge: () => ua.match(/edge/i),
+          any: function () {
+            return (this.ie() || this.edge() || this.chrome() || this.safari() || this.firefox() || this.opera());
+          },
+        };
+      $idSalida.innerHTML = `
+      &lt;ul&gt;
+        &lt;li&gt;User Agent &lt;b>${ua}&lt;/b&gt;&lt;/li&gt;
+        &lt;li&gt;Plataforma: ${isMobile.any() ? isMobile.any() : isDesktop.any()}&lt;/li&gt;
+        &lt;li&gt;Navegador: ${isBrowser.any()}&lt;/li&gt;
+      &lt;/ul&gt;`;
+      /* *** Contenido exclusivo *** */
+      if (isBrowser.chrome())
+        $idSalida.innerHTML += `&lt;p&gt;Este contenido solo se ve en Chrome&lt;/p&gt;`;
+      if (isBrowser.firefox())
+        $idSalida.innerHTML += `&lt;p&gt;Este contenido solo se ve en Firefox&lt;/p&gt;`;
+      if (isDesktop.windows()) 
+        $idSalida.innerHTML += `&lt;p&gt;Ej.: Descarga el software para windows&lt;/p&gt;`;
+      if (isMobile.android()) <b>w.location.href = "https://ing-l2v2.github.io/cv"</b>;
+    }</code></pre>
+            </div>
+            <div id="user-device"></div>
+          </article>
+        </section>
+        <section id="seccion11" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.11. Detección de conexión (estado de la red)</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                El objeto navigator tiene una propiedad
+                <b>navigator.online</b> que evalua la detección de la conexión
+                booleno <b>true|false</b> y el objeto window tiene los eventos
+                de conexión ("<b>online</b>") y desconexión ("offline"). El
+                archivo de modularización es deteccion_red.js y contiene la
+                función networkStatus() sin parámetros y no necesita ejecutarse
+                a la carga del documento, pudiendo ir fuera en el index_dom.js.
+                En <b>Inspección, pestaña Application</b>, sección
+                <b> Service Workers</b> se tiene disponible un selector
+                <b>Offline</b>
+                que permite simular la desconexión de internet.
+              </p>
+              <p>Reglas css para el div que se creara en la cabecera</p>
+              <pre><code>    /****** Network status ******/
+    .online,
+    .offline {
+      position: sticky;      top: 0;
+      z-index: 100;          padding: 1rem;
+      font-size: 3.5vw;      font-weight: bold;
+      text-align: center;    background-color: #1b5e20;
+      color: #fff;
+    }
+    .offline {
+      background-color: #b71c1c;
+    }</code></pre>
+              <p>Codigo de deteccion_red.js</p>
+              <pre><code>    const d = document,  w = window,  n = navigator;
+    export default function networkStatus() {
+      const isOnLine = () => {
+        const $div = d.createElement("div");
+        if (<b>n.onLine</b>) {
+          $div.textContent = "Conexión Reestablecida.";
+          $div.classList.add("online");
+          $div.classList.remove("offline");
+        } else {
+          $div.textContent = "Conexión Perdida.";
+          $div.classList.add("offline");
+          $div.classList.remove("online");
+        }
+        d.body.insertAdjacentElement("afterbegin", $div);
+        setTimeout(() => {
+          d.body.removeChild($div);
+        }, 3000);
+      };
+      w<b>.addEventListener("online"</b>, (e) => isOnLine());
+      w<b>.addEventListener("offline"</b>, (e) => isOnLine());
+    }</code></pre>
+            </div>
+          </article>
+        </section>
+        <section id="seccion12" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.12. Detección de la webcam</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Se basa en la API getUserMedia y un objeto especial
+                navigator.mediaDevices dentro del cual hay un método
+                identificado como getUserMedia la cual es un promesa. Para el
+                html se requiere un tag
+                <b>video#web-cam</b> sin src. El archivo de modularización
+                deteccion_webcam.js con la función webCam(idVideo) que recibe el
+                id del web-cam. A la carga del documento en el index_dom.js se
+                agrega la funcionalidad.
+              </p>
+              <pre><code>    const d = document,      n = navigator;
+    export default function webCam(idVideo) {
+      const $video = d.getElementById(idVideo);
+      if (n.mediaDevices.getUserMedia) {
+        n.mediaDevices
+          .getUserMedia({ video: { width: 800, height: 600 }, audio: false })
+          .then((stream) => {
+            console.log(stream);
+            $video.srcObject = stream;
+            $video.play();
+            //$video.src = window.URL.createObjectURL(stream);
+            //$video.onloadedmetadata = function (e) {          $video.play();        };
+          })
+          .catch((error) => {
+            $video.insertAdjacentHTML(
+              "beforebegin",
+              `&lt;p&gt;&lt;mark&gt;Sucedio el error! ${error}&lt;/mark&gt;&lt;/p&gt;`
+            );
+          });
+      }
+    }              </code></pre>
+            </div>
+            <video src="" id="web-cam"></video>
+          </article>
+        </section>
+        <section id="seccion13" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.13. Detección de la Geolocalización</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Archivo modularización geolocalizacion.js con el archivo
+                getUbicacion(idInfoUbicacion) ejecutada a la carga del documento
+                en index_dom.js, en html un div emmet
+                <b>#geolocation</b>. <br />La API de geolocalización solo está
+                disponible en un contexto HTTPS, ubicada en
+                navigator.geolocation
+              </p>
+              <p></p>
+              <pre><code>    const d = document,  n = navigator;
+    export default function getUbicacion(idInfoUbicacion) {
+      const $divgeo = d.getElementById(idInfoUbicacion),
+        opcGeolocalizacion = {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0,
+        };
+      const casoExito = (posicion) => {
+        let coordenadas = posicion.coords;
+        let zoomNivel = "15z";
+        console.log(posicion);
+
+        $divgeo.innerHTML = `
+        &lt;p&gt;Tu posición actual es:&lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Latitud: &lt;b&gt;${coordenadas.latitude}&lt;/b&gt;&lt;/li&gt;
+          &lt;li&gt;Longitud: &lt;b&gt;${coordenadas.longitude}&lt;/b&gt;&lt;/li&gt;
+          &lt;li&gt;Precision: &lt;b&gt;${coordenadas.accuracy}&lt;/b&gt; metros&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;a href="http://www.google.com/maps/@${coordenadas.latitude},${coordenadas.longitude},${zoomNivel}" target="_blank" rel="noopener noreferrer"&gt;Ver mapa&lt;/a&gt;
+        &lt;a href="https://www.openstreetmap.org?mlat=${coordenadas.latitude}&mlon=${coordenadas.longitude}" target="_blank" rel="noopener noreferrer"&gt;Ver mapa en OpenStreetMap&lt;/a&gt;
+        `;
+      };
+      const casoError = (err) => {
+        $divgeo.insertAdjacentHTML(
+          "beforebegin",
+          `&lt;p&gt;&lt;mark&gt;Error ${err.code}: ${err.message}&lt;/mark&gt;&lt;/p&gt;`
+        );
+        console.log(`Error ${err.code}: ${err.message}`);
+      };
+      n.geolocation.getCurrentPosition(casoExito, casoError, opcGeolocalizacion);
+    }</code></pre>
+            </div>
+            <div id="geolocation"></div>
+          </article>
+        </section>
+        <section id="seccion14" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.14. Filtros de búsquedas</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>Generacion de html mediante emmet</p>
+              <pre><code>    #busqueda>(input.card-filter[type="search" placeholder="Buscar..."]^article.tarjetas>(figure.tarjeta>img[src="https://source.unsplash.com/category/technology/200x200" alt="Technology $"]+figcaption{Tecnología $})*6)</code></pre>
+              <p>
+                Aplicación de reglas css, la clase filter permitirá ocultar y
+                reubicar las tarjeta que no cumplan con parte del filtro
+              </p>
+              <pre><code>    /* ***** Search Filters ***** */
+    .tarjetas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .tarjeta {
+      background-color: var(--bg-hard-2);
+      color: var(--bg-light-4);     text-align: center;
+      margin: 5vh;                  transition: all 0.8s ease-out;
+    }
+    .tarjeta img {
+      width: 100%;                  height: auto;
+    }
+    .tarjeta figcaption {
+      padding: 1rem;
+    }
+    .filter {
+      /* display: none; */
+      visibility: hidden;      opacity: 0;
+      order: 1;
+    }</code></pre>
+              <p>
+                Archivo de funcionalidad modular filtro_busqueda.js con la
+                funcionalidad <b>searchFilters(idInput, selectorDondeBuscar)</b>
+              </p>
+              <pre><code>    const d = document;
+    export default function searchFilters(idInput, selectorDondeBuscar) {
+      d.addEventListener("keyup", (e) => {
+        if (e.target.matches(idInput)) {
+          //console.log(e.key);
+          if (e.key === "Escape") e.target.value = "";
+          d.querySelectorAll(selectorDondeBuscar).forEach((elem) => {
+            elem.textContent.toLowerCase().includes(e.target.value)
+              ? elem.classList.remove("filter")
+              : elem.classList.add("filter");
+          });
+        }
+      });
+    }</code></pre>
+              <p>
+                En la carga del documento se aplica la funcion para cada una de
+                las .tarjeta
+                <b>searchFilters(".card-filter", ".tarjeta");</b>
+              </p>
+            </div>
+            <div id="busqueda">
+              <input
+                type="search"
+                class="card-filter"
+                placeholder="Buscar..."
+              />
+              <article class="tarjetas">
+                <figure class="tarjeta">
+                  <img
+                    src="https://source.unsplash.com/category/technology/200x200"
+                    alt="Technology"
+                  />
+                  <figcaption>Tecnología</figcaption>
+                </figure>
+                <figure class="tarjeta">
+                  <img
+                    src="https://source.unsplash.com/category/people/200x200"
+                    alt="People"
+                  />
+                  <figcaption>People</figcaption>
+                </figure>
+                <figure class="tarjeta">
+                  <img
+                    src="https://source.unsplash.com/category/food/200x200"
+                    alt="Food"
+                  />
+                  <figcaption>Food</figcaption>
+                </figure>
+                <figure class="tarjeta">
+                  <img
+                    src="https://source.unsplash.com/category/object/200x200"
+                    alt="Object"
+                  />
+                  <figcaption>Objeto</figcaption>
+                </figure>
+                <figure class="tarjeta">
+                  <img
+                    src="https://source.unsplash.com/category/nature/200x200"
+                    alt="Nature"
+                  />
+                  <figcaption>Nature</figcaption>
+                </figure>
+                <figure class="tarjeta">
+                  <img
+                    src="https://source.unsplash.com/category/animals/200x200"
+                    alt="Animals"
+                  />
+                  <figcaption>Animals</figcaption>
+                </figure>
+              </article>
+            </div>
+          </article>
+        </section>
+        <section id="seccion15" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.15. Sorteo digital</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Partiendo de una lista de items generar un ganador, la lista
+                esta en un html tag li
+                <b
+                  >ul.players>li.player{Jugador $}*10+button#winner-btn{Obtener
+                  Ganador}</b
+                >
+              </p>
+              <p>El archivo modular es sorteo.js</p>
+              <pre><code>    const d = document;
+    export default function draw(idBtn, selector) {
+      const getWinner = () => {
+        const $players = d.querySelectorAll(selector),
+          random = Math.floor(Math.random() * $players.length),
+          winner = $players[random];
+        console.log($players, random, winner);
+        return `El ganador es: ${winner.textContent}`;
+      };
+      d.addEventListener("click", (e) => {
+        if (e.target.matches(idBtn)) {
+          let result = getWinner(selector);
+          alert(result);
+          console.log(result);
+        }
+      });
+    }</code></pre>
+              <p>Se puede aplicar a youtube un sorteo aleatorio mediante</p>
+              <pre><code>    const getWinnerComment = (selector) => {
+      const $players = document.querySelectorAll(selector),
+        random = Math.floor(Math.random() * $players.length),
+        winner = $players[random];
+      return `El ganador es: ${winner.textContent}`;
+    };
+
+    getWinnerComment("ytd-comment-thread-rendered #author-text span");</code></pre>
+              <ul class="players">
+                <li class="player">JavaScript</li>
+                <li class="player">PHP</li>
+                <li class="player">JAVA</li>
+                <li class="player">C</li>
+                <li class="player">Phyton</li>
+                <li class="player">Ruby</li>
+                <li class="player">GO</li>
+                <li class="player">Visual Basic</li>
+                <li class="player">Rust</li>
+                <li class="player">Perl</li>
+              </ul>
+              <button id="winner-btn">Obtener Ganador</button>
+            </div>
+          </article>
+        </section>
+        <section id="seccion16" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.16. Responsive Slider</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Iniciar con el emmet de html
+                <b>
+                  .slider-div>(.slider-slides>(.slider-slide*4>img[src=""
+                  alt=""]))^.slider-btns>a.prev[href="#"]{&laquo;}+a.next[href="#"]{&raquo;}
+                </b>
+                A la primera div.slider-slide agregar la clase
+                <b>active-slide</b>
+              </p>
+              <p>Las reglas css del ejercicio</p>
+              <pre><code>    /* ***** Responsive Slider ***** */
+    .slider-div {
+      position: relative;      width: 70%;
+      margin: 1rem auto;       text-align: center;
+    }
+    .slider-slides {
+      position: relative;      height: 300px;
+    }
+    .slider-slide {
+      position: absolute;
+      top: 0;                 left: 0;
+      width: 100%;            height: 100%;
+      opacity: 0;             visibility: hidden;
+      transition: opacity 1s ease;
+    }
+    .slider-slide img {
+      width: inherit;         height: inherit;
+      object-fit: cover;      object-position: 50% 0;
+    }
+    .active-slide {
+      opacity: 1;             visibility: visible;
+    }
+    .slider-div a {
+      display: block;
+      width: 4rem;            height: 4rem;
+      border-radius: 50%;     border: thin solid #000;
+      text-decoration: none;  background-color: #fff;
+      color: #000;            transition: all 0.3s ease;
+    }
+    .slider-div a:hover {
+      color: #4d4d4d;
+    }
+    .slider-btns {
+      position: absolute;      width: 100%;
+      top: 50%;                display: flex;
+      font-size: 8.5vh;        font-weight: bold;
+      justify-content: space-between;
+    }</code></pre>
+              <p>El archivo modular carrusel.js</p>
+              <pre><code>
+    const d = document;
+    export default function slider() {
+      const $btnNext = d.querySelector(".slider-btns .next"),
+        $btnPrev = d.querySelector(".slider-btns .prev"),
+        $slides = d.querySelectorAll(".slider-slide");
+
+      let i = 0;
+
+      d.addEventListener("click", (e) => {
+        if (e.target === $btnPrev) {
+          e.preventDefault();
+          $slides[i].classList.remove("active-slide");
+          i--;
+          if (i < 0) i = $slides.length - 1;
+          $slides[i].classList.add("active-slide");
+        }
+        if (e.target === $btnNext) {
+          e.preventDefault();
+          $slides[i].classList.remove("active-slide");
+          i++;
+          if (i >= $slides.length) i = 0;
+          $slides[i].classList.add("active-slide");
+        }
+      });
+    }
+              </code></pre>
+            </div>
+          </article>
+
+          <div class="slider-div">
+            <div class="slider-slides">
+              <div class="slider-slide active-slide">
+                <img
+                  src="https://source.unsplash.com/category/nature/400x400"
+                  alt="Nature"
+                />
+              </div>
+              <div class="slider-slide">
+                <h4>Diapositiva 2</h4>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum
+                  incidunt officia eaque placeat neque dolorum asperiores
+                  expedita adipisci aut at, molestias animi porro debitis omnis.
+                  Laborum suscipit adipisci eaque nulla!
+                </p>
+              </div>
+              <div class="slider-slide">
+                <img
+                  src="https://source.unsplash.com/category/people/400x400"
+                  alt="People"
+                />
+              </div>
+              <div class="slider-slide">
+                <h4>Diapositiva 4</h4>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum
+                  incidunt officia eaque placeat neque dolorum asperiores
+                  expedita adipisci aut at, molestias animi porro debitis omnis.
+                  Laborum suscipit adipisci eaque nulla!
+                </p>
+              </div>
+            </div>
+            <div class="slider-btns">
+              <a href="#" class="prev">&laquo;</a>
+              <a href="#" class="next">&raquo;</a>
+            </div>
+          </div>
+        </section>
+        <section id="seccion17" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.17. Scroll Spy con Inspection Observer</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Detectar el scroll permanentemente. Como detectar cuando un
+                elemento entra al foco de visualización en el viewport del
+                navegador mediante la API Intersection Observer. Se inicia por
+                las hojas de estilo creando una mediaquery
+              </p>
+              <p>Se aplican las reglas css para la mediaQuery</p>
+              <pre><code>    /* ***** ScrollSpy ***** */
+    @media screen and (min-width: 1024px) {
+      body {
+        display: grid;
+        grid-template-columns: 80% 20%;
+        grid-template-rows: 17rem auto;
+        grid-template-areas:
+          "<b>header header</b>"
+          "<b>main panel</b>";
+      }
+      main {
+        grid-area: <b>main</b>;
+      }
+      .cv-header {
+        grid-area: <b>header</b>;
+      }
+      .panel-dom {
+        grid-area: <b>panel</b>;
+        align-self: start;
+        position: sticky;
+        top: 16rem;
+        justify-content: flex-start;        
+        transform: translate(0, 0);
+        opacity: 1;
+        visibility: visible;
+        background-color: var(--bg-hard-1);
+      }
+      .panel-btn {
+        display: none;
+      }
+      .menu-dom {
+        justify-content: start;
+        text-align: right;
+      }
+      .menu-dom a {
+        padding: 0.8vh;
+        font-size: 1.9vh;
+      }
+      .menu-dom a:hover, .menu-dom a.active {
+        color: var(--bg-hard-1);
+        background-color: var(--bg-light-4);
+      }
+      .scroll-top-btn {
+        right: initial;
+        left: calc(3.65rem + 0.8vw);
+      }
+    }</code></pre>
+              <p>
+                Se agrega un data atribute propio <b>data-scroll-spy</b> a todos
+                los elementos link del menu .panel-dom y a todas las secciones
+                con la clase seccion
+              </p>
+              <p>
+                Se debe definir el elemento html que será observado, crear una
+                instancia de <b>IntersectionObserver</b> por cada elemento
+                invocar el método observe del elemento. El objeto
+                boundingClientEntry provee mucha información de los elementos
+                obtenidos. Thresholds = límites. isIntersecting true si ya esta
+                en el límite donde se empieza a ver el elemento. Modulo
+                scroll_espia.js
+              </p>
+              <pre><code>    const d = document;
+    export default function scrollSpy() {
+      const aQuienObserva = d.querySelectorAll("section[data-scroll-spy]");
+      const callBack = (entradas) => {
+        entradas.forEach((entrada) => {
+          const id = entrada.target.getAttribute("id");
+          console.log(id);
+          if (entrada.isIntersecting) {
+            d.querySelector(`a[data-scroll-spy][href="#${id}"]`).classList.add(
+              "active"
+            );
+          } else {
+            d.querySelector(`a[data-scroll-spy][href="#${id}"]`).classList.remove(
+              "active"
+            );
+          }
+        });
+      };
+      const opciones = {
+        // root,  es el documento
+        //rootMargin: -150, // reducir zona de interseccion
+        threshold: [0.15, 0.85], // reducir zona de intersección, valor entre 0 y 1 o como array [min, max]
+      };
+      const observador = new IntersectionObserver(callBack, opciones);
+      aQuienObserva.forEach(($seccion) => {
+        observador.observe($seccion);
+      });
+    }</code></pre>
+            </div>
+          </article>
+        </section>
+        <section id="seccion18" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>
+              10.18. Video inteligente (IntersectionObserver & VisibilityChange)
+            </h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Se basa en las dos APIs IntersectionObserver y VisibilityChange,
+                partiendo de un elemento html video con un data attribute
+                <b>data-smart-video</b> En movil el usuario debe dar la
+                reproducción pudiendo estar limitado el autoplay
+              </p>
+              <pre><code>    video[src="assets/video/SebastianCantandoIngles.mp4" muted="" controls="" loop="" autoplay data-smart-video=""]</code></pre>
+              <p>
+                La propiedad visibilityState del obj document retorna un
+                <b>visible</b>
+                que debe ser evaluada en el evento VisibilityChange del obj
+                window para determinar si pestaña pierde el enfoque.
+              </p>
+              <p>
+                El archivo desencadenante de la programación es
+                video_inteligente.js
+              </p>
+              <pre><code>    const d = document,      w = window;
+    export default function smartVideo() {
+      const $videos = d.querySelectorAll("video[data-smart-video]");
+      const callBack = (entradas) => {
+        entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) {
+            entrada.target.play();
+          } else {
+            entrada.target.pause();
+          }
+          w.addEventListener("visibilitychange", (e) =>
+            d.visibilityState === "visible"
+              ? entrada.target.play()
+              : entrada.target.pause()
+          );
+        });
+      };
+      const observador = new IntersectionObserver(callBack, { threshold: 0.8 });
+      $videos.forEach((el) => observador.observe(el));
+    }</code></pre>
+            </div>
+            <video
+              src="assets/video/SebastianCantandoIngles.mp4"
+              muted
+              controls
+              loop
+              data-smart-video
+            ></video>
+            <br /><br /><br /><br /><br />
+            <video
+              src="assets/video/SebastianCantandoIngles.mp4"
+              muted
+              controls
+              loop
+              data-smart-video
+            ></video>
+          </article>
+        </section>
+        <section id="seccion19" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.19. Validación de formularios</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                En el sitio
+                <a
+                  href="https://samherbert.net/svg-loaders/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Sam Herbert</a
+                >
+                estan disponibles svg loaders muy vistosos. El patrón para el
+                nombre es <b>^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$</b> , para el email es
+                <b>
+                  ^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$
+                </b>
+                y para comentarios se armaria un patrón usando data-pattern
+                <b>^.{1,255}$</b>
+              </p>
+              <pre><code>    form.contacto-frm>legend{Envianos tus comentarios}+input[type="text" name="name" placeholder="Escribe tu nombre" title="Solo aceptará letras y espacios" pattern="^[a-zA-ZñÑñáéíóúÁÉÍÓÚÜü]\s$" required=""]+input[type="email" name="email" placeholder="Escribe tu correo" title="Email incorrecto" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required=""]+input[type="text" name="asunto" placeholder="Asunto a tratar" title="El asunto es requerido" required=""]+textarea[name="comentario" cols="50" rows="5" placeholder="Escribe tus comentarios" title="El comentario no debe exceder los 255 caracteres" required="" data-pattern="^.{1-255}$"]+input[type="submit" value="Enviar"]+.contact-form-loader.none>img[src="../assets/img/loader.svg" alt="Cargando..."]^.contact-form-response.none>p{Los datos han sido enviados} </code></pre>
+              <p>Las reglas de CSS, validación con html5</p>
+              <pre><code>    /* ***** ContactForm Validación ***** */
+    .contacto-frm {
+      --form-ok-color: #4caf50;
+      --form-error-color: #f44336;
+      margin-left: auto;              margin-right: auto;
+      width: 80%;
+    }
+    .contacto-frm > * {
+      display: block;                 padding: 0.5rem;
+      margin: 1rem auto;              width: 100%;
+    }
+    .contacto-frm textarea {
+      resize: none;
+    }
+    .contacto-frm legend,
+    .contact-form-response {
+      font-size: 1.5 rem;             font-weight: bold;
+      text-align: center;
+    }
+    .contacto-frm input,
+    .contacto-frm textarea {
+      font-size: 1rem;                font-family: sans-serif;
+    }
+    .contacto-frm input[type="submit"] {
+      width: 50%;                     font-weight: bold;
+      cursor: pointer;
+    }
+    .contacto-frm *::placeholder {
+      color: var(--bg-half-3-7);
+    }
+    .contacto-frm [required]:valid {
+      border: 2px solid var(--bg-hard-2-7);
+    }
+    .contacto-frm [required]:invalid {
+      border: 2px solid var(--form-error-color);
+      background-color: var(--bg-light-5-7);
+    }
+    .contacto-frm-error {
+      margin-top: -1rem;            font-size: 80%;
+      background-color: var(--form-error-color);
+      color: var(--bg-light-5);     transition: all 0.8s ease;
+    }
+    .contacto-frm-error.is-active {
+      display: block;           animation: <b>show-message</b> 1s 1 normal 0 ease-out both;
+    }
+    .none {
+      display: none;
+    }
+    @keyframes <b>show-message</b> {
+      0% {
+        visibility: hidden;
+        opacity: 0;
+      }
+      100% {
+        visibility: visible;
+        opacity: 1;
+      }
+    }</code></pre>
+              <p>
+                Archivo de la funcionalidad modular validaciones_form.js.
+                Observese que se consulta $input.dataset.pattern por un
+                data-attribute pattern. Así como
+                <b>e.target.matches(".contacto-frm [required]")</b> consulta por
+                los elementos de la clase que son requeridos.
+                <b>d.getElementById($input.name)</b> obtiene un equivalente a un
+                id asignado a un span
+              </p>
+              <pre><code>    const d = document;
+    export default function contactFormValidation() {
+      const $form = d.querySelector(".contacto-frm"),
+        <b>$inputs = d.querySelectorAll(".contacto-frm *[required]")</b>;
+      <b>$inputs.forEach(($input)</b> => {
+        const $span = d.createElement("span");
+        $span.id = $input.name;
+        $span.textContent = $input.title;
+        $span.classList.add("contacto-frm-error", "none");
+        $input.insertAdjacentElement("afterend", $span);
+      });
+      <b>d.addEventListener("keyup"</b>, (e) => {
+        if (<b>e.target.matches(".contacto-frm [required]")</b>) {
+          let $input = e.target,
+            patron = <b>$input.pattern</b> || <b>$input.dataset.pattern</b>;
+          // Por una experiencia de usuario no se recomienda if else en este caso con else presenta span con espacio ""
+          <b>if (patron && $input.value !== "")</b> {
+            let regex = new RegExp(patron);
+            return !regex.exec($input.value)
+              ? <b>d.getElementById($input.name)</b>.classList.add("is-active")
+              : d.getElementById($input.name).classList.remove("is-active");
+          }
+          <b>if (!patron)</b> {
+            return $input.value === ""
+              ? d.getElementById($input.name).classList.add("is-active")
+              : d.getElementById($input.name).classList.remove("is-active");
+          }
+        }
+      });
+      <b>d.addEventListener("submit"</b>, (e) => {
+        e.<b>preventDefault</b>();
+        const $loader = d.querySelector(".contact-form-loader"),
+          $response = d.querySelector(".contact-form-response");
+        $loader.classList.remove("none");
+        setTimeout(() => {
+          $loader.classList.add("none");
+          $response.classList.remove("none");
+          $form.reset();
+          setTimeout(() => $response.classList.add("none"), 3000);
+        }, 3000);
+      });      
+    }</code></pre>
+              <p>
+                El enlace
+                <a
+                  href="http://formsubmit.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >FormSubmit</a
+                >
+                permite tener formularios estáticos y enviar a una dirección de
+                correo electrónico, observar la forma de implementarlo en la
+                url, requiere al menos liveServer no desde protocolo file y no
+                tener aplicado el preventDefault
+              </p>
+              <pre><code>    &lt;form class="contacto-frm" action="https://formsubmit.co/l2v2blue@gmail.com"
+    method="POST" target="_blank"&gt;</code></pre>
+            </div>
+          </article>
+          <form
+            class="contacto-frm"
+            action="https://formsubmit.co/l2v2blue@gmail.com"
+            method="POST"
+            target="_blank"
+          >
+            <legend>Envianos tus comentarios</legend>
+            <input
+              type="text"
+              name="name"
+              placeholder="Escribe tu nombre"
+              title="Solo aceptará letras y espacios"
+              pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Escribe tu correo"
+              title="Email incorrecto"
+              pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
+              required
+            />
+            <input
+              type="text"
+              name="asunto"
+              placeholder="Asunto a tratar"
+              title="El asunto es requerido"
+              required
+            />
+            <textarea
+              name="comentario"
+              cols="50"
+              rows="5"
+              placeholder="Escribe tus comentarios"
+              title="El comentario no debe exceder los 255 caracteres"
+              required
+              data-pattern="^.{1,255}$"
+            ></textarea>
+            <input type="submit" value="Enviar" />
+            <div class="contact-form-loader none">
+              <img src="../assets/img/loader.svg" alt="Cargando..." />
+            </div>
+            <div class="contact-form-response none">
+              <p>Los datos han sido enviados</p>
+            </div>
+          </form>
+        </section>
+        <section id="seccion20" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>10.20. Narrador</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Apis para investigar Drag&Drop, Indexeddb, LocalStorage,
+                SessionStorage
+              </p>
+              <pre><code>
+    select#speech-select>option[value=""]{---Elige una voz}^br+textarea[id="speech-text" cols="50" rows="5" placeholder="Ingresar texto para lectura..."]+br+button[id="speech-btn"]{Leer texto}
+              </code></pre>
+              <p>
+                Objeto speechMessage tiene una propiedad voice establecida en
+                null que será obtenida cuando se carge el documento.
+              </p>
+              <p>El archivo de modularidad funcional narrador.js</p>
+              <pre><code>    const d = document,  w = window;
+    export default function speechReader(params) {
+      const $speechSelect = d.getElementById("speech-select"),
+        $speechText = d.getElementById("speech-text"),
+        $speechBtn = d.getElementById("speech-btn"),
+        speechMessage = new SpeechSynthesisUtterance();
+      let voces = [];
+
+      <b>d.addEventListener("DOMContentLoaded",</b> (e) => {
+        <b>w.speechSynthesis.addEventListener("voiceschanged",</b> (e) => {
+          voces = w.speechSynthesis.getVoices();
+          voces.forEach((voz) => {
+            const opcion = d.createElement("option");
+            opcion.value = voz.name;
+            opcion.textContent = `${voz.name} *** ${voz.lang}`;
+            $speechSelect.insertAdjacentElement("beforeend", opcion);
+          });
+        });
+      });
+
+      <b>d.addEventListener("change",</b> (e) => {
+        if (e.target === $speechSelect) {
+          speechMessage.voice = voces.find((voz) => voz.name === e.target.value);
+        }
+      });
+
+      <b>d.addEventListener("click",</b> (e) => {
+        if (e.target === $speechBtn) {
+          speechMessage.text = $speechText.value;
+          w.speechSynthesis.speak(speechMessage);
+        }
+      });
+    }</code></pre>
+            </div>
+            <div class="narrador">
+              <select id="speech-select">
+                <option value="">---Elige una voz</option>
+              </select>
+              <br />
+              <textarea
+                id="speech-text"
+                cols="50"
+                rows="5"
+                placeholder="Ingresar texto para lectura..."
+              ></textarea>
+              <br />
+              <button id="speech-btn">Leer texto</button>
+            </div>
+          </article>
+        </section>
+        <!--           
+          section#seccion20.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
+        -->
+      </section>
+    </main>
+    <button class="panel-btn hamburger hamburger--vortex" type="button">
+      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+    </button>
+    <aside class="panel-dom">
+      <nav class="menu-dom">
+        <a href="#seccion1" data-scroll-spy
+          >10.1. Menu navegación tipo hamburgesa</a
+        >
+        <a href="#seccion2" data-scroll-spy
+          >10.2. Reloj digital y alarma sonora</a
+        >
+        <a href="#seccion3" data-scroll-spy
+          >10.3. Eventos teclado, atajos personalizados</a
+        >
+        <a href="#seccion4" data-scroll-spy
+          >10.4. Cuenta regresiva (countdown)</a
+        >
+        <a href="#seccion5" data-scroll-spy>10.5. Botón de scroll top</a>
+        <a href="#seccion6" data-scroll-spy>10.6. Cambio entre Dark-Ligth</a>
+        <a href="#seccion7" data-scroll-spy>10.7. API localStorage</a>
+        <a href="#seccion8" data-scroll-spy>10.8. Responsive Design con JS</a>
+        <a href="#seccion9" data-scroll-spy>10.9. Responsive Tester</a>
+        <a href="#seccion10" data-scroll-spy
+          >10.10. Detección dispositivos (User agent</a
+        >
+        <a href="#seccion11" data-scroll-spy
+          >10.11. Detección conexión (estado de red</a
+        >
+        <a href="#seccion12" data-scroll-spy>10.12. Detección de webcam</a>
+        <a href="#seccion13" data-scroll-spy
+          >10.13. Detección de la Geolocalización</a
+        >
+        <a href="#seccion14" data-scroll-spy>10.14. Filtros de búsqueda</a>
+        <a href="#seccion15" data-scroll-spy>10.15. Sorteo digital</a>
+        <a href="#seccion16" data-scroll-spy>10.16. Responsive Slider</a>
+        <a href="#seccion17" data-scroll-spy
+          >10.17. Scroll Spy con Inspection Observer</a
+        >
+        <a href="#seccion18" data-scroll-spy
+          >10.18. Smart Video (IntersectionObserver & VisibilityChange)</a
+        >
+        <a href="#seccion19" data-scroll-spy>
+          10.19. Validación de formularios
+        </a>
+        <a href="#seccion20" data-scroll-spy>10.20. Narrador</a>
+        <a href="../index.html">Indice de contenidos</a>
+      </nav>
+    </aside>
+    <button class="scroll-top-btn hidden">
+      <img src="./assets/img/toTop.png" alt="arrowUp" />
+    </button>
+    <button class="dark-theme-btn">🌙</button>
+    <script src="./assets/js/index_dom.js" type="module"></script>
+  </body>
+</html>

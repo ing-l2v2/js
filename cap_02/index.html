@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Referencias JavaScript - Operadores, condicionales, blucles, try, continue, destructuración, rest y spread, arrows functions" />
+    <title>Referencias Javascript L2V2 - Estructuras de Control</title>
+    <!-- Parámetros para CEO -->
+    <link rel="canonical" href="https://ing-l2v2.github.io/cv" />
+    <link rel="icon" href="../assets/img/animal-bird-domestic-svgrepo-com.svg" />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta name="theme-color" content="#F60" />
+    <meta property="og:title" content="Referencias de Javascript L2V2" />
+    <meta
+      property="og:description"
+      content="Referencias rápidas sobre JavaScript"
+    />
+    <meta
+      property="og:image"
+      content="https://ing-l2v2.github.io/cv/assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta
+      property="og:url"
+      content="https://ing-l2v2.github.io/cv/index.html"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@leonelvilla" />
+    <!-- Fin de parámetros para CEO -->
+    <link rel="stylesheet" href="./assets/css/hamburgers.css" />
+    <link rel="stylesheet" href="./assets/css/style-cap-02.css" />
+    <link rel="stylesheet" href="../assets/css/style-inicial.css" />
+    <link rel="stylesheet" href="../assets/css/style-cv.css" />
+  </head>
+  <body>
+    <header class="cv-header">
+      <div class="cv-titular">
+        <p class="p-h1">Ing. Leonel Villa Vintimilla</p>
+        <p>Ingeniero en Computación</p>
+        <p>Especializado en Sistemas Tecnológicos</p>
+        <p>llvilla@espol.edu.ec &nbsp;&nbsp; - &nbsp;&nbsp; l2v2@outlook.com</p>
+        <p>
+          Teléfonos: (+593) 096 388 2510 &nbsp;&nbsp;-&nbsp;&nbsp; 099 690 2792
+        </p>
+        <p>
+          <a href="https://ing-l2v2.github.io/cv" target="_blank">
+            https://ing-l2v2.github.io/cv
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://www.senescyt.gob.ec/web/guest/consultas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            N° de registro del Senescyt 1021-14-1277156
+          </a>
+        </p>
+      </div>
+      <div class="cv-foto-l2v2">
+        <img src="../assets/img/l2v2.png" alt="" />
+      </div>
+    </header>
+    <main class="cv-main">
+      <section class="cv-seccion">
+        <div class="cv-seccion-h2">
+          <div class="hr-line"></div>
+          <h2>2. Estructuras de Control</h2>
+        </div>
+        <section id="seccion1" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <!--div class="hr-line"></div-->
+            <h3>2.1 Tipos de Operadores</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Aritméticos: +, -, *, /, % operador módulo en residuo de una
+                división
+              </p>
+              <p>
+                Relacionales: &lt;, &gt;, &lt;=, &gt;=, == (compara solo valores, se basa en truthy, mala práctica), !=, === (compara tipo de datos y valor, más usado al presente), !== Permiten comparar valores </p>
+              </p>
+              <p>Incremental/decremental: var++;, var--; ++var; --var; esto implica var = var + 1;, var=var-1; Otros casos var+=3; var-=6 implica var = var + 3; var = var - 6; var*=2 implica var = var * 2; var /= 2; var = var / 2;</p>
+              <p>Operadores lógicos: ! Not (Invierte true false y viceversa), || Or (Una verdad es suficiente) y && And (Una falsa todo falso, todo debe dar verdad para una verdad)</p>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion2" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>2.2 Condicionales en control de flujo</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>Mecanismo para controlar el flujo de programación, entre las estructuras de control están las secuenciales, condicionales, loops o repetitivas.</p>
+            <p>Condicionales if - else</p>
+            <pre><code>    let edad = 45, msj = "";
+    if (edad < 12) { msj = "Eres un niño"}
+    else if (edad > 11 && edad < 18) { msj = "Eres adolescente"; }
+    else { msj = "Eres mayor de edad"; }</code></pre>
+            <p>Simplificación de if - else usando operador ternario en una sola linea de código <b>(condición) ? caso_verdadero : caso_falso</b></p>
+            <pre><code>    msj=(edad>17)
+    ?"Eres mayor de edad"
+    :"Eres menor de edad";</code></pre>
+            <p>Switch case - Diferentes valores para una misma variable</p>
+            <pre><code>    let dia = 2, nomdia = "";
+    switch (dia) {
+      case 0:
+        nomdia = "domingo";   break;
+      case 1:
+        nomdia = "lunes";     break;
+      case 2:
+        nomdia = "martes";    break;
+      case 3:
+        nomdia = "miércoles"; break;
+      case 4:
+        nomdia = "jueves";    break;
+      case 5:
+        nomdia = "viernes";   break;
+      default:
+        nomdia = "sábado";    break;
+    }
+            </code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion3" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>2.3 Ciclos o bucles o estructuras repetitivas</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>Es controlado por una variable, while, do while (más imperativos, poco uso), for, forin, forof (Más usado, declarativo). Cuidado con los loops infinitos</p>
+            <pre><code>    let contador = 0;
+    while(contador < 10){
+      console.log("While ", contador);
+      contador++;
+    }
+    do {
+      console.log("Do - While", contador);
+      contador++;
+    } while (contador < 15);</code></pre>
+            <p>For contiene inicialización de variable, condición y la instrucción de incremento o decremento de la variable por cada iteración, (imperativo)</p>
+            <pre><code>    for (let index = 1; index < 20; index++) {
+      console.log("For ", index);
+    }
+
+    let numeros = [10, 20, 30, 40, 50, 60];
+    for (let index = 0; index < numeros.length; index++) {
+      const element = numeros[index];
+      console.log(element);
+    }</code></pre>
+            <p>Forin - permite recorrer o iterar las propiedades de un objeto mediante la nomenclatura de corchetes.</p>
+            <pre><code>    const obj = {
+      nom: "Leonel Villa",  age: 52,
+      pasatiempos: ["correr", "hacer ejercicios", "leer"],
+      soltero: false,
+      contacto: {
+        email: "l2v2@outlook.com",  twitter: "@demonioazul",
+        phone: "+593 963889966",
+      },
+      saludar: function () {
+        return `Hola, mi nombre es ${this.nom}`;
+      },
+      edad: function () {
+        return `La edad es ${this.age}`;
+      },
+    };
+    <b>
+    for (const atributo <i>in</i> obj) {
+      if (Object.hasOwnProperty.call(obj, atributo)) {
+        const element = obj[atributo];    console.log(element);
+      }
+      console.log(atributo, obj[atributo]);
+    }</b></code></pre>
+            <p>Forof - Permite recorrer todos los elementos de cualquier objeto (incluido Arrays) que sea <b>iterable</b> en JS. Los elementos iterables son Arrays, Collections, etc. O a elementos de un String</p>
+            <pre><code>    let numeros = [10, 20, 30, 40, 50, 60];              
+    for (const item_iterable <b>of</b> numeros) {
+      console.log(item_iterable);
+    }
+    
+    for (const caracter <b>of</b> "Hola mundo de práctica") {
+      console.log(caracter);
+    }</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion4" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>2.4 Manejo de errores. try - catch - finally</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <pre><code>    try {
+      let numb = 10;
+      if (isNaN(numb)) {
+        throw new Error("El caracter introducido no es un número")
+      }
+      console.log("Producto ", numb * numb);
+    } catch (errror) {
+      console.log(`Se produjo el siguiente error ${errror}`);
+    }</code></pre>
+          </div>
+        </article>
+
+        <section id="seccion5" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>2.5 Uso break y continue</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>break es usado para romper switch. No pueden ser usados en métodos de los arreglos, solo se usan en estructuras de control while, do while, for, if, switch. Break se sale de la estructura que lo contiene.</p>
+            <p>El caso de uso con break mostraría del 10 al 50 incluido.</p>
+            <pre><code>    let numb = [10,20,30,40,50,60,70,80,90,0];
+    for (let i = 0; i < numb.length; i++) {
+      if (i === 5)
+        <b>break</b>;
+      const element = numb[i];
+      console.log(element);
+    }</code></pre>
+            <p>El caso continue muestro los elementos del arreglo excepto la posición 5 (el número 60) del arreglo, omitiendo el dato de esa iteración del ciclo.</p>
+            <pre><code>    for (let i = 0; i < numb.length; i++) {
+      if (i === 5)
+        continue;
+      const element = numb[i];
+      console.log(element);
+    }</code></pre>
+            <script>
+              let numb = [10,20,30,40,50,60,70,80,90,0];
+              for (let i = 0; i < numb.length; i++) {
+                if (i === 5)
+                  break;
+                const element = numb[i];
+                console.log(element);
+              }
+              for (let i = 0; i < numb.length; i++) {
+                if (i === 5)
+                  continue;
+                const element = numb[i];
+                console.log(element);
+              }
+              console.log("JSON ", JSON.stringify(numb));
+            </script>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion6" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>2.6 Destructuración</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>Es una nueva forma de asignar valores a arreglos o a objetos. Teniendo un array se requiere almacenar cada valor en una variable diferente</p>
+            <pre><code>    let num_b = [10,20,30];
+    const [one, two, three] = num_b;
+    console.log(one, two, three);</code></pre>
+            <p>Para el caso de objetos la destructuración debe contener nombres de atributos iguales, no admitiendo cambio de nombre de variable.</p>
+            <pre><code>    const persona = {nom:"Leonel", apel:"Villa", edad:52};
+    let {nom, edad} = persona;
+    console.log(nom, edad);</code></pre>
+            <p>Los parámetros Rest pueden ser desestructurados, lo que significa que sus datos pueden ser desempaquetados dentro de distintas variables.</p>
+            <script>
+              const persona = {nom:"Leonel", apel:"Villa", edad:52};
+              let {nom, edad} = persona;
+              console.log(nom, edad);
+            </script>
+          </div>
+        </article>
+        </section>
+        
+        <section id="seccion7" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>2.7 Parámetros REST & Operador Spread </h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>Los parámetros REST son una forma de virtualmente ir agregando parámetros infinitos ya sea a una función o dentro de una variable, para lo cual se usan tres puntos antepuestos <b>...</b> al nombre de la variable que representa el REST, incluso puede usarse la propiedad length y los métodos de los arrays en el parametro paramRest. El parámetro Rest siempre debe ir al final de la lista de argumentos.</p>
+            <p>También existe un objeto símil-array especial llamado arguments que contiene todos los argumentos indexados.</p>            
+            <pre><code>    function suma(a, b, <b>...paramRest</b>){
+      let resultado = a + b;
+      <b>paramRest</b>.forEach((item, idx) => {
+        resultado += <b>item</b>;
+      });
+      console.log("Cant de paramRest ", paramRest.length);
+      console.log("Cant de arguments ", arguments.length);
+      return resultado;
+    }
+    Ejemplo con For of
+    function sum(...theArgs) {
+      let total = 0;
+      for (const arg of theArgs) {
+        total += arg;
+      }
+      return total;
+    }    
+    console.log("Suma de 2 elementos ", suma(40,50));    
+    console.log("Suma de 6 elementos ", suma(40,50,60,70, 90,100));
+    console.log("Suma de 8 elementos ", suma(40,50,60,70,90,100, 1,3));</code></pre>
+            <p>Operador spread o de expansión - Similar a los parámetros rest, también usa ..., pero hace exactamente lo opuesto. Cuando ...arr es usado en el llamado de una función, “expande” el objeto iterable arr en una lista de argumentos, como en la funcion Math.max():</p>
+            <pre><code>    let arr = [3, 5, 1];
+    alert( Math.max(...arr) ); // 5 (spread convierte array en lista de argumentos)</code></pre>
+            <p>Incluso podemos combinar el operador spread con valores normales:</p>
+            <pre><code>    let arr1 = [1, -2, 3, 4];
+    let arr2 = [8, 3, -8, 1];
+    alert( Math.max(1, ...arr1, 2, ...arr2, 25) ); // 25</code></pre>
+            <p>Spread puede además usarse para combinar arrays en un nuevo array o un String convertir a un array</p>
+            <pre><code>    let merged = [0, ...arr, 2, ...arr2];
+    let str = "Hola";
+    alert( [...str] ); // H,o,l,a
+    alert( Array.from(str) ); // H,o,l,a</code></pre>
+            <p>Los parámetros rest son usados para crear funciones que acepten cualquier número de argumentos.</p>
+            <p>El operador spread es usado para pasar un array a funciones que normalmente requieren una lista de muchos argumentos.</p>
+            <p>Ambos ayudan a ir entre una lista y un array de parámetros con facilidad.</p>
+            <p>Todos los argumentos de un llamado a una función están también disponibles en el “viejo” arguments: un objeto símil-array iterable.</p>
+            <script>
+              function suma(a, b, ...paramRest){
+                let resultado = a + b;
+                paramRest.forEach((item, idx) => {
+                  resultado += item;
+                });
+                console.log("Cant de paramRest ", paramRest.length);
+                console.log("Cant de arguments ", arguments.length);
+                return resultado;
+              }
+              console.log("Suma de 2 elementos ", suma(40,50));
+              console.log("Suma de 4 elementos ", suma(40,50, 50,40));
+              console.log("Suma de 6 elementos ", suma(40,50,60,70, 90,100));
+              console.log("Suma de 8 elementos ", suma(40,50,60,70,90,100, 1,3));
+            </script>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion8" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>2.8 Arrow Functions - Funciones flecha</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>Las funciones de flecha no tienen su propio this. tampoco tienen el objeto especial arguments. Para escribir funciones anonimas expresadas (a una variable le asignas el resultado de una función expresada)</p>
+            <pre><code>const saludar = function () { console.log("Hola"); }</code></pre>
+            <p>Para la arrow function se quita la palabra function y entre los parentesis y la llave se escribe =&gt;</p>
+            <pre><code>const saludar = () => { console.log("Hola"); }</code></pre>
+            <p>Cuando la arrow function tiene una sola linea de instrucción se puede omitir las llaves</p>
+            <pre><code>const saludar = () => console.log("Hola"); </code></pre>
+            <p>Cuando recibe solo un parametro se pude quitar los parentesis</p>
+            <pre><code>const saludar = nombre => console.log(`Hola ${nombre}`); </code></pre>
+            <p>Con la arrow function también se puede obviar la palabra return</p>
+            <pre><code>  const sumar = function (a, b) { return a + b };
+    const sumar = (a, b) => a + b;</code></pre>
+            <p>Usada en funciones expresadas dentro de métodos como forEach</p>
+            <pre><code>
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    arr.forEach((elem, idx) => console.log(`${elem} en posición ${idx}`));
+            </code></pre>
+          </div>
+        </article>
+        </section>
+        <!-- 
+          section#seccion20.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
+        -->
+      </section>
+    </main>
+    <button class="panel-btn hamburger hamburger--vortex" type="button">
+      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+    </button>
+    <aside class="panel-dom">
+      <nav class="menu-dom">
+        <a href="#seccion1" data-scroll-spy>2.1. Tipos de operadores</a>
+        <a href="#seccion2" data-scroll-spy>2.2. Condicionales en control de flujo</a>
+        <a href="#seccion3" data-scroll-spy>2.3. Ciclos o bucles o estructuras repetitivas</a>
+        <a href="#seccion4" data-scroll-spy>2.4. Manejo de errores. try - catch - finally</a>
+        <a href="#seccion5" data-scroll-spy>2.5. Uso break y continue</a>
+        <a href="#seccion6" data-scroll-spy>2.6. Destructuración</a>
+        <a href="#seccion7" data-scroll-spy>2.7. Parámetros REST & Operador Spread</a>
+        <a href="#seccion8" data-scroll-spy>2.8. Arrow Functions - Funciones flecha</a>
+        <a href="../index.html">Indice de contenidos</a>
+      </nav>
+    </aside>
+    <button class="scroll-top-btn hidden">
+      <img src="./assets/img/toTop.png" alt="arrowUp" />
+    </button>
+    <script src="./assets/js/index_dom.js" type="module"></script>    
+  </body>
+</html>

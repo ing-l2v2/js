@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="JavaScript - Prototipos, Herencia prototípica, Clases y herencia, Métodos estáticos, getters y setters"
+    />
+    <title>
+      Referencias Javascript L2V2 - Programación Orientada a Objetos
+    </title>
+    <!-- Parámetros para CEO -->
+    <link rel="canonical" href="https://ing-l2v2.github.io/cv" />
+    <link
+      rel="icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta name="theme-color" content="#F60" />
+    <meta property="og:title" content="Referencias de Javascript L2V2" />
+    <meta
+      property="og:description"
+      content="Referencias rápidas sobre JavaScript"
+    />
+    <meta
+      property="og:image"
+      content="https://ing-l2v2.github.io/cv/assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta
+      property="og:url"
+      content="https://ing-l2v2.github.io/cv/index.html"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@leonelvilla" />
+    <!-- Fin de parámetros para CEO -->
+    <link rel="stylesheet" href="./assets/css/hamburgers.css" />
+    <link rel="stylesheet" href="./assets/css/style-cap-03.css" />
+    <link rel="stylesheet" href="../assets/css/style-inicial.css" />
+    <link rel="stylesheet" href="../assets/css/style-cv.css" />
+  </head>
+  <body>
+    <header class="cv-header">
+      <div class="cv-titular">
+        <p class="p-h1">Ing. Leonel Villa Vintimilla</p>
+        <p>Ingeniero en Computación</p>
+        <p>Especializado en Sistemas Tecnológicos</p>
+        <p>llvilla@espol.edu.ec &nbsp;&nbsp; - &nbsp;&nbsp; l2v2@outlook.com</p>
+        <p>
+          Teléfonos: (+593) 096 388 2510 &nbsp;&nbsp;-&nbsp;&nbsp; 099 690 2792
+        </p>
+        <p>
+          <a href="https://ing-l2v2.github.io/cv" target="_blank">
+            https://ing-l2v2.github.io/cv
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://www.senescyt.gob.ec/web/guest/consultas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            N° de registro del Senescyt 1021-14-1277156
+          </a>
+        </p>
+      </div>
+      <div class="cv-foto-l2v2">
+        <img src="../assets/img/l2v2.png" alt="" />
+      </div>
+    </header>
+    <main class="cv-main">
+      <section class="cv-seccion">
+        <div class="cv-seccion-h2">
+          <div class="hr-line"></div>
+          <h2>3. Programación Orientada a Objetos</h2>
+        </div>
+
+        <section id="seccion1" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <!--div class="hr-line"></div-->
+            <h3>3.1. Prototipos</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                JS es un lenguaje multiparadigma: programación funcional y
+                orientada a objetos. En POO hay clases (modelo a seguir para
+                generar instancias), objetos (atributos y métodos) son
+                instancias de clases. JS es un lenguaje orientado a objetos
+                basado en prototipos no en clases. El compilador convierte las
+                clases en funciones prototípicas. <br />
+                Función constructora - se la construye una vez y a partir de
+                esta se generan nuevas instancias u objetos. Los atributos como
+                los métodos deben colgar de <b>this</b>.
+              </p>
+              <pre><code>    function AnimalPrototipo(nom, genero) {
+      this.nombre = nom;
+      this.genero = genero;
+      this.sonar = function () {
+        console.log(`Hago sonidos porque estoy vivo, soy ${this.genero}.`);
+      };
+      this.saludar = function () {
+        console.log(`Hola me llamo ${this.nombre}`);
+      };
+    }
+    const tom = new AnimalPrototipo("Tom", "macho"),
+      mia = new AnimalPrototipo("Mia", "Hembra");
+    console.log(tom, mia);
+    tom.sonar();              tom.saludar();
+    mia.sonar();              mia.saludar();</code></pre>
+              <p>
+                Si se requieren muchos objetos se generarían muchas copias de
+                los métodos y provocaría mayor uso de memoria, una mejora sería
+                <b
+                  >asignar al prototipo de la función constructora los
+                  métodos</b
+                >
+                y los métodos quedar pegados al prototipo de la función
+                constructora, provocando mejora significativas en rendimiento y
+                memoria.
+              </p>
+              <pre><code>    function AnimalPrototipo(nom, genero) {
+      this.nombre = nom;
+      this.genero = genero;
+    }
+    // Métodos agregados al Prototipo de la función constructora de AnimalPrototipo
+    AnimalPrototipo.prototype.sonar = function () {
+      console.log( `Hago sonidos porque estoy vivo, soy ${this.genero}.` );
+    };
+    AnimalPrototipo.prototype.saludar = function () {
+      console.log(`Hola me llamo ${this.nombre}`);
+    };
+    const tom = new AnimalPrototipo("Tom", "macho"),
+      mia = new AnimalPrototipo("Mia", "Hembra");
+    console.log(tom, mia);
+    tom.sonar();    tom.saludar();
+    mia.sonar();    mia.saludar();</code></pre>
+              <script>
+                function AnimalPrototipo(nom, genero) {
+                  this.nombre = nom;
+                  this.genero = genero;
+                }
+                // Métodos agregados al Prototipo de la función constructora de AnimalPrototipo
+                AnimalPrototipo.prototype.sonar = function () {
+                  console.log(
+                    `Hago sonidos porque estoy vivo, soy ${this.genero}.`
+                  );
+                };
+                AnimalPrototipo.prototype.saludar = function () {
+                  console.log(`Hola me llamo ${this.nombre}`);
+                };
+                const tom = new AnimalPrototipo("Tom", "macho"),
+                  mia = new AnimalPrototipo("Mia", "Hembra");
+                console.log(tom, mia);
+                tom.sonar();
+                tom.saludar();
+                mia.sonar();
+                mia.saludar();
+
+                function Perro(nombre, genero, tamanio, enfermo) {
+                  this.fncSuper = AnimalPrototipo;
+                  this.fncSuper(nombre, genero);
+                  this.tamanio = tamanio;
+                  this.estaEnfermo = enfermo;
+                }
+                // Perro esta heredando de AnimalPrototipo
+                Perro.prototype = new AnimalPrototipo();
+                Perro.prototype.constructor = Perro;
+                // Sobreescritura de métodos
+                Perro.prototype.sonar = function () {
+                  console.log(
+                    `Soy un perro ${this.genero} y hago guuuau guuuuau.`
+                  );
+                };
+                // Método própio
+                Perro.prototype.fcEnfermo = function () {
+                  if (this.estaEnfermo) {
+                    console.log("Me siento enfermito");
+                  } else {
+                    console.log("Estoy muy saludable !!!");
+                  }
+                };
+                const tomy = new Perro("Tom", "macho", "pequeño", false);
+                console.log(tomy);
+                tomy.sonar();
+                tomy.saludar();
+                tomy.fcEnfermo();
+              </script>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion2" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>3.2. Herencia Prototípica</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                La función prototípica que heredará de otra función prototípica
+                recibe los mismos parámetros más los propios
+              </p>
+              <pre><code>    function Perro(nombre, genero, tamanio, enfermo) {
+      this.fncSuper = AnimalPrototipo;
+      this.fncSuper(nombre, genero);
+      this.tamanio = tamanio;      this.estaEnfermo = enfermo;
+    }
+    
+    // Perro esta heredando de AnimalPrototipo
+    Perro.prototype = new AnimalPrototipo();
+    Perro.prototype.constructor = Perro;
+    
+    // Sobreescritura de métodos
+    Perro.prototype.sonar = function () {
+      console.log( `Soy un perro ${this.genero} y hago guuuau guuuuau.` );
+    };
+
+    // Método própio
+    Perro.prototype.fcEnfermo = function () {
+      if (this.estaEnfermo) { console.log("Me siento enfermito");
+      } else { console.log("Estoy muy saludable !!!"); }
+    };
+    
+    const tomy = new Perro("Tom", "macho", "pequeño", false);
+    console.log(tomy);
+    tomy.sonar();    tomy.saludar();    tomy.fcEnfermo();</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion3" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>3.3. Clases y Herencia</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                A partir del 2015 el estandar de JS provee las clases. Pero toda
+                clase al estar JS basado en prototipos entonces lo compila a
+                prototipos.
+              </p>
+              <p>
+                Las clase no reciben parámetros, tienen un método especial
+                llamado
+                <b>constructor</b> el cual recibe las propiedades. Los métodos
+                no son necesarios sacarlos para ubicarlos en el prototipo dado
+                que JS ya hace esa mejora.
+              </p>
+              <pre><code>    class AnimalClass {
+      constructor(nombre, genero) {
+        this.nombre = nombre;        this.genero = genero;
+      }
+      sonar() {
+        console.log(`Hago sonidos porque estoy vivo, soy ${this.genero}.`);
+      }
+      saludar() { console.log(`Hola me llamo ${nombre}`); }
+    }
+    const tomClass = new AnimalClass("Tom", "macho");
+    tomClass.sonar();
+    console.log(tomClass);</code></pre>
+              <p>
+                La herencia de clase, observar la palabra <b>extends</b>, dentro
+                del constructor participa el método <b>super</b>, existe la
+                sobreescritura de métodos en el ejemplo el método <b>sonar</b>
+              </p>
+              <pre><code>    class PerroClass <b>extends</b> AnimalClass {
+      constructor(nombre, genero, tamanio, enfermo) {
+        // super es un método que manda a llamar al constructor de la clase padre
+        <b>super</b>(nombre, genero);
+        this.tamanio = tamanio;
+        this.enfermo = enfermo;
+        this.raza = null;
+      }
+      // Sobreescritura de métodos
+      <b>sonar</b>() { console.log("Soy un perro y realizo ladridos"); }
+
+      // Métodos propios
+      ladrar() { console.log("Guauuuu Guauu!!!"); }
+      
+      // Método estático
+      static queEres() {
+        console.log( "Los perros somo animales mamiferos que pertenecemos a la familia de los caninos. Somos considerados los mejores amigos del hombre." );
+      }
+      // Métodos getter y setter
+      <b>get</b> getRaza(){ return this.raza; }
+      <b>set</b> setRaza(raza){ this.raza = raza; }      
+    }
+    const pitibull = new PerroClass(
+      "MiniBull", "Hembra", "gigante", true
+    );
+    console.log(pitibull);
+    pitibull.ladrar();</code></pre>
+              <script>
+                class AnimalClass {
+                  constructor(nombre, genero) {
+                    this.nombre = nombre;
+                    this.genero = genero;
+                  }
+                  sonar() {
+                    console.log(
+                      `Hago sonidos porque estoy vivo, soy ${this.genero}.`
+                    );
+                  }
+                  saludar() {
+                    console.log(`Hola me llamo ${nombre}`);
+                  }
+                }
+                const tomClass = new AnimalClass("Tom", "macho");
+                tomClass.sonar();
+                console.log(tomClass);
+
+                // Herencia de clases
+                class PerroClass extends AnimalClass {
+                  constructor(nombre, genero, tamanio, enfermo) {
+                    // super es un método que manda a llamar al constructor de la clase padre
+                    super(nombre, genero);
+                    this.tamanio = tamanio;
+                    this.enfermo = enfermo;
+                    this.raza = null;
+                  }
+                  // Sobreescritura de métodos
+                  sonar() {
+                    console.log("Soy un perro y realizo ladridos");
+                  }
+
+                  // Métodos propios
+                  ladrar() {
+                    console.log("Guauuuu Guauu!!!");
+                  }
+
+                  // Método estático
+                  static queEres() {
+                    console.log(
+                      "Los perros somo animales mamiferos que pertenecemos a la familia de los caninos. Somos considerados los mejores amigos del hombre."
+                    );
+                  }
+
+                  // Métodos getter y setter
+                  get getRaza() {
+                    return this.raza;
+                  }
+                  set setRaza(raza) {
+                    this.raza = raza;
+                  }
+                }
+                const pitibull = new PerroClass(
+                  "MiniBull",
+                  "Hembra",
+                  "gigante",
+                  true
+                );
+                console.log(pitibull);
+                pitibull.ladrar();
+              </script>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion4" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>3.4. Métodos estáticos, getters y setters</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                No se puede crear una clase privada en JS, todas las clases son
+                públicas
+              </p>
+              <p>
+                Un método estático, se puede ejecutar sin necesidad de
+                instanciar la clase, un método se lo define como estático
+                anteponiendo la palabra <b>static</b>. En el subtema previo se
+                observa la declaración de un método estático llamado
+                <i>queEres()</i> su invocación sería:
+              </p>
+              <pre><code>    PerroClass.queEres();</code></pre>
+              <p>
+                Los setters y getters son métodos especiales que permiten
+                establecer y obtener los valores de atributos de la clase.
+                <br />El atributo this.raza = null; a este se le definen dos
+                métodos
+              </p>
+              <pre><code>    get getRaza(){ return this.raza; }
+    set setRaza(raza){ this.raza = raza; } </code></pre>
+              <p>
+                getRaza y setRaza se lo invoca como a un atributo no como a
+                método
+              </p>
+              <pre><code>    pitibull.setRaza = "Grán Danés";
+    console.log(pitibull.getRaza);
+            </code></pre>
+              <script>
+                PerroClass.queEres();
+
+                pitibull.setRaza = "Grán Danés";
+                console.log(pitibull.getRaza);
+              </script>
+            </div>
+          </article>
+        </section>
+        <!-- 
+          section#seccion20.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
+        -->
+      </section>
+    </main>
+    <button class="panel-btn hamburger hamburger--vortex" type="button">
+      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+    </button>
+    <aside class="panel-dom">
+      <nav class="menu-dom">
+        <a href="#seccion1" data-scroll-spy>3.1. Prototipos</a>
+        <a href="#seccion2" data-scroll-spy>3.2. Herencia Prototípica</a>
+        <a href="#seccion3" data-scroll-spy>3.3. Clases y Herencia</a>
+        <a href="#seccion4" data-scroll-spy
+          >3.4. Métodos estáticos, getters y setters</a
+        >
+        <a href="../index.html">Indice de contenidos</a>
+      </nav>
+    </aside>
+    <button class="scroll-top-btn hidden">
+      <img src="./assets/img/toTop.png" alt="arrowUp" />
+    </button>
+    <script src="./assets/js/index_dom.js" type="module"></script>
+  </body>
+</html>

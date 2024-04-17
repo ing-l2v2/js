@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Temporizadores (setTimeout & setInterval), Asincronía y Event Loop, Callbacks,Promesas y Funciones asíncronas (Async/Await)"
+    />
+    <title>Referencias Javascript L2V2 - Programación asíncrona</title>
+    <!-- Parámetros para CEO -->
+    <link rel="canonical" href="https://ing-l2v2.github.io/cv" />
+    <link
+      rel="icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta name="theme-color" content="#F60" />
+    <meta
+      property="og:title"
+      content="Referencias Javascript L2V2 - Programación asíncrona"
+    />
+    <meta
+      property="og:description"
+      content="Temporizadores (setTimeout & setInterval), Asincronía y Event Loop, Callbacks,Promesas y Funciones asíncronas (Async/Await)"
+    />
+    <meta
+      property="og:image"
+      content="https://ing-l2v2.github.io/cv/assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta
+      property="og:url"
+      content="https://ing-l2v2.github.io/cv/index.html"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@leonelvilla" />
+    <!-- Fin de parámetros para CEO -->
+    <link rel="stylesheet" href="./assets/css/hamburgers.css" />
+    <link rel="stylesheet" href="./assets/css/style-cap-06.css" />
+    <link rel="stylesheet" href="../assets/css/style-inicial.css" />
+    <link rel="stylesheet" href="../assets/css/style-cv.css" />
+  </head>
+  <body>
+    <header class="cv-header">
+      <div class="cv-titular">
+        <p class="p-h1">Ing. Leonel Villa Vintimilla</ph1>
+        <p>Ingeniero en Computación</p>
+        <p>Especializado en Sistemas Tecnológicos</p>
+        <p>llvilla@espol.edu.ec &nbsp;&nbsp; - &nbsp;&nbsp; l2v2@outlook.com</p>
+        <p>
+          Teléfonos: (+593) 096 388 2510 &nbsp;&nbsp;-&nbsp;&nbsp; 099 690 2792
+        </p>
+        <p>
+          <a href="https://ing-l2v2.github.io/cv" target="_blank">
+            https://ing-l2v2.github.io/cv
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://www.senescyt.gob.ec/web/guest/consultas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            N° de registro del Senescyt 1021-14-1277156
+          </a>
+        </p>
+      </div>
+      <div class="cv-foto-l2v2">
+        <img src="../assets/img/l2v2.png" alt="" />
+      </div>
+    </header>
+    <main class="cv-main">
+      <section class="cv-seccion">
+        <div class="cv-seccion-h2">
+          <div class="hr-line"></div>
+          <h2>6. Programación Asíncrona</h2>
+        </div>
+
+        <section id="seccion1" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <!--div class="hr-line"></div-->
+          <h3>6.1. Temporizadores (setTimeout & setInterval)</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              JS tiene funciones que permiten lanzar otras acciones luego de
+              transcurrido cierto tiempo o en una n cantidad de veces.
+            </p>
+            <p>
+              setTimeout recibe una callback o función que va a ejecutar y un
+              tiempo expresado en milisegundos, osea, dos parámetros,
+              Ejecutandose una sola vez. <br />
+              El código siguiente el Inicio y el Fin y luego de 3seg su muestra
+              el Ejecutando.
+            </p>
+            <pre><code>    console.log("Inicia el setTimeout");
+    setTimeout(() => {
+      console.log("Ejecutando un setTimeout, esto se ejecuta una sola vez.");
+    }, 3000);
+    console.log("Fin, Posterior al setTimeout");</code></pre>
+            <p>
+              Para cancelar un setTimeout se usa el clearTimeout(varDeTimeout);
+              previamente el setTimeout se debio asignar a una variable con el
+              mismo nombre varDeTimeout.
+            </p>
+            <pre><code>    let varDeTimeout = setTimeout(() => {
+      console.log("Ejecutando un setTimeout, esto se ejecuta una sola vez.");
+    }, 3000);
+    console.log("Fin, Posterior al setTimeout");
+    
+    clearTimeout(varDeTimeout);</code></pre>
+            <p>
+              setInterval similar a setTimeout pero para repetición en
+              intervalos, ejecución infinita o con clearInterval(varDeInterval)
+              solo en asignacion previo a una variable
+            </p>
+            <pre><code>    console.log("Inicia el setInterval");
+    setInterval(() => {
+      let n = 1;
+      console.log("Ejecutando setInterval, esto se ejecuta cada cierto tiempo.");
+    }, 3000);
+    console.log("Fin, Posterior al setInterval");</code></pre>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion2" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>6.2. Asincronía y el Event Loop</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              JS es single thread ejecuta solo una cosa a la vez. No puede
+              realizar operaciones largas como el acceso a la red sin bloquear
+              hilo principal. <br />En solicitudes de datos de una API,
+              dependiendo de la situación, servidor puede tardar un tiempo en
+              procesar solicitud mientras bloquea hilo principal y hace que la
+              página web no responda. Ahí es donde entra en juego la asincronía
+              que permite realizar largas solicitudes de red sin bloquear el
+              hilo principal.
+            </p>
+            <p>
+              JS usa modelo asíncrono y no bloqueante, con un loop de eventos
+              implementado en un sólo hilo para operaciones de entrada/salida.
+            </p>
+            <p>
+              Código Síncrono Bloqueante - Inicio - Uno - Dos - Tres - Fin. url
+              de simulación http://latentflip.com/loupe
+            </p>
+            <pre><code>    /* Código Síncrono Bloqueante */
+    (() => {
+      console.log("Código Síncrono");
+      console.log("Inicio");
+      function dos() {
+        console.log("Dos");
+      }
+      function uno() {
+        console.log("Uno");
+        dos();
+        console.log("Tres");
+      }
+      uno();
+      console.log("Fin");
+    })();  </code></pre>
+            <p>
+              Código Asíncrono No Bloqueante - Inicio - Tres - Fin - Uno - Dos
+            </p>
+            <pre><code>    /* Código Asíncrono No Bloqueante */
+    (() => {
+      console.log("Código Asíncrono");
+      console.log("Inicio");
+      function dos() {
+        setTimeout(() => {
+          console.log("Dos");
+        }, 1000);
+      }
+      function uno() {
+        setTimeout(() => {
+          console.log("Uno");
+        }, 0);
+        dos();
+        console.log("Tres");
+      }
+      uno();
+      console.log("Fin");
+    })();</code></pre>
+            <p></p>
+          </div>
+        </article>
+        </section>
+        
+        <section id="seccion3" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>6.3. Callbacks</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Son funciones que se ejecutan posteriormente a que otra se
+              ejecute. Mecanismo que por excelencia JS usa para invocar algunas
+              de sus funciones. Anidación de callbacks provoca el callback hell.
+              <br />
+              Una funcion autoinvocada recursividad con callback provocaria un
+              callback hell. Solución sería modularizarlo o usar las promesas,
+              generadores o las funciones async. <br />
+              Ej. de uso callback en DOM al agregar un eventListener.
+            </p>
+            <pre><code>    function cuadradoCallback(valor, callback) {
+      setTimeout(() => {
+        callback(valor, valor * valor);
+      }, 0 | (Math.random() * 300));
+    }
+
+    cuadradoCallback(0, (valor, result) => {
+      console.log("Inicia callback");
+      console.log(`Callback ${valor}, ${result}`);
+
+      cuadradoCallback(1, (valor, result) => {
+        console.log(`Callback ${valor}, ${result}`);
+
+        cuadradoCallback(2, (valor, result) => {
+          console.log(`Callback ${valor}, ${result}`);
+
+          cuadradoCallback(3, (valor, result) => {
+            console.log(`Callback ${valor}, ${result}`);
+
+            cuadradoCallback(4, (valor, result) => {
+              console.log(`Callback ${valor}, ${result}`);
+
+              cuadradoCallback(5, (valor, result) => {
+                console.log(`Callback ${valor}, ${result}`);
+              });
+            });
+          });
+        });
+      });
+    }); </code></pre>
+            <p>Referencia http://callbackhell.com</p>
+            <p>
+              Mantener código superficial, el código siguiente tiene dos
+              funciones anonimas
+            </p>
+            <pre><code>    var form = document.querySelector('form')
+    form.onsubmit = <b>function</b> (submitEvent) {
+      var name = document.querySelector('input').value
+      request({
+        uri: "http://example.com/upload",
+        body: name,
+        method: "POST"
+      }, <b>function</b> (err, response, body) {
+        var statusMessage = document.querySelector('.status')
+        if (err) return statusMessage.value = err
+        statusMessage.value = body
+      })
+    }</code></pre>
+            <p>Luego al darle nombre a las funciones anonimas</p>
+            <pre><code>    var form = document.querySelector('form')
+    form.onsubmit = <b>function formSubmit</b> (submitEvent) {
+      var name = document.querySelector('input').value
+      request({
+        uri: "http://example.com/upload",
+        body: name,
+        method: "POST"
+      }, <b>function postResponse</b> (err, response, body) {
+        var statusMessage = document.querySelector('.status')
+        if (err) return statusMessage.value = err
+        statusMessage.value = body
+      })
+    }</code></pre>
+            <p>Moviendo las funciones</p>
+            <pre><code>    document.querySelector('form').onsubmit = <b>formSubmit</b>
+
+    <b>function formSubmit</b> (submitEvent) {
+      var name = document.querySelector('input').value
+      request({
+        uri: "http://example.com/upload",
+        body: name,
+        method: "POST"
+      }, <b>postResponse</b>)
+    }
+
+    <b>function postResponse</b> (err, response, body) {
+      var statusMessage = document.querySelector('.status')
+      if (err) return statusMessage.value = err
+      statusMessage.value = body
+    }</code></pre>
+            <p>
+              MODULARIZAR - Sacando el código repetitivo anterior y convirtiendo
+              en un módulo en un nuevo archivo formuploader.js
+            </p>
+            <pre><code>    module.exports.submit = formSubmit
+
+    function formSubmit (submitEvent) {
+      var name = document.querySelector('input').value
+      request({
+        uri: "http://example.com/upload",
+        body: name,
+        method: "POST"
+      }, postResponse)
+    }
+
+    function postResponse (err, response, body) {
+      var statusMessage = document.querySelector('.status')
+      if (err) return statusMessage.value = err
+      statusMessage.value = body
+    }
+            </code></pre>
+            <p></p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion4" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>6.4. Promesas - Promise (reject - resolve, then y catch)</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Ayuda a resolver Callback hell con manejo de errores. Promesas
+              trabajan con dos recursos principales resolve y reject. Son vistas
+              como if - else. Si la promesa se cumple se ejecuta el resolve caso
+              contrario se ejecuta el método reject
+            </p>
+            <p>Las promesas vinieron a reemplazar a las callback</p>
+            <pre><code>    /* Promesa */
+    function cuadradoPromise(valor) {
+      if (typeof valor !== "number") {
+        return <b>Promise.reject</b>(`Error: el valor << ${valor} >> no es un número.`);
+      }
+      return <b>new Promise((resolve, reject) => {</b>
+        setTimeout(() => {
+          <b>resolve({</b>
+            valor,
+            result: valor * valor,
+          });
+        }, 0 | (Math.random() * 1000));
+      <b>});</b>
+    }
+    cuadradoPromise(0)
+      <b>.then((obj) => {</b>
+        console.log("Inicio Promise");
+        console.log(`Promise: ${obj.valor}, ${obj.result}`);
+        return cuadradoPromise(1);
+      })
+      <b>.then((obj) => {</b>
+        console.log(`Promise: ${obj.valor}, ${obj.result}`);
+        return cuadradoPromise(2);
+      })
+      <b>.then((obj) => {</b>
+        console.log(`Promise: ${obj.valor}, ${obj.result}`);
+        return cuadradoPromise("3");
+      })
+      <b>.then((obj) => {</b>
+        console.log(`Promise: ${obj.valor}, ${obj.result}`);
+        return cuadradoPromise(4);
+      })
+      <b>.then((obj) => {</b>
+        console.log(`Promise: ${obj.valor}, ${obj.result}`);
+        return cuadradoPromise(5);
+      })
+      <b>.then((obj) => {</b>
+        console.log(`Promise: ${obj.valor}, ${obj.result}`);
+        console.log("Fin de la Promise");
+      })
+      <b>.catch((error) => console.error(error));</code></pre></b>
+            <p>El catch gestionará el error en cualquiera de los then</p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion5" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>6.5. Funciones Asíncronas (Async/Await)</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Esperan a que algo se cumpla para seguir ejecución del proceso,
+              trabajan en conjunto con las promesas (no las reemplazan), reforzandolas.
+            </p>
+            <p>
+              A partir de la declaración de una funcion de promise declarada o
+              una arrow function
+            </p>
+            <pre><code>    function cuadradoPromise(valor) {
+      if (typeof valor !== "number") {
+        return <b>Promise.reject</b>(`Error: el valor << ${valor} >> no es un número.`);
+      }
+      return <b>new Promise((resolve, reject) => {</b>
+        setTimeout(() => {
+          <b>resolve({</b>
+            valor,
+            result: valor * valor,
+          });
+        }, 0 | (Math.random() * 1000));
+      <b>});</b>
+    }</code></pre>
+            <p>
+              Para establecer la función como asíncrona se usa la palabra clave
+              <b>async</b> <br />La palabra <b>await</b> define que finalice la
+              ejecución de proceso asíncrono antes de ejecución de la siguiente
+              línea.
+            </p>
+            <pre><code>
+    <b>async</b> function funcionAsincronaDeclarada() {
+      <b>try</b> {
+        console.log("Inicio Async Function");
+        let obj = <b>await</b> cuadradoPromise(0);
+        console.log(`Async Function: ${obj.valor}, ${obj.result}`);
+        obj = <b>await</b> cuadradoPromise(1);
+        console.log(`Async Function: ${obj.valor}, ${obj.result}`);
+        obj = <b>await</b> cuadradoPromise(2);
+        console.log(`Async Function: ${obj.valor}, ${obj.result}`);
+        obj = <b>await</b> cuadradoPromise(3);
+        console.log(`Async Function: ${obj.valor}, ${obj.result}`);
+        obj = <b>await</b> cuadradoPromise(4);
+        console.log(`Async Function: ${obj.valor}, ${obj.result}`);
+        obj = <b>await</b> cuadradoPromise(5);
+        console.log(`Async Function: ${obj.valor}, ${obj.result}`);
+      } <b>catch</b> (error) {
+        console.error(error);
+      }
+    }
+
+    funcionAsincronaDeclarada();</code></pre>
+            <p>para el caso de una función asíncrona expresada sería:</p>
+            <pre><code>    const funcionAsincronaExpresada = <b><u>async</u></b> () => {
+      ... Cuerpo de la función ...
+    }</code></pre><br>
+          </div>
+        </article>
+        </section>
+        <!-- 
+          div.cv-seccion-h3>h3
+          article.cv-articulo>div.cv-card>p
+        -->
+      </section>
+    </main>
+    <button class="panel-btn hamburger hamburger--vortex" type="button">
+      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+    </button>
+    <aside class="panel-dom">
+      <nav class="menu-dom">
+        <a href="#seccion1" data-scroll-spy>6.1. Temporizadores (setTimeout & setInterval)</a> 
+        <a href="#seccion2" data-scroll-spy>6.2. Asincronía y el Event Loop</a> 
+        <a href="#seccion3" data-scroll-spy>6.3. Callbacks</a> 
+        <a href="#seccion4" data-scroll-spy>6.4. Promesas - Promise (reject - resolve, then y catch)</a> 
+        <a href="#seccion5" data-scroll-spy>6.5. Funciones Asíncronas (Async/Await)</a>
+        <a href="../index.html">Indice de contenidos</a>
+      </nav>
+    </aside>
+    <button class="scroll-top-btn hidden">
+      <img src="./assets/img/toTop.png" alt="arrowUp" />
+    </button>
+    <script src="./assets/js/index_dom.js" type="module"></script>
+    <script type="module" src="./assets/js/temporizadores.js"></script>
+  </body>
+</html>

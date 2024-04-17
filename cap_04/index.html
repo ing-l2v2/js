@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Console, Date, Math, operador de cortocircuito, alertas, Expresiones regulares, funciones anónimas, import y export"
+    />
+    <title>
+      Referencia JavaScript L2V2 - Objetos y funciones de JavaScript
+    </title>
+    <!-- Parámetros para CEO -->
+    <link rel="canonical" href="https://ing-l2v2.github.io/cv" />
+    <link rel="icon" href="./assets/img/animal-bird-domestic-svgrepo-com.svg" />
+    <link
+      rel="apple-touch-icon"
+      href="./assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta name="theme-color" content="#F60" />
+    <meta
+      property="og:title"
+      content="Referencia JavaScript L2V2 - Objetos y funciones de JavaScript"
+    />
+    <meta
+      property="og:description"
+      content="Console, Date, Math, operador de cortocircuito, alertas, Expresiones regulares, funciones anónimas, import y export"
+    />
+    <meta
+      property="og:image"
+      content="https://ing-l2v2.github.io/cv/assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta
+      property="og:url"
+      content="https://ing-l2v2.github.io/cv/index.html"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@leonelvilla" />
+    <!-- Fin de parámetros para CEO -->
+    <link rel="stylesheet" href="./assets/css/hamburgers.css" />
+    <link rel="stylesheet" href="./assets/css/style-cap-04.css" />
+    <link rel="stylesheet" href="../assets/css/style-inicial.css" />
+    <link rel="stylesheet" href="../assets/css/style-cv.css" />
+  </head>
+  <body>
+    <header class="cv-header">
+      <div class="cv-titular">
+        <p class="p-h1">Ing. Leonel Villa Vintimilla</p>
+        <p>Ingeniero en Computación</p>
+        <p>Especializado en Sistemas Tecnológicos</p>
+        <p>llvilla@espol.edu.ec &nbsp;&nbsp; - &nbsp;&nbsp; l2v2@outlook.com</p>
+        <p>
+          Teléfonos: (+593) 096 388 2510 &nbsp;&nbsp;-&nbsp;&nbsp; 099 690 2792
+        </p>
+        <p>
+          <a href="https://ing-l2v2.github.io/cv" target="_blank">
+            https://ing-l2v2.github.io/cv
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://www.senescyt.gob.ec/web/guest/consultas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            N° de registro del Senescyt 1021-14-1277156
+          </a>
+        </p>
+      </div>
+      <div class="cv-foto-l2v2">
+        <img src="./assets/img/l2v2.png" alt="" />
+      </div>
+    </header>
+    <main class="cv-main">
+      <section class="cv-seccion">
+        <div class="cv-seccion-h2">
+          <div class="hr-line"></div>
+          <h2>4. Objetos y funciones del lenguaje</h2>
+        </div>
+
+        <section id="seccion1" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <!--div class="hr-line"></div-->
+            <h3>4.1. Objeto console</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>En el objeto console se tienen los métodos principales</p>
+              <pre><code>    console.log(`Lo que se quiere ver en consola`);
+    console.log(console);
+    console.log(window);
+    console.log(document);
+    console.debug(`Mensajes de depuración`);
+    console.warn(`Mensajes warm alertas o avisos`);
+    console.error(`Mensajes de error`);
+    console.info(`Mensajes informativos, muy similares a los log`);</code></pre>
+              <p>Limpiar la consola</p>
+              <pre><code>    console.clear()</code></pre>
+              <p>
+                console.table() imprime objetos (y arreglos) como tablas con
+                formato. <br />Ej.
+                console.table(Object.entries(console).sort());
+              </p>
+              <pre><code>    console.table({
+      Timestamp: new Date().getTime(),
+      OS: navigator["platform"],
+      Navegador: navigator["appCodeName"],
+      Idioma: navigator["language"],
+    });</code></pre>
+              <p>
+                console.group("Title") para crear un grupo colapsable,
+                console.groupCollapsed("Title") para crear un grupo colapsado,
+                admite titulo y finalizar con console.groupEnd()
+              </p>
+              <p>Es posible aplicar estilos CSS básicos</p>
+              <pre><code>    console.log(
+      "%cTexto del mensaje!",
+      "color: #f709bb; font-style: italic; text-decoration: underline; font-size: 2.5em;"
+    );</code></pre>
+              <p>
+                console.time("tagDeDegugging") para iniciar el debugging de las
+                instrucciones de código, termina con
+                console.timeEnd("tagDeDebugging")
+              </p>
+              <p>
+                console.dir(objetos/arrays) para mostrar grandes objetos o
+                arreglos en formato conveniente. Para imprimir xml o html se usa
+                dirxml(), ej. console.dir(window); console.dir(document);
+              </p>
+              <p>
+                Referencia en la url
+                https://programacionymas.com/blog/super-console-log-javascript
+              </p>
+              <script>
+                console.log(console);
+                console.debug();
+                console.warn(`Mensajes warm alertas avisos`);
+                console.error(`Mensajes de error`);
+                console.clear();
+                console.log(
+                  "%cTexto del mensaje!",
+                  "color: #f709bb; font-style: italic; text-decoration: underline; font-size: 2.5em;"
+                );
+                console.info(`Mensajes informativos, muy similares a los log`);
+                console.clear();
+                console.table(Object.entries(console).sort());
+              </script>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion2" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>4.2. Objeto DATE</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Para la creación de un objeto de tipo fecha se usa la palabra
+                clave new
+              </p>
+              <pre><code>    let fecha = new Date();</code></pre>
+              <p>
+                Se puede establecer una fecha mediante la cantidad de
+                milisegundo desde la fecha Ene 1 1970
+              </p>
+              <pre><code>    let fecha = new Date(100000000);</code></pre>
+              <p>
+                Si el parámetro es un String en el formato "YYYY/MM/DD" opcional
+                puede contener la hora en el mismo string como "HH:MM:SS"
+              </p>
+              <pre><code>    fecha = new Date("2024/03/27");
+    fecha = new Date("2024/03/27 05:14:18");</code></pre>
+              <p>Crea un fecha a partir de componentes numéricos</p>
+              <pre><code>    fecha = new Date(y, m, d, h, min, s, ms)</code></pre>
+              <p>
+                Los meses se contabilizan desde el 0 (Enero) al 11 (Diciembre) y
+                los días de la semana del 0 (domingo) al 6 (sábado)
+              </p>
+              <pre><code>    <b>fecha.getMonth()</b>    <b>fecha.getDay()</b></code></pre>
+              <p>
+                <b>getDate()</b> - retorna el número de día del calendario en el
+                mes 1 hasta 28, 29, 30 o 31.
+              </p>
+              <pre><code>   fecha.getDate()</code></pre>
+              <p><b>getFullYear()</b> - Retorna el año en 4 cifras</p>
+              <pre><code>   fecha.getFullYear()</code></pre>
+              <p>
+                Para obtener la hora en formato 24, minutos, segundos y
+                milisegundos se cuenta con:
+              </p>
+              <pre><code>   <b>fecha.getHours()</b>    <b>fecha.getMinutes()</b>    <b>fecha.getSeconds()</b>    <b>fecha.getMilliseconds()</b></code></pre>
+              <p>
+                fecha.<b>toString()</b> retorna fecha con formato "Fri Mar 01
+                2024 09:44:53 GMT-0500 (hora de Ecuador)" como Date().
+                <br />fecha.<b>toDateString()</b> retorna la fecha con el
+                formato "Fri Mar 01 2024". <br />fecha.<b>toLocaleString()</b>
+                retorna la fecha con el formato "1/3/2024, 9:51:15" día/mes/año,
+                hora. <br />fecha.<b>toLocaleDateString()</b> expresa la fecha
+                con el formato "1/3/2024" dia/mes/año <br />
+                fecha.<b>toLocaleTimeString</b> representa "9:54:53"
+                hora:minutos:segundos <br />fecha.<b>toTimeString</b> imprime
+                "09:55:59 GMT-0500 (hora de Ecuador)"
+              </p>
+              <p>
+                fecha.<b>getTimezoneOffset()</b> - retorna el valor 300 para
+                Ecuador, al dividir para 60 se tiene 5 que es la zona horaria
+                respecto a UTC hora de Londres.
+              </p>
+              <p>
+                <b>Date.now()</b> - retorna los segundos transcurridos desde
+                "Ene 1 1970"
+              </p>
+              <p>
+                Fecha.<b>getTime()</b> - Devuelve el UNIX Timestamp: segundos
+                transcurridos desde 1/1/1970.
+              </p>
+              <p>Función para manejar formato de fecha recomendada</p>
+              <pre><code>    function formatoFecha(fecha, formato) {
+      const map = {
+        dd:
+          fecha.getDate() < 10
+            ? "0" + fecha.getDate()
+            : fecha.getDate(),
+        mm:
+          fecha.getMonth() < 9
+            ? "0" + (fecha.getMonth() + 1)
+            : fecha.getMonth() + 1,
+        yy: fecha.getFullYear().toString().slice(-2),
+        aaaa: fecha.getFullYear(),
+      };
+
+      return formato.replace(
+        /dd|mm|yy|aaaa/gi,
+        (matched) => map[matched]
+      );
+    }  
+    formatoFecha(fecha, "dd-mm-aaaa");</code></pre>
+              <script>
+                console.clear();
+                function formatoFecha(fecha, formato) {
+                  const map = {
+                    dd:
+                      fecha.getDate() < 10
+                        ? "0" + fecha.getDate()
+                        : fecha.getDate(),
+                    mm:
+                      fecha.getMonth() < 9
+                        ? "0" + (fecha.getMonth() + 1)
+                        : fecha.getMonth() + 1,
+                    yy: fecha.getFullYear().toString().slice(-2),
+                    aaaa: fecha.getFullYear(),
+                  };
+
+                  return formato.replace(
+                    /dd|mm|yy|aaaa/gi,
+                    (matched) => map[matched]
+                  );
+                }
+                fecha = new Date("2024/03/28 05:14:14");
+                console.log(fecha);
+                console.log("FormatoFecha ", formatoFecha(fecha, "dd-mm-aaaa"));
+              </script>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion3" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>4.3. Objeto Math</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>Es un objeto estático, siempre se invoca anteponiendo Math.</p>
+              <pre><code>     console.table(Math);</code></pre>
+              <script>
+                console.table(Math);
+              </script>
+              <p>
+                Math.abs(number) - valor absoluto <br />
+                Math.ceil(number) - redondear al entero posterior inmediato.
+                <br />
+                Math.floor(number) - redondear al entero anterior. <br />
+                Math.round(number) - redondear al entero inmediato. <br />
+                Math.sqrt(number) - raiz cuadrada de un número. <br />
+                Math.pow(base, exponente) - base a la potencia<br />
+                Math.sign(number) - -1 negativos, 1 positivos, 0 para 0<br />
+                Math.random() - aleatorio entre 0 y 1
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion4" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>4.4. Operador de corto circuito</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Cortocircuito OR - El valor de la izquierda en condicional
+                siempre pueda validar a true, es el valor que se cargará por
+                defecto.
+              </p>
+              <pre><code>    variable = cadena || "Deconocido";
+    variable = false || "Deconocido";</code></pre>
+              <p>
+                Cortocircuito AND - El valor de la izquierda en condicional
+                siempre pueda validar a false, es el valor que se cargará por
+                defecto.
+              </p>
+              <pre><code>    variable = false && "Sin datos";
+    variable = undefined && "Valor derecha";</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion5" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>4.5. alert, confirm y prompt</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                let alerta = windows.alert("Alertar en el cliente browser, un
+                botón para aceptar."); produce un undefined en la salida.
+              </p>
+              <p>
+                let confirmacion = windows.confirm("Confirmar en el cliente
+                browser, 2 botones"); produce un true o un false.
+              </p>
+              <p>
+                let aviso = windows.prompt("cliente browser puede ingresar un
+                valor en un aviso."); almacena el valor ingresado como string,
+                pero null si se pulsa cancelar.
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion6" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>4.6. Expresiones regulares</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Son secuencias de caracteres que forman un patrón de busqueda.
+                <br />
+                https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular <br />
+                https://www.adictosaltrabajo.com/2015/01/29/regexsam/ <br />
+                https://sg.com.mx/content/view/545 <br />
+                https://indexingdata.com/blog/analitica-web/guia-basica-expresiones-regulares/
+              </p>
+              <p>
+                Dos maneras de definir una expresión regular: usando función
+                constructora RegExp la que requiere el patrón y las banderas (g
+                = global todas las coincidencias, i = ignorar mayúsculas y
+                minúsculas) o directamente entre dos barras.
+              </p>
+              <pre><code>   let cadena = "lorem";
+   let expreg = new RegExp("lorem", "g");
+   let expreg2 = /lorem/;</code></pre>
+              <script>
+                let expreg = new RegExp("lorem", "g");
+                let expreg2 = /lorem/g;
+                let cadena =
+                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates architecto lorem molestiae possimus,";
+              </script>
+              <p>
+                La validación del patrón con expreg.test(cadena) retorna true o
+                false <br />
+                Mientras que expreg.exec(cadena) retorna un arreglo
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion7" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>4.7. Funciones anónimas autoejecutables</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Fué un patrón de mucha importancia para la ejecución de código
+                Inmediate Invoque Fuction Express, es una función que engloba
+                todo el código que se requiere ejecutar. No tienen nombre. Usado
+                en los patrones como jquery
+              </p>
+              <pre><code>
+              (function(){
+                console.log("Mi primer IIFE");
+              })();
+              (function(d, w, c){
+                console.log("Mi primer IIFE");
+                condole.log( d );
+                condole.log( w );
+                c.log( "Este es un console.log. Versión Clásica" );
+              })(document, window, console);
+
+              ((function (d, w, c) {
+                c.log("Versión Crockford");
+              })(document, window, console));
+
+              +(function (d, w, c) {
+                c.log("Versión Unaria");
+              })(document, window, console);
+
+              !(function (d, w, c) {
+                c.log("Versión Facebook");
+              })(document, window, console);
+            </code></pre>
+              <script>
+                (function () {
+                  console.log("Mi primer IIFE");
+                })();
+                (function (d, w, c) {
+                  console.log("Mi segundo IIFE");
+                  console.log(d);
+                  console.log(w);
+                  c.log("Este es un console.log, Versión Clásica");
+                })(document, window, console);
+                (function (d, w, c) {
+                  c.log("Versión Crockford");
+                })(document, window, console);
+                +(function (d, w, c) {
+                  c.log("Versión Unaria");
+                })(document, window, console);
+                !(function (d, w, c) {
+                  c.log("Versión Facebook");
+                })(document, window, console);
+              </script>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion8" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>4.8. Módulos (import - export)</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>Módulos pueden invocarse desde otro .js</p>
+              <p>
+                Los archivos js deben ser invocados al final, antes de la
+                etiqueta /body, dado que el código js es bloqueante al invocar
+                los .js se debe usar un nuevo valor al atributo type "module"
+              </p>
+              <pre><code>    &lt;script src="js/module.js" type="module"&gt;&lt;/script&gt;</code></pre>
+              <p>
+                Para navegadores modernos se generaría un nomodule para que no
+                tome en consideración el js
+              </p>
+              <pre><code>    &lt;script src="js/no-module.js" nomodule&gt;&lt;/script&gt;</code></pre>
+              <p>
+                Para navegadores que no soporten +ES6, se generaría invocaciones
+                a un js de una de las dos formas.
+              </p>
+              <pre><code>    &lt;script src="js/no-module.js"&gt;&lt;/script&gt;
+    &lt;script src="js/no-module.js" nomodule&gt;&lt;/script&gt;</code></pre>
+              <p>
+                Desde una archivo constantes.js para habilitar exportación solo
+                de las funciones o constantes especificadas, puede existir una
+                sola función exportada como default a la cual luego del export
+                se le agrega la palabra default
+              </p>
+              <p>
+                La aplicación de export default para variables, constantes y
+                funciones expresadas dado hoisting de JS deben declararse y
+                luego exportarse como default, es decir, comportamiento
+                diferente al de funciones declaradas, clases y objetos.
+              </p>
+              <pre><code>    export const PI = Math.PI;
+    let usuario = "no exportable";
+    export let password = "puede exportarse";
+    export <b>default</b> function saludar(){ console.log("Hola modulos ES6");}
+    
+    const hello = () => console.log("Funcion expresada para exportar como default, el default debe ser unitario");
+
+    export default hello;</code></pre>
+              <p>
+                Para la importación desde un archivo modulos.js, luego de import
+                las llaves y lo que se importa {PI, password} son necesarias
+                porque es como que en un objeto recibiera el contenido
+                importado, las import deben ser las primeras lineas del
+                receptor, luego del from definir la ruta relativa al archivo
+                origen. En el caso de una default debe definirse como primer
+                elemento de recepción. La variable importado puede definirse con
+                un alias con la palabra reservada as
+              </p>
+              <pre><code>    import <b>saludar</b>, {PI, password} from "./constantes.js";
+    import {aritmetica as calculo} from "./ aritmetica.js"</code></pre>
+              <p>Se puede exportar objeto completo</p>
+              <pre><code>    sumar(a, b){  return a + b;  }
+    restar(a, b){  return a - b; }
+    export const aritmetica = {
+      sumar, restar
+    }</code></pre>
+              <p>Del lado de la importación sería</p>
+              <pre><code>    import {aritmetica} FROM "./aritmetica.js";
+    console.log(aritmetica.sumar(3, 4));</code></pre>
+            </div>
+          </article>
+        </section>
+        <!-- 
+          section#seccion20.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
+        -->
+      </section>
+    </main>
+    <button class="panel-btn hamburger hamburger--vortex" type="button">
+      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+    </button>
+    <aside class="panel-dom">
+      <nav class="menu-dom">
+        <a href="#seccion1" data-scroll-spy>4.1. Objeto console</a>
+        <a href="#seccion2" data-scroll-spy>4.2. Objeto DATE</a>
+        <a href="#seccion3" data-scroll-spy>4.3. Objeto Math</a>
+        <a href="#seccion4" data-scroll-spy>4.4. Operador de corto circuito</a>
+        <a href="#seccion5" data-scroll-spy>4.5. alert, confirm y prompt</a>
+        <a href="#seccion6" data-scroll-spy>4.6. Expresiones regulares</a>
+        <a href="#seccion7" data-scroll-spy
+          >4.7. Funciones anónimas autoejecutables</a
+        >
+        <a href="#seccion8" data-scroll-spy>4.8. Módulos (import - export)</a>
+        <a href="../index.html">Indice de contenidos</a>
+      </nav>
+    </aside>
+    <button class="scroll-top-btn hidden">
+      <img src="./assets/img/toTop.png" alt="arrowUp" />
+    </button>
+    <script src="./assets/js/index_dom.js" type="module"></script>
+    <script src="assets/js/modulos.js" type="module"></script>
+  </body>
+</html>

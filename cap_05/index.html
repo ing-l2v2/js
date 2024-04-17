@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ejercicios de lógica de programación" />
+    <title>
+      Referencias Javascript L2V2 - Ejercicios de lógica de programación
+    </title>
+    <!-- Parámetros para CEO -->
+    <link rel="canonical" href="https://ing-l2v2.github.io/cv" />
+    <link
+      rel="icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta name="theme-color" content="#F60" />
+    <meta
+      property="og:title"
+      content="Referencias Javascript L2V2 - Ejercicios de lógica de programación"
+    />
+    <meta
+      property="og:description"
+      content="Ejercicios de lógica de programación. "
+    />
+    <meta
+      property="og:image"
+      content="https://ing-l2v2.github.io/cv/assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta
+      property="og:url"
+      content="https://ing-l2v2.github.io/cv/index.html"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@leonelvilla" />
+    <!-- Fin de parámetros para CEO -->
+    <link rel="stylesheet" href="./assets/css/hamburgers.css" />
+    <link rel="stylesheet" href="./assets/css/style-cap-05.css" />
+    <link rel="stylesheet" href="../assets/css/style-inicial.css" />
+    <link rel="stylesheet" href="../assets/css/style-cv.css" />
+  </head>
+  <body>
+    <header class="cv-header">
+      <div class="cv-titular">
+        <p class="p-h1">Ing. Leonel Villa Vintimilla</p>
+        <p>Ingeniero en Computación</p>
+        <p>Especializado en Sistemas Tecnológicos</p>
+        <p>llvilla@espol.edu.ec &nbsp;&nbsp; - &nbsp;&nbsp; l2v2@outlook.com</p>
+        <p>
+          Teléfonos: (+593) 096 388 2510 &nbsp;&nbsp;-&nbsp;&nbsp; 099 690 2792
+        </p>
+        <p>
+          <a href="https://ing-l2v2.github.io/cv" target="_blank">
+            https://ing-l2v2.github.io/cv
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://www.senescyt.gob.ec/web/guest/consultas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            N° de registro del Senescyt 1021-14-1277156
+          </a>
+        </p>
+      </div>
+      <div class="cv-foto-l2v2">
+        <img src="../assets/img/l2v2.png" alt="" />
+      </div>
+    </header>
+    <main class="cv-main">
+      <section class="cv-seccion">
+        <div class="cv-seccion-h2">
+          <div class="hr-line"></div>
+          <h2>5. Ejercicios de lógica de programación</h2>
+        </div>
+
+        <section id="seccion1" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <!--div class="hr-line"></div-->
+            <h3>5.1 Básicas</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Programar función que cuente el número de caracteres de una
+                cadena de texto, Ej. miFuncion("Hola Mundo") devolverá 10.
+              </p>
+              <pre><code>    const contarCaracteres = (cadena = "") => {
+      if (!cadena) console.warm("No enviaste datos");
+      else console.info(`La cadena "${cadena}" tiene ${cadena.length} caracteres`);
+      return cadena.length;
+    };
+
+    console.log(contarCaracteres("Hola Mundo"));</code></pre>
+              <p>
+                Programar función que devuelva texto recortado según el número
+                de caracteres indicados, ej. miFuncion("Hola Mundo", 4)
+                devolverá "Hola".
+              </p>
+              <pre><code>    const recortarCadena = (cadena = "", numCaracteres = undefined) =>
+      (!cadena)
+        ? console.warm(`Cadena está vacia`)
+        : console.log(`Resultado es "${cadena.slice(0, numCaracteres)}"`);
+
+    recortarCadena("Hola Mundo", 4);</code></pre>
+              <p>
+                Programar función que dado un String te devuelva un Array de
+                textos separados por cierto caracter, ej. miFuncion('hola que
+                tal', ' ') devolverá ['hola', 'que', 'tal'].
+              </p>
+              <pre><code>    const splitCadena = (cadena = "", separador = "") => cadena.split(separador);
+
+    console.log(splitCadena("Hola que tal", " "));</code></pre>
+              <p>
+                Programar función que repita un texto X veces, Ej.
+                miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola
+                Mundo.
+              </p>
+              <pre><code>    const repiteTexto = (cadena = "", numRepite = 0) => cadena.repeat(numRepite);
+
+    console.log(repiteTexto("Hola Mundo ", 3));</code></pre>
+              <p></p>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion2" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>5.2 InvertirPalabras, indexOf en repiteTexto, Palíndromo</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Programar función que invierta las palabras de una cadena de
+                texto, ej. miFuncion("Hola Mundo") devolverá "odnuM aloH"
+              </p>
+              <pre><code>    const invertirCadena = (cadena = "") =>
+      (!cadena)
+        ? "No se puede invertir cadena" 
+        : cadena.split("").reverse().join("");</code></pre>
+              <p>
+                Programar función para contar el número de veces que se repite
+                una palabra en un texto largo, ej. miFuncion("hola mundo adios
+                mundo", "mundo") devolverá 2.
+              </p>
+              <pre><code>    const vecesRepiteTexto = (cadena = "", texto = "") => {
+      if (!cadena || !texto) {
+        console.warn("Definir parrafo y palabra");
+        return [];
+      }
+      let i = 0,
+        contador = 0,
+        posiciones = [];
+      while (i !== -1) {
+        i = cadena.indexOf(texto, i);
+        if (i !== -1) {
+          contador++;
+          posiciones.push(i);
+          i++;
+        }
+      }
+      return posiciones;
+    };
+
+    console.log(vecesRepiteTexto("hola mundo adios mundo", "").length);</code></pre>
+              <p>
+                Programar función que valide si una palabra o frase dada, es un
+                palíndromo (que se lee igual en un sentido que en otro), ej.
+                mifuncion("Salas") devolverá true.
+              </p>
+              <pre><code>    const palindromo = (cadena) =>
+      !cadena
+        ? "No ingreso cadena, no se puede determinar si es palindromo"
+        : cadena === invertirCadena(cadena)
+          ? `La cadena "${cadena}" es una palabra palíndromo`
+          : `"${cadena}" no es palíndromo dado que al invertir es ${cadenaInvertir( cadena )}`;</code></pre>
+              <p>
+                Programar función que elimine cierto patrón de caracteres de un
+                texto dado, ej. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5",
+                "xyz") devolverá "1, 2, 3, 4 y 5.
+              </p>
+              <pre><code>    const eliminarPatron = (cadena = "", patron = "") =>
+      !cadena || !patron
+        ? "No registro la frase o el patron a eliminar"
+        : cadena.replace(new RegExp(patron, "ig"), "");
+
+    console.log(eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz"));</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion3" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>5.3 Random, RegExp Capícua, Factorial</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Programar función que obtenga un número aleatorio entre 501 y
+                600.
+              </p>
+              <pre><code>    const random501_600 = () => Math.round(Math.random() * 100 + 501);</code></pre>
+              <p>
+                Programar función que reciba un número y evalúe si es capicúa o
+                no (que se lee igual en un sentido que en otro), ej.
+                miFuncion(2002) devolverá true.
+              </p>
+              <pre><code>    const capicua = (valor = undefined) => {
+      if (!valor) return "Parámetro valor es requerido";
+      if (typeof valor !== "number") return "Valor debe ser numérico";
+      valor = valor.toString();
+      console.log(typeof valor);
+      let alReves = valor.split("").reverse().join("");
+      if (valor === alReves) return `El valor ${valor} es capícua.`;
+      else return `El valor ${valor} NO es capícua, su reverso es ${alReves}`;
+    };
+
+    console.log(capicua(21012));</code></pre>
+              <p>
+                Programar función que calcule el factorial de un número (El
+                factorial de un entero positivo n, se define como el producto de
+                todos los números enteros positivos desde 1 hasta n), ej.
+                miFuncion(5) devolverá 120.
+              </p>
+              <pre><code>    const factorial = (valor = undefined) => {
+      if (!valor) return "Requiere recibir valor";
+      if (typeof valor !== "number") return "Se requiere un número";
+      valor = Number.parseInt(valor);
+      if (valor <= 1) return 1;
+      if (valor > 1) {
+        valor *= factorial(valor - 1);
+      }
+      return valor;
+    };
+
+    console.log(factorial(6));</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion4" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>5.4. EsPrimo, esPar, CelciusFahrenheit</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Programa una función que determine si un número es primo (aquel
+                que solo es divisible por sí mismo y 1) o no, ej. miFuncion(7)
+                devolverá true.
+              </p>
+              <pre><code>    const esPrimo = (numero = undefined) => {
+      if (!numero || typeof numero !== "number" || numero === 0)
+        return "Debe ingresar un dato numérico diferente de cero";
+      numero = Math.abs(Number.parseInt(numero));
+      let i = numero - 1;
+      while (i > 1) {
+        if (numero % i === 0) return false;
+        i--;
+      }
+      return true;
+    };
+
+    console.log(esPrimo(-1));</code></pre>
+              <p>
+                Programar función que determine si un número es par o impar, ej.
+                miFuncion(29) devolverá Impar.
+              </p>
+              <pre><code>    const esPar = (numero = undefined) => {
+      if (!numero || typeof numero !== "number" || numero === 0)
+        return "Debe ingresar un dato numérico y diferente de cero";
+      numero = Math.abs(Number.parseInt(numero));
+      return numero % 2 === 0 ? "par" : "impar";
+    };
+
+    console.log(esPar(32));</code></pre>
+              <p>
+                Programar función para convertir grados Celsius a Fahrenheit y
+                viceversa, ej. miFuncion(0,"C") devolverá 32°F.
+              </p>
+              <pre><code>    const celciusToFahrenheit = (numero = undefined, conversion = "F") => {
+      if (typeof numero !== "number") return "Debe ingresar un dato numérico";
+      const regex = new RegExp("^[C|F]", "ig");
+      if (!regex.test(conversion)) return "Tipo de conversion incorrecta";
+
+      if (/^F/gi.test(conversion)) {
+        let fahrenheit = (numero * 9) / 5 + 32;
+        fahrenheit = fahrenheit.toFixed(2);
+        return `" ${numero.toFixed(2)}°C " equivalen a " ${fahrenheit}°F "`;
+      }
+      let celcius = ((numero - 32) * 5) / 9;
+      celcius = celcius.toFixed(2);
+      return `" ${numero.toFixed(2)}°F " equivalen a " ${celcius}°C "`;
+    };
+
+    console.log(celciusToFahrenheit(15, "f"));</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion5" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>5.5. RegExp, Date, BinarioDecimal</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Programa una función para convertir números de base binaria a
+                decimal y viceversa, ej. miFuncion(100,2) devolverá 4 base 10.
+              </p>
+              <pre><code>    * Convierte un número de binario a decimal o viceversa.
+    * @param {*} num Número de base diez o binario
+    * @param {*} base Base a la que se convierte 2 conversión a binario, 10 conversión a base diez
+    * @returns String de conversión
+    */
+    const binarioToDecimal = (num = undefined, base = undefined) => {
+      if (
+        num === undefined ||
+        base === undefined ||
+        typeof num !== "number" ||
+        typeof base !== "number"
+      )
+        return `Definir valores de número " ${num} " y de base " ${base} " como numéricos`;
+
+      let regex = new RegExp("^2|10");
+
+      if (!regex.test(base))
+        return "Tipo de conversion incorrecta, solo se admite 2 o 10.";
+
+      regex = new RegExp("^1+(0|1)+$");
+      if (base === 10 && !regex.test(num))
+        return `${num} no admite conversión a base decimal. Binario solo se definen con 0s y 1s.`;
+
+      return base === 10
+        ? isNaN(Number.parseInt(num, 2))
+          ? `${num} = sin conversión en base 10`
+          : `( ${num} )2 = ( ${Number.parseInt(num, 2)} )10`
+        : `( ${num} )10 = ( ${num.toString(2)} )2`;
+    };
+
+    console.log(binarioToDecimal(10100101, 10));
+    console.log(binarioToDecimal(1024, 2));</code></pre>
+              <p>
+                Programa una función que devuelva el monto final después de
+                aplicar un descuento a una cantidad dada, ej. miFuncion(1000,
+                20) devolverá 800.
+              </p>
+              <pre><code>    const aplicaDescuento = (monto, dscto) => {
+      if (
+        monto === undefined ||
+        dscto === undefined ||
+        typeof monto !== "number" ||
+        typeof dscto !== "number"
+      )
+        return `Definir valores de monto " ${monto} " y de descuento " ${dscto} " como numéricos`;
+      if (!(monto > 0 && dscto > 0))
+        return `Monto y descuento deben ser mayores que cero.`;
+      return monto * (1 - dscto / 100);
+    };
+
+    console.log(aplicaDescuento(100, 20));</code></pre>
+              <p>
+                Programa una función que dada una fecha válida determine cuantos
+                años han pasado hasta el día de hoy, ej. miFuncion(new
+                Date(1984,4,23)) devolverá 35 años (en 2020)
+              </p>
+              <p>
+                El operador instanceof verifica si un objeto en su cadena de
+                prototipos contiene la propiedad prototype de un constructor.
+              </p>
+              <pre><code>    const aniosDesde = (fecha = undefined) => {
+      if (fecha === undefined || !fecha instanceof Date)
+        return "Fecha mal definida";
+      let anios = new Date().getFullYear() - fecha.getFullYear();
+      return anios;
+    };
+
+    console.log(aniosDesde(new Date(1971, 4, 2)));</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion6" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>5.6. Arreglos y RegExp</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Programa una función que dada una cadena de texto cuente el
+                número de vocales y consonantes, ej. miFuncion("Hola Mundo")
+                devuelva Vocales: 4, Consonantes: 5.
+              </p>
+              <pre><code>    const contarLetras = (cadena = "") => {
+      if (!cadena || typeof cadena !== "string")
+        return `variable cadena ${cadena} no definida o de tipo erroneo`;
+
+      let vocales = 0,
+        consonantes = 0;
+      cadena = cadena.toLowerCase();
+      for (let letra of cadena) {
+        if (/[aeiouáéíóúü]/.test(letra)) vocales++;
+        if (/[bcdfghjklmnñpqrstvwxyz]/.test(letra)) consonantes++;
+      }
+      return { cadena, vocales, consonantes };
+    };
+
+    console.log(contarLetras("Hola mundo"));</code></pre>
+              <p>
+                Programar función que valide que un texto sea un nombre válido,
+                ej. miFuncion("Jonathan MirCha") devolverá verdadero.
+              </p>
+              <pre><code>    const validarNombre = (nombre) => {
+      if (!nombre) return `No ingresaste un nombre`;
+      if (typeof nombre !== "string")
+        return `El vlor ${nombre} ingresado NO es una cadena de texto.`;
+
+      let regex = /^[a-zñÑáéíóúü]+[\s]?[a-zA-ZñÑáéíóúü]+$/gi;
+      return regex.test(nombre)
+        ? `${nombre.toUpperCase()}, es un nombre válido`
+        : `${nombre}, NO es un nombre válido`;
+    };
+
+    console.log(validarNombre("LEONEL Villa"));</code></pre>
+              <p>
+                Programar función que valide que un texto sea un email válido,
+                ej. miFuncion("jonmircha@gmail.com") devolverá verdadero.
+              </p>
+              <pre><code>    const validarEmail = (email) => {
+      if (!email) return `No ingresaste un email`;
+      if (typeof email !== "string")
+        return `El vlor ${email} ingresado NO es una cadena de texto.`;
+
+      let regex =
+        /^([a-z0-9_-]+[.]?)+([a-z0-9_-]+)+(@){1}([a-z0-9_-]+[.]?){1,2}(([a-z]){2,3}[.]?){1}([a-z]{2})?$/i;
+      return regex.test(email)
+        ? `${email.toLowerCase()}, es un email válido`
+        : `${email}, NO es un email válido`;
+    };
+
+    console.log("Email", validarEmail("leonel.villa.-1971@nivel1.nivel2.com.ec"));</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion7" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>5.7. Arreglos - filter, map, spread</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Dos funciones creadas para validar que sea arreglo y que sea
+                numérico
+              </p>
+              <pre><code>    const arrValidaNoEmpty = (arr = undefined) => {
+      let error = undefined;
+      if (arr === undefined)
+        error = `Arreglo está undefined.
+      `;
+      if (error === undefined && !arr instanceof Array)
+        error = "Valor ingresado no es un arreglo";
+      if (error === undefined && arr.length === 0) error = "El arreglo esta vacio.";
+      return error;
+    };
+
+    const arrEsNumeros = (arr = undefined) => {
+      let error = undefined;
+      if (arrValidaNoEmpty(arr) === undefined) {
+        let noNumber = 0;
+        for (let num of arr) {
+          if (typeof num !== "number") {
+            ++noNumber;
+            error = `${noNumber} elementos del arraglo, no numérico`;
+          }
+        }
+      }
+      return error;
+    };
+
+    const arrMinDosElem = (arr = undefined) => {
+      let error = undefined, minElem = 2;
+      if (arrValidaNoEmpty(arr) === undefined) {
+        if (arr.length &lt; minElem) error = `El arreglo debe tener mínimo ${minElem} elementos`;
+      }
+      return error;
+    };</code></pre>
+              <p>
+                Programar función que dado un array numérico devuelve otro array
+                con los números elevados al cuadrado, ej. mi_funcion([1, 4, 5])
+                devolverá [1, 16, 25].
+              </p>
+              <pre><code>    const devolverCuadrado = (arr = undefined) => {
+      let cuadrado = [];
+      let error = arrEsNumeros(arr)
+      if (error !== undefined) return { error, cuadrado };
+      // arr.forEach((elem) => cuadrado.push(Math.pow(elem, 2)));
+      cuadrado = arr.<b>map((elem) => Math.pow(elem, 2))</b>;
+      return { error: "", cuadrado };
+    };</code></pre>
+              <p>
+                Programar función que dado un array devuelva el número mas alto
+                y el más bajo de dicho array, ej. miFuncion([1, 4, 5, 99, -60])
+                devolverá [99, -60].
+              </p>
+              <pre><code>    const altoBajo = (arr = undefined) => {
+      const minMax = [];
+      let min = Number.POSITIVE_INFINITY,
+        max = Number.NEGATIVE_INFINITY;
+      let error = arrEsNumeros(arr);
+      if (error !== undefined) return { error, cuadrado };
+      // if (error !== undefined) return { error, minMax };
+      // arr.forEach((elem) => {
+      //   if (elem <= min) min = elem;
+      //   if (elem >= max) max = elem;
+      // });
+      min = Math.min(<b>...arr</b>);
+      max = Math.max(<b>...arr</b>);
+      minMax.push(min);
+      minMax.push(max);
+      return { error, minMax };
+    };</code></pre>
+              <p>
+                Programar función que dado un array de números devuelva un
+                objeto con 2 arreglos en el primero almacena los números pares y
+                en el segundo los impares, ej. miFuncion([1,2,3,4,5,6,7,8,9,0])
+                devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
+              </p>
+              <pre><code>    const paresImparesArr = (arr = undefined) => {
+      let objSalida = { error: arrEsNumeros(arr), pares: [], impares: [] };
+
+      if (objSalida.error !== undefined) return { objSalida };
+      // for (let elem of arr) {
+      //   elem % 2 === 0 ? objSalida.pares.push(elem) : objSalida.impares.push(elem);
+      // }
+      objSalida.pares = arr.<b>filter((elem) => elem % 2 === 0)</b>;
+      objSalida.impares = arr.<b>filter((elem) => elem % 2 !== 0)</b>;
+      return objSalida;
+    };
+
+    console.log(paresImparesArr([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion8" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>5.8. Array - Objetos, ascDescArray</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Programar función que dado un arreglo de números devuelva un
+                objeto con dos arreglos, el primero tendrá los numeros ordenados
+                en forma ascendente y el segundo de forma descendiente, ej.
+                miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc:
+                [8,7,7,6,5] }.
+              </p>
+              <pre><code>    const ascDescArr = (arr = undefined) => {
+      const objSalida = { error: arrEsNumeros(arr), asc: [], desc: [] };
+      if (objSalida.error !== undefined) return objSalida;
+
+      objSalida.asc = Array.from(arr);
+      objSalida.asc.sort((a, b) => a - b);
+      objSalida.desc = Array.<b>from(objSalida.asc).reverse()</b>;
+      return objSalida;
+    };
+
+    console.log(ascDescArr([7, 5, 7, 8, 6]));</code></pre>
+              <p>
+                Programar función que dado un arreglo de elementos, elimine los
+                duplicados, ej. miFuncion(["x", 10, "x", 2, "10", 10, true,
+                true]) devolverá ["x", 10, 2, "10", true].
+              </p>
+              <pre><code>    const quitarDuplicados = (arr = undefined) => {
+      let error = undefined;
+      const objSalida = { error: arrMinDosElem(arr), arr, sinDupli: [] };
+      if (objSalida.error !== undefined) return objSalida;
+      objSalida.sinDupli = arr.filter(
+        (elem, indice, self) => self.indexOf(elem) === indice
+      );
+      return objSalida;
+    };
+    console.log(quitarDuplicados(["x", 10, "x", 2, "10", 10, true, true, "10"]));</code></pre>
+              <p>
+                SOLUCION 2 Usando tipo de dato SET, dado que no acepta
+                duplicados es reemplazar la aplicación del filter por
+              </p>
+              <pre><code>    objSalida.sinDupli = [...new Set(arr)];</code></pre>
+              <p>
+                Programar función que dado un arreglo de números obtenga el
+                promedio, ej. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.
+              </p>
+              <pre><code>    const avgArr = (arr = undefined) => {
+      const objSalida = { error: arrEsNumeros(arr), promedio: 0 };
+      if (objSalida.error !== undefined) return objSalida;
+
+      // for (let elem of arr) objSalida.promedio += elem;
+
+      objSalida.promedio = arr.<b>reduce((a, b) => a + b, 0)</b>;
+      objSalida.promedio /= arr.length;
+
+      return objSalida;
+    };
+
+    console.log(avgArr([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]));</code></pre>
+              <p>SOLUCION 2 también con reduce</p>
+              <pre><code>    const avgArr = (arr = undefined) => {
+      const objSalida = { error: arrEsNumeros(arr), promedio: 0 };
+      if (objSalida.error !== undefined) return objSalida;
+
+      objSalida.promedio = arr.reduce((total, elem, indice, arr) => {
+        total += elem;
+        if (indice === arr.length - 1) {
+          return `El promedio de ${arr.join(" + ")} es ${total / arr.length}`;
+        } else {
+          return total;
+        }
+      });
+
+      return objSalida;
+    };</code></pre>
+              <p>SOLUCION 3 también con reduce</p>
+              <pre><code>
+    const avgArr = (arr = undefined) => {
+      const objSalida = { error: arrEsNumeros(arr), promedio: 0 };
+      if (objSalida.error !== undefined) return objSalida;
+
+      objSalida.promedio = arr.reduce((total, elem, indice, arr) => {
+        total += elem;
+        if (indice === arr.length - 1) {
+          return total / arr.length;
+        } else {
+          return total;
+        }
+      });
+      return objSalida;
+    };</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion9" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>5.9. Programación Orientada a Objetos</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Programa una clase llamada Pelicula.
+                <br />
+                La clase recibirá un objeto al momento de instanciarse con los
+                siguentes datos: id de la película en IMDB, titulo, director,
+                año de estreno, país o países de origen, géneros y calificación
+                en IMBD.
+              </p>
+              <ul>
+                <li>Todos los datos del objeto son obligatorios.</li>
+                <li>
+                  Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean
+                  letras y los 7 restantes números.
+                </li>
+                <li>Valida que el título no rebase los 100 caracteres.</li>
+                <li>Valida que el director no rebase los 50 caracteres.</li>
+                <li>
+                  Valida que el año de estreno sea un número entero de 4
+                  dígitos.
+                </li>
+                <li>
+                  Valida que el país o paises sea introducidos en forma de
+                  arreglo.
+                </li>
+                <li>
+                  Valida que los géneros sean introducidos en forma de arreglo.
+                </li>
+                <li>
+                  Valida que los géneros introducidos esten dentro de los
+                  géneros aceptados*.
+                </li>
+                <li>
+                  Crea un método estático que devuelva los géneros aceptados*.
+                </li>
+                <li>
+                  Valida que la calificación sea un número entre 0 y 10 pudiendo
+                  ser decimal de una posición.
+                </li>
+                <li>
+                  Crea un método que devuelva toda la ficha técnica de la
+                  película.
+                </li>
+                <li>
+                  Apartir de un arreglo con la información de 3 películas genera
+                  3 instancias de la clase de forma automatizada e imprime la
+                  ficha técnica de cada película.
+                </li>
+              </ul>
+              <p>
+                * Géneros Aceptados: Action, Adult, Adventure, Animation,
+                Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy,
+                Film Noir, Game-Show, History, Horror, Musical, Music, Mystery,
+                News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show,
+                Thriller, War, Western.
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <!-- 
+          section#seccion20.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
+        -->
+      </section>
+    </main>
+    <button class="panel-btn hamburger hamburger--vortex" type="button">
+      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+    </button>
+    <aside class="panel-dom">
+      <nav class="menu-dom">
+        <a href="#seccion1" data-scroll-spy>5.1. Básicas</a>
+        <a href="#seccion2" data-scroll-spy
+          >5.2. InvertirPalabras, indexOf en repiteTexto, Palíndromo</a
+        >
+        <a href="#seccion3" data-scroll-spy
+          >5.3. Random, RegExp Capícua, Factorial</a
+        >
+        <a href="#seccion4" data-scroll-spy
+          >5.4. EsPrimo, esPar, CelciusFahrenheit</a
+        >
+        <a href="#seccion5" data-scroll-spy
+          >5.5. RegExp, Date, BinarioDecimal</a
+        >
+        <a href="#seccion6" data-scroll-spy>5.6. Arreglos y RegExp</a>
+        <a href="#seccion7" data-scroll-spy
+          >5.7. Arreglos - filter, map, spread</a
+        >
+        <a href="#seccion8" data-scroll-spy
+          >5.8. Array - Objetos, ascDescArray</a
+        >
+        <a href="#seccion9" data-scroll-spy
+          >5.9. Programación Orientada a Objetos</a
+        >
+        <a href="../index.html">Indice de contenidos</a>
+      </nav>
+    </aside>
+    <button class="scroll-top-btn hidden">
+      <img src="./assets/img/toTop.png" alt="arrowUp" />
+    </button>
+    <script src="./assets/js/index_dom.js" type="module"></script>
+    <script src="./assets/js/ejercicios01.js" type="module"></script>
+  </body>
+</html>

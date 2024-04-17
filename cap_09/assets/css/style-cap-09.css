@@ -1,0 +1,143 @@
+.seccion {
+  /*padding: 2rem;
+  padding-top: 2rem; */
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  /* min-height: 65vh; */
+}
+.panel-btn {
+  position: fixed;
+  z-index: 99;
+  bottom: 0.8vh;
+  right: 0.8vw;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-light-5);
+}
+.panel-dom {
+  position: fixed;
+  z-index: 98;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  background-color: var(--bg-hard-1-95);
+  color: var(--bg-light-5-7);
+  /* Ubicar el panel -100% en y para desaparecerlo*/
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.5s ease, opacity 1.2s ease;
+  transform: translate(0, -100%);
+  transform: translate(0, 100%);
+  transform: translate(100%, 0);
+  transform: translate(-100%, 0);
+}
+.panel-dom.esta-activo {
+  transform: translate(0, 0);
+  opacity: 1;
+  visibility: visible;
+}
+.menu-dom {
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+.menu-dom a {
+  padding: 2vh;
+  width: inherit;
+  display: block;
+  font-size: 3vh;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.menu-dom a:hover {
+  font-weight: bolder;
+  color: var(--bg-hard-1-95);
+  background-color: var(--bg-light-4);
+}
+/********** ScrollTopButton *********/
+.scroll-top-btn {
+  position: fixed;
+  z-index: 99;
+  padding: 0;
+  bottom: 0.8vh;
+  right: calc(3.65rem + 0.8vw);
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  justify-content: center;
+  background-color: var(--bg-light-5);
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+.scroll-top-btn:hover {
+  background-color: var(--bg-half-3-7);
+  transition: all 0.3s ease-out;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+/* ***** ScrollSpy ***** */
+@media screen and (min-width: 1200px) {
+  body {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 38vh auto;
+    grid-template-areas:
+      "header header"
+      "main panel";
+  }
+  main {
+    grid-area: main;
+  }
+  .cv-header {
+    grid-area: header;
+  }
+  .panel-dom {
+    grid-area: panel;
+    align-self: start;
+    position: sticky;
+    top: 0rem;
+    justify-content: flex-start;
+    transform: translate(0, 0);
+    opacity: 1;
+    visibility: visible;
+    background-color: var(--bg-hard-1);
+  }
+  .panel-btn {
+    display: none;
+  }
+  .menu-dom {
+    justify-content: start;
+    text-align: right;
+    background-color: var(--bg-hard-1);
+  }
+  .menu-dom a {
+    padding-top: 0.865vh;
+    padding-bottom: 0.853vh;
+    font-size: 1.899628162vh;
+  }
+  .menu-dom a:hover,
+  .menu-dom a.active {
+    color: var(--bg-hard-1);
+    background-color: var(--bg-light-4);
+  }
+  .scroll-top-btn {
+    right: initial;
+    left: 0.8vw;
+  }
+}

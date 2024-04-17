@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="This, call, apply, bind y JSON en JS" />
+    <title>Referencias JS L2V2 - This, call, apply, bind y JSON en JS</title>
+    <!-- Parámetros para CEO -->
+    <link rel="canonical" href="https://ing-l2v2.github.io/cv" />
+    <link
+      rel="icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta name="theme-color" content="#F60" />
+    <meta
+      property="og:title"
+      content="Referencias JS L2V2 - This, call, apply, bind y JSON"
+    />
+    <meta
+      property="og:description"
+      content="This, call, apply, bind y JSON en JS"
+    />
+    <meta
+      property="og:image"
+      content="https://ing-l2v2.github.io/cv/assets/img/animal-bird-domestic-svgrepo-com.svg"
+    />
+    <meta
+      property="og:url"
+      content="https://ing-l2v2.github.io/cv/index.html"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@leonelvilla" />
+    <!-- Fin de parámetros para CEO -->
+    <link rel="stylesheet" href="./assets/css/hamburgers.css" />
+    <link rel="stylesheet" href="./assets/css/style-cap-08.css" />
+    <link rel="stylesheet" href="../assets/css/style-inicial.css" />
+    <link rel="stylesheet" href="../assets/css/style-cv.css" />
+  </head>
+  <body>
+    <header class="cv-header">
+      <div class="cv-titular">
+        <p class="p-h1">Ing. Leonel Villa Vintimilla</p>
+        <p>Ingeniero en Computación</p>
+        <p>Especializado en Sistemas Tecnológicos</p>
+        <p>llvilla@espol.edu.ec &nbsp;&nbsp; - &nbsp;&nbsp; l2v2@outlook.com</p>
+        <p>
+          Teléfonos: (+593) 096 388 2510 &nbsp;&nbsp;-&nbsp;&nbsp; 099 690 2792
+        </p>
+        <p>
+          <a href="https://ing-l2v2.github.io/cv" target="_blank">
+            https://ing-l2v2.github.io/cv
+        </p>
+        <p>
+          <a
+            href="https://www.senescyt.gob.ec/web/guest/consultas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            N° de registro del Senescyt 1021-14-1277156
+          </a>
+        </p>
+      </div>
+      <div class="cv-foto-l2v2">
+        <img src="../assets/img/l2v2.png" alt="" />
+      </div>
+    </header>
+    <main class="cv-main">
+      <section class="cv-seccion">
+        <div class="cv-seccion-h2">
+          <div class="hr-line"></div>
+          <h2>8. This, call, apply, bind y JSON en JS</h2>
+        </div>
+        <section id="seccion1" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <!--div class="hr-line"></div-->
+          <h3>8.1. This</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Cuando se llama a una función en el ámbito global, this hace
+              referencia de forma predeterminada al objeto global pero como
+              globalthis (window en el navegador, o global en Node.js).
+            </p>
+            <pre><code>    console.log(globalThis === window);
+    console.log(this !== window);
+    globalThis.nomvar = "Contexto Global";
+    console.log(window.nomvar, globalThis.nomvar);
+    function imprimir(){
+      console.log(globalThis.nomvar);
+    }
+    imprimir();
+
+    const obj = {
+      nomvar: "Contexto objeto",
+      imprimir: function () {
+        console.log(this.nomvar);
+      },
+    };
+    obj.imprimir();   // en consola "Contexto objeto"</code></pre>
+            <p>
+              Una función definia en ambiente global y un objeto que la invoca
+              el this toma el ambiente del obj2
+            </p>
+            <pre><code>    function imprimir2() {
+      console.log(this.nomvar);
+    }
+    const obj2 = {
+      nomvar: "Contexto objeto 2",
+      imprimir2,
+    };
+    obj2.imprimir2();</code></pre>
+            <p>
+              La arrow function no maneja su propio scope sino el del objeto
+              global, generando como error Uncaught TypeError: Cannot read
+              properties of undefined (reading 'nom_variable') <br />
+              Usar funciones anonimas en objetos y evitar crear arrow functions
+              dado que no proveen scope
+            </p>
+            <pre><code>    const obj3 = {
+      nomvar: "Contexto objeto 3",
+      imprimir: () => {
+        console.log(globalThis.nomvar);
+      },
+      subobj3: {
+        nomvar: "Contexto sub objeto 3",
+        imprimir: () => {
+          console.log(this.nomvar);
+        },
+      },
+    };
+    obj3.imprimir();
+    obj3.subobj3.imprimir();</code></pre>
+            <p>
+              Cambio en return comentado realiza que la instancia al ejecutar
+              como funcion invoque al obj global provocando un error. return
+              comentado al crear instancias de la clase Persona imprime el
+              contenido de variable. función de retorno se invoca con la
+              instancia como función lito() pero como es una función argumentada
+              y no tiene la variable en su scope entonces genera error "Uncaught
+              TypeError: Cannot read properties of undefined", para lo cual con
+              un return de arrow function no ocurriria
+            </p>
+            <pre><code>    function Persona(nom) {
+      this.nom = nom;
+      //return console.log(this.nom);
+      /* Comentado 
+      return function () {
+        console.log(this.nom);
+      };
+      */
+      return () => console.log(this.nom);
+    }
+    const lito = new Persona("Leonel objPersona");
+    lito();</code></pre>
+            <p></p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion2" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>8.2. Métodos call, apply y bind</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>call y apply son muy similares</p>
+            <p>
+              Método call -<br />
+              Usando el método call, podemos invocar una función, pasando un
+              valor que será tratado como this dentro de ella.
+            </p>
+            <pre><code>    const objcall = {
+      myName: "khriztianmoreno",
+      printName: function () {
+        console.log(this.myName);
+      },
+    };
+    objcall.printName(); // khriztianmoreno
+    const newObj = {
+      myName: "mafeserna",
+    };
+    objcall.printName.call(newObj); //mafeserna</code></pre>
+            <p>
+              El primer argumento del método call es el valor al que apunta this
+              dentro de la función, para pasar argumentos adicionales a esa
+              función, podemos comenzar a pasarlo desde el segundo argumento del
+              método call.
+            </p>
+            <pre><code>    function foo(param1, param2) {}
+    foo.call(thisObj, arg1, arg2);</code></pre>
+            <p>
+              Método apply - <br />La función apply es muy similar a la función
+              call. La única diferencia entre call y apply es la diferencia en
+              cómo se pasan los argumentos.
+            </p>
+            <ol>
+              <li>
+                call — pasamos argumentos como valores individuales, comenzando
+                desde el segundo argumento
+              </li>
+              <li>
+                apply — los argumentos adicionales se pasarán como un arreglo
+              </li>
+            </ol>
+            <pre><code>    function sayHello(greet, msg) {
+      console.log(`${greet} ${this.name} ! ${msg}`);
+    }
+    const objapply = {
+      name: "khriztianmoreno",
+    };
+    // Call
+    sayHello.call(objapply, "Hello", "Good Morning");
+    // Apply
+    sayHello.apply(objapply, ["Hello", "Good Morning"]);</code></pre>
+            <p>
+              Método bind - <br />A diferencia de los métodos call y apply, bind
+              no invocará la función directamente, sino que cambiará el valor
+              this dentro de la función y devolverá la instancia de la función
+              modificada. Pudiendose invocar la función devuelta posteriormente.
+              <br />
+              La función bind (enlace) crea una copia de una función con un
+              nuevo valor this presente dentro de la función que llama.
+            </p>
+            <pre><code>    function sayHelloBind(greet) {  
+      console.log(`${greet} ${this.name}`);
+    }
+    const objBind = { name: "khriztianmoreno" };
+    // it won't invoke, it just returns back the new function instance
+    const newFunc = sayHelloBind.bind(objBind, "Hello");
+    newFunc(); // khriztianmoreno</code></pre>
+            <p>
+              Pasar argumentos adicionales en bind funciona de manera similar al
+              método call, podemos pasar argumentos adicionales como valores
+              individuales a partir del segundo argumento del método bind,
+              podemos pasar argumentos adicionales de dos formas:
+            </p>
+            <ol>
+              <li>
+                Al llamar al método bind en sí mismo, podemos pasar argumentos
+                adicionales junto con el valor de this a esa función.
+              </li>
+              <li>
+                Otra forma es que podemos pasar argumentos adicionales mientras
+                invocamos la función de retorno del método bind.
+              </li>
+            </ol>
+            <pre><code>    function sayHelloBind(greet) {
+      console.log(`${greet} ${this.name}`);
+    }
+    const objBind = { name: "khriztianmoreno" };
+    
+    const newFunc1 = sayHelloBind.bind(obj, "Hello");
+    newFunc1(); // Hello khriztianmoreno
+
+    const newFunc2 = sayHelloBind.bind(obj);
+    newFunc2("Hello"); // Hello khriztianmoreno</code></pre>
+            <p>
+              No podemos usar métodos call, apply y bind en funciones flecha
+              para cambiar el valor de this, porque las funciones de flecha no
+              tienen su propio contexto this.
+            </p>
+            <p>
+              Nota: Si se invoca una función sin ningún thisObjArgumento,
+              JavaScript considera esta propiedad como un objeto global.
+            </p>
+          </div>
+        </article>
+        </section>
+
+        <section id="seccion3" class="seccion" data-scroll-spy>
+        <div class="cv-seccion-h3">
+          <h3>8.3. JSON JavaScript Object Notation</h3>
+        </div>
+        <article class="cv-articulo">
+          <div class="cv-card">
+            <p>
+              Es un formato ligero de intercambio de datos, página oficial
+              https://www.json.org/json-es.html <br />
+              <b>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'texto' &nbsp;&nbsp;&nbsp; ->
+                &nbsp;&nbsp;&nbsp;elemento JS
+                &nbsp;&nbsp;&nbsp;=&gt;&nbsp;&nbsp;&nbsp; JSON.parse('{}')
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elemento JS &nbsp;&nbsp;&nbsp; ->
+                &nbsp;&nbsp;&nbsp; 'texto' &nbsp;&nbsp;&nbsp; =&gt;
+                &nbsp;&nbsp;&nbsp; JSON.stringify({})
+              </b>
+            </p>
+            <p>
+              JSON.parse('texto a convertir a elemento JS') pudiendo convertir
+              'String', number, boolean, null, {}, [] pero no puede convertir
+              undefined
+            </p>
+            <pre><code>    const jsonText = '{"cadena": "Leonel", "numero": 53, "booleano": true, "arreglo": ["correr", "programar", "cocinar"], "objeto": { "twitter": "@LeonelVillaV1", "email": "llvilla@espol.edu.ec" }, "nulo": null}';
+    const json2 = JSON.parse(jsonText);
+    console.log(json2);
+    console.log(JSON.parse('"Hola mundo"'));</code></pre>
+            <p>
+              JSON.stringify(elemento a convertir), recibe un dato de JS y lo
+              convierte a cadena de texto de tipo JSON
+            </p>
+            <pre><code>    const jsonObj = {
+      cadena: "Leonel",  numero: 53,  booleano: true,
+      arreglo: ["correr", "programar", "cocinar"],
+      objeto: {
+        twitter: "@LeonelVillaV1",  email: "llvilla@espol.edu.ec",
+      },  nulo: null,
+    };
+    const json = JSON.stringify(jsonObj);
+    console.log(json);</code></pre>
+            <p>
+              Si copiamos y pegamos el resultado del console log en un archivo
+              con extensión json se obtiene
+            </p>
+            <pre><code>    {
+      "cadena": "Leonel",
+      "numero": 53,
+      "booleano": true,
+      "arreglo": ["correr", "programar", "cocinar"],
+      "objeto": { "twitter": "@LeonelVillaV1", "email": "llvilla@espol.edu.ec" },
+      "nulo": null
+    }</code></pre>
+            <p>
+              Las técnicas para leer los archivos json en el js de los
+              navegadores se tiene el API de fetch o el API de Ajax, del lado
+              del servidor la lectura es con el readFile.
+            </p>
+            <p>
+              Libro recomendado para la gramática de JS
+              https://eloquentjavascript.net/ o su versión en español
+              https://eloquent-javascript-es.vercel.app/
+            </p>
+          </div>
+        </article>
+        </section>
+        <!-- 
+          section#seccion20.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
+        -->
+      </section>
+    </main>
+    <button class="panel-btn hamburger hamburger--vortex" type="button">
+      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+    </button>
+    <aside class="panel-dom">
+      <nav class="menu-dom">
+        <a href="#seccion1" data-scroll-spy>8.1. This</a>
+        <a href="#seccion2" data-scroll-spy>8.2. Métodos call, apply y bind</a>
+        <a href="#seccion3" data-scroll-spy>8.3. JSON JavaScript Object Notation</a>
+        <a href="../index.html">Indice de contenidos</a>
+      </nav>
+    </aside>
+    <button class="scroll-top-btn hidden">
+      <img src="./assets/img/toTop.png" alt="arrowUp" />
+    </button>
+    <script src="./assets/js/index_dom.js" type="module"></script>
+    <script type="module" src="./assets/js/this.js"></script>
+  </body>
+</html>

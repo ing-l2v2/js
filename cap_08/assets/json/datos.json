@@ -1,0 +1,8 @@
+{
+  "cadena": "Leonel",
+  "numero": 53,
+  "booleano": true,
+  "arreglo": ["correr", "programar", "cocinar"],
+  "objeto": { "twitter": "@LeonelVillaV1", "email": "llvilla@espol.edu.ec" },
+  "nulo": null
+}
