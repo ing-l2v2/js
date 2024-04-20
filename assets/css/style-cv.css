@@ -196,6 +196,14 @@
   display: inline-block;
   z-index: 2;
   box-shadow: 0.3vw 0.3vw 0.6vw var(--bg-half-3-7);
+  transition: all 0.7s ease;
+}
+.cv-seccion .cv-seccion-h3 a {
+  text-decoration: none;
+}
+.cv-seccion .cv-seccion-h3 h3:hover {
+  background-color: var(--bg-hard-1-95);
+  color: var(--bg-light-5-7);
 }
 .cv-articulo {
   margin: 0 2vw;
@@ -251,9 +259,17 @@
 .cv-articulo .cv-instruccion span:nth-child(3) {
   margin-left: 4vw;
 }
-.cv-articulo .cv-card > ul > li {
+.cv-articulo .cv-card ul li {
   font-size: 1.6vw;
   padding-left: 1vw;
+}
+.cv-articulo .cv-card ul li a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.cv-articulo .cv-card ul li a:hover {
+  background-color: var(--bg-hard-2);
+  color: var(--bg-light-4);
 }
 .cv-laboral {
   display: flex;
