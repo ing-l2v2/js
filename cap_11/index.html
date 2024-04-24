@@ -78,6 +78,7 @@
           <div class="hr-line"></div>
           <h2>11. AJAX Asynchronous JavaScript And XML</h2>
         </div>
+
         <section id="seccion1" class="seccion" data-scroll-spy>
           <div class="cv-seccion-h3">
             <!--div class="hr-line"></div-->
@@ -85,12 +86,466 @@
           </div>
           <article class="cv-articulo">
             <div class="cv-card">
-              <p></p>
+              <p>
+                Mecanismo de JS para trabajar con la asincronía y hacer
+                peticiones al servidor. Ajax fué creado por Microsoft para
+                Outlook. XML fué el lenguaje de intercambio, ahora JSON o html
+                plano.
+              </p>
+              <img src="assets/img/ajax01.jpg" alt="Ajax Resumido" />
+              <p>
+                Se dispone de tres métodos nativos para Ajax.
+                <b>ActiveXObject</b> para IE8 e inferiores en estado obsoleto.
+                <b>
+                  <a
+                    href="https://developer.mozilla.org/es/docs/Web/API/XMLHttpRequest"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    XMLHttpRequest
+                  </a>
+                </b>
+                como contraparte para el resto de navegadores que no son IE. En
+                los últimos años se tiene
+                <b>
+                  <a
+                    href="https://developer.mozilla.org/es/docs/Web/API/Fetch_API"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Fetch API
+                  </a>
+                </b>
+                como una forma moderna de hacer AJAX.
+              </p>
+              <p>
+                Se dispone de librerias externas para operar, tales como,
+                <b>
+                  <a
+                    href="https://api.jquery.com/category/ajax/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    jquery.ajax
+                  </a>
+                </b>
+                a la presente usado solo por mantenimiento
+                <a href="http://" target="_blank" rel="noopener noreferrer"
+                  >Curso de jquery por jmircha</a
+                >, y la libreria muy popular basada en
+                <a href="../cap_06/index.html#seccion4" target="_blank">
+                  promesas
+                </a>
+                -
+                <b>
+                  <a
+                    href="https://github.com/axios/axios"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Axios
+                  </a>
+                </b>
+                muy usado en viewjs
+              </p>
+              <p>
+                Una petición de AJAX del objeto XMLHttpRequest puede tener uno
+                de cuatro estados
+              </p>
+              <ul>
+                <li>
+                  READY_STATE_UNINITIALIZED = 0; Estado de no inicialización
+                </li>
+                <li>
+                  READY_STATE_LOADING = 1; estado de cargando, enviando datos al
+                  servidor
+                </li>
+                <li>
+                  READY_STATE_LOADED = 2; estado de cargado, servidor respondio
+                  al cliente sin que cliente tenga la información lista recibida
+                  para interacción
+                </li>
+                <li>
+                  READY_STATE_INTERACTIVE = 3; motor de JS ya tiene acceso a los
+                  datos de la petición
+                </li>
+                <li>
+                  READY_STATE_COMPLETE = 4; Proceso terminado se tienen los
+                  datos listos del lado del cliente para operarlos mostrando la
+                  información
+                </li>
+              </ul>
+              <p>
+                <b>
+                  <a
+                    href="https://developer.mozilla.org/es/docs/Web/HTTP/Status"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Códigos de estados de respuestas de http</a
+                  >
+                </b>
+              </p>
+              <p>
+                Formato json adquirido desde github
+                <a
+                  href="https://api.github.com/users/ing-l2v2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://api.github.com/users/ing-l2v2 </a
+                >. Con la extensión JSON Formatter para Google se agrega el
+                pluggin para formateo de archivos json
+                <a
+                  href="https://chromewebstore.google.com/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >JSON FORMATTER</a
+                >.
+              </p>
             </div>
           </article>
         </section>
+
+        <section id="seccion2" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>11.2 Objeto XMLHttpRequest</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Abreviado como <b>XHR</b> <b>X</b>ML<b>H</b>ttp<b>R</b>equest.
+                La utilidad
+                <a
+                  href="https://jsonplaceholder.typicode.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  JASON Placeholder
+                </a>
+                es una API falsa para aprendizaje mediante pruebas y prototipos
+                JSON. Partiendo por un html ol#xhr y un archivo ajax.js en el
+                cual se crea una
+                <a href="../cap_04/index.html#seccion7" target="_blank"
+                  >función anónima autoejecutable</a
+                >
+                para encapsular (closure) el código y no afecte a los otros
+                ejercicios. Se requiere conocer sobre
+                <a href="../cap_09/index.html#seccion9" target="_blank">
+                  fragmentos
+                </a>
+                y también sobre
+                <a href="../cap_09/index.html#seccion10">templates</a>
+              </p>
+              <p>
+                El objeto ajax XMLHttpRequest <b>xhr</b> tiene el evento
+                <b>onreadystatechange</b>
+                de máxima importancia porque detecta todos los otros eventos del
+                xhr. Y se tienen los atributos: readyState que corresponde con
+                los estados descritos en la sección previa READY_STATE_xxx,
+                response.- respuesta que devolverá el servidor junto con
+                responseText, responseXML.- respuesta en formato XML, status.-
+                codigo de respuesta del servidor valores entre 100 y 599,
+                statusText.- mensaje de respuesta relacionado con status.
+                withCredentials.- Credenciales para api privadas
+              </p>
+              <p>
+                Para aperturar la petición se usa el método <b>open</b> cuyo
+                primer parámetro es el tipo de método usado en la petición (GET,
+                HEAD, TRACE, POST o PUT) y el segundo parámetro es el recurso
+                URL a la que se realiza la petición
+              </p>
+              <p>Luego enviar la petición mediante el método <b>send</b></p>
+              <p>Resumen 4 pasos</p>
+              <ol>
+                <li>
+                  Instanciar una variable
+                  <b>const xhr = new XMLHttpRequest();</b>
+                </li>
+                <li>
+                  Asignar el o los eventos de la petición
+                  <b>
+                    xhr.addEventListener("readystatechange", (e) => { . . .});
+                  </b>
+                </li>
+                <li>
+                  Abrir la petición, definiendo el método y la url del recurso
+                  en caso de consumo de api
+                  <b>
+                    xhr.open("GET",
+                    "https://jsonplaceholder.typicode.com/users");
+                  </b>
+                  o en caso de consumo local
+                  <b>
+                    xhr.open("GET",
+                    "xhr.open("GET","assets/json/usuarios.json");
+                  </b>
+                </li>
+                <li>
+                  Envio de la petición con el método send
+                  <b> xhr.send(); </b>
+                </li>
+              </ol>
+              <p>
+                Los pasos previos son para consumir. Como solo importa cuando ha
+                sido completado se toma la condición xhr.readyState !== 4 para
+                que no retorne nada
+                <b>if (xhr.readyState !== 4) return;</b> READY_STATE_COMPLETE
+              </p>
+              <p>
+                Es importante validar los status entre 200 y 299, xhr.status >=
+                200 && xhr.status < 300,
+              </p>
+              <ol id="xhr"></ol>
+              <p>Vista del archivo ajax.js</p>
+              <pre><code>    (() => {
+        const d = document,               <b>xhr = new XMLHttpRequest()</b>,
+        $ol = d.getElementById("xhr"),    $fragmento = d.createDocumentFragment();
+
+      xhr<b>.addEventListener("readystatechange"</b>, (e) => {
+        if (xhr.readyState !== 4) return;
+        if (xhr.status >= 200 && xhr.status < 300) {
+          //console.log(xhr.responseText);
+          let jsonObjs = JSON.parse(xhr.responseText);
+          jsonObjs.forEach((jsonObj) => {
+            const $li = d.createElement("li");
+            $li.innerHTML = `${jsonObj.name} -- ${jsonObj.email} -- ${jsonObj.phone}`;
+            $fragmento.appendChild($li);
+          });
+          $ol.appendChild($fragmento);
+        } else {          
+          let mensaje = xhr.statusText || "Posible error de conexión";
+          $ol.innerHTML = `Error ${xhr.status}: ${mensaje}`;
+        }
+      });
+
+      xhr.<b>open("GET", "https://jsonplaceholder.typicode.com/users")</b>;
+      //xhr.open("GET", "assets/json/usuarios.json");
+
+      xhr<b>.send()</b>;
+    })();              </code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion3" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>11.3. API Fetch</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                No necesita instancia de objeto de ajax. Funciona ejecutando el
+                método <b>fetch</b> que requiere la url del recurso y un objeto
+                con parámetros de opciones incluido el método el cual al ser por
+                omisión <b>method: GET</b> puede ser obviado el objeto. Al
+                trabajar con promesas tendrá su método <b>then</b> que generará
+                una respuesta y un método <b>catch</b> para captura de errores,
+                analogía con if else de respuesta de servidor en el nativo
+                XMLHttpRequest. No requiere validar el <b>readyState !== 4</b>.
+                Fetch genera un objeto de tipo Response con atributos
+                <b>ok</b> similar al readyState, un status y statusText. La data
+                viene en el body que es un <b>ReadableStream</b> la cual
+                requiere conversión con el método <b>json()</b> si se recibe
+                algo convertible o el <b>text()</b> si se recibe html o xml o el
+                <b>blob()</b> para aquello que no es texto o imagen y pasarlo a
+                otro then en variable <b>jsonObjs</b>. En caso de ok=falso
+                mediante validación invocar al método Promise.reject(resultado)
+                para que salte al catch.
+              </p>
+              <pre><code>    (() => {
+      const d = document,         $ol = d.getElementById("fetch"),
+        $fragmento = d.createDocumentFragment();
+      fetch("https://jsonplaceholder.typicode.com/users", { method: "GET" })
+        /*  .then((respuesta) => {
+              console.log(respuesta);
+              return respuesta.ok ? respuesta.json() : Promise.reject(respuesta);
+            })         */
+        .then( respuesta => respuesta.ok ? respuesta.json() : Promise.reject(respuesta) )
+        .then((jsonObjs) => {          
+          jsonObjs.forEach((jsonObj) => {
+            const $li = d.createElement("li");
+            $li.innerHTML = `${jsonObj.name} -- ${jsonObj.email} -- ${jsonObj.phone}`;
+            $fragmento.appendChild($li);
+          });
+          $ol.appendChild($fragmento);
+        })
+        .catch((errores) => {
+          let mensaje = errores.statusText || "Posible error de conexión";
+          $ol.innerHTML = `Error ${errores.status}: ${mensaje}`;
+        })
+        .finally( () =>
+          console.log("Finally se ejecuta independientemente del resultado de la promesa Fetch")
+        );
+    })();</code></pre>
+              <ol id="fetch"></ol>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion4" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>11.4. API Fetch + Async-Await</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Repasar sobre
+                <a href="../cap_06/index.html#seccion5" target="_blank"
+                  >Async-await</a
+                >
+              </p>
+              <p>
+                Se crea una función <b>async</b> para obtener los datos
+                <b>getDatos()</b> sin parámetros, <b>await</b> es para que antes
+                de ejecutar la siguiente línea de código espere, ejecutando el
+                fetch y luego obteniendo la respuesta. Si el atributo ok es
+                falso genera un throw con un objeto de dos atributos que será
+                lanzado al catch en caso de cualquier error para luego realizar
+                el barrido de los elementos de <b>jsonObjs</b>. En caso de
+                existir catch genera el mensaje de error con los datos del
+                objeto generado en el throw.
+              </p>
+              <pre><code>    (() => {
+      const d = document,           $ol = d.getElementById("fetch-async"),
+        $fragmento = d.createDocumentFragment();
+
+      <b>async</b> function getDatos() {
+        try {
+          let respuesta = <u><b>await</b></u> fetch("https://jsonplaceholder.typicode.com/users") ,
+             jsonObjs = <u><b>await</b></u> respuesta.json();
+
+          if (!respuesta.ok) <u><b>throw</b></u> <b>{ status: respuesta.status, statusText: respuesta.statusText }</b>;
+
+          jsonObjs.forEach((jsonObj) => {
+            const $li = d.createElement("li");
+            $li.innerHTML = `${jsonObj.name} -- ${jsonObj.email} -- ${jsonObj.phone}`;
+            $fragmento.appendChild($li);
+          });
+          $ol.appendChild($fragmento);
+        } catch (error) {
+          let mensaje = error.statusText || "Posible error de conexión";
+          $ol.innerHTML = `Error ${error.status}: ${mensaje}`;
+        } finally {
+          console.log(
+            "Finally se ejecuta independientemente del resultado de la promesa Fetch-Async"
+          );
+        }
+      }
+
+      getDatos();
+    })();
+              </code></pre>
+              <ol id="fetch-async"></ol>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion5" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>11.5. Librería Axios</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Esta basáda en Prommise. Según la url de AXIOS en github el CDN
+                es <br />
+                <b>
+                  &lt;script
+                  src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"&gt;&lt;/script&gt; </b
+                ><br />
+                en esta librería existen los métodos get(), post(), put(),
+                delete(), head(), patch() se lo invoca como promesa, notese la
+                libreria axios previo al método
+                <b>axios.</b
+                >get("https://jsonplaceholder.typicode.com/users").then().catch()
+                .finally(); <br />
+                Librería axios invoca al método <b>.get(url_del_recurso)</b> por
+                ser promesa el .then recibe la variable donde se depositan los
+                resultados, en el atributo <b>data</b>. El catch gestiona los
+                errores en la variable que recibe mediante el objeto
+                <b>response</b>
+              </p>
+              <p></p>
+              <pre><code>    (() => {
+      const d = document,  $ol = d.getElementById("axios"),  $fragmento = d.createDocumentFragment();
+
+      <u><b>axios.get</b></u>("https://jsonplaceholder.typicode.com/users")
+        .then((respuesta) => {          
+          let jsonObjs = respuesta<u><b>.data</b></u>;
+          jsonObjs.forEach((jsonObj) => {
+            const $li = d.createElement("li");
+            $li.innerHTML = `${jsonObj.name} -- ${jsonObj.email} -- ${jsonObj.phone}`;
+            $fragmento.appendChild($li);
+          });
+          $ol.appendChild($fragmento);
+        })
+        .catch((err) => {
+          console.log(err);
+          let mensaje = err<u><b>.response</b></u>.statusText || "Posible error de conexión";
+          $ol.innerHTML = `Error ${err<u><b>.response</b></u>.status}: ${mensaje}`;
+        })
+        .finally(() =>
+          console.log(
+            "Finally se ejecuta independientemente del resultado de la promesa Axios"
+          )
+        );
+    })();</code></pre>
+              <ol id="axios"></ol>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion6" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>11.6. Libreria Axios + Async-Await</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                En su versión mejorada sobre promesas se tiene la declaración de
+                una función async en este caso definida como getDatos(),
+                contiene dos variables definidas respuesta (recibe la respuesta
+                desde la url del recurso) con un wait para que la siguiente
+                línea espere por la finalización del método axios.get pero si
+                genera error se activa el catch manejando el error y jsonObjs
+                (recibe lo contenido en el atributo data del objeto de
+                respuesta) pintando el contenido o gestionandolo según el caso.
+              </p>
+              <p></p>
+              <pre><code>    (() => {
+      const d = document,        $ol = d.getElementById("axios-async"),
+        $fragmento = d.createDocumentFragment();
+
+      <b><u>async</u> function getDatos()</b> {
+        <u><b>try</b></u> {
+          let respuesta = <u><b>await</b></u> <u><b>axios.get</b></u>("https://jsonplaceholder.typicode.com/users"),
+            jsonObjs = <u><b>await</b></u> respuesta<u><b>.data</b></u>;
+
+          jsonObjs.forEach((jsonObj) => {
+            const $li = d.createElement("li");
+            $li.innerHTML = `${jsonObj.name} -- ${jsonObj.email} -- ${jsonObj.phone}`;
+            $fragmento.appendChild($li);
+          });
+          $ol.appendChild($fragmento);
+        } <u><b>catch (error)</b></u> {
+          let mensaje = error<u><b>.response</b></u>.statusText || "Posible error de conexión";
+          $ol.innerHTML = `Error ${error<u><b>.response</b></u>.status}: ${mensaje}`;
+        } <u><b>finally</b></u> {
+          console.log(
+            "Finally se ejecuta independientemente del resultado de la promesa Axios-Async"
+          );
+        }
+      }
+
+      <u><b>getDatos();</b></u>
+    })();</code></pre>
+              <ol id="axios-async"></ol>
+            </div>
+          </article>
+        </section>
+        <br /><br />
         <!-- 
-          section#seccion1.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
+          section#seccion3.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
         -->
       </section>
     </main>
@@ -103,9 +558,18 @@
     <aside class="panel-dom">
       <nav class="menu-dom">
         <a href="#seccion1" data-scroll-spy>11.1. Introducción</a>
+        <a href="#seccion2" data-scroll-spy>11.2. Objeto XMLHttpRequest</a>
+        <a href="#seccion3" data-scroll-spy>11.3. API Fetch</a>
+        <a href="#seccion4" data-scroll-spy>11.4. API Fetch + Async-Await</a>
+        <a href="#seccion5" data-scroll-spy>11.5. Librería Axios</a>
+        <a href="#seccion6" data-scroll-spy
+          >11.6. Libreria Axios + Async-Await</a
+        >
         <a href="../index.html">Indice de contenidos</a>
       </nav>
     </aside>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <script src="./assets/js/index_dom.js" type="module"></script>
+    <script src="./assets/js/ajax.js"></script>
   </body>
 </html>
