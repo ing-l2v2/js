@@ -1,0 +1,133 @@
+{
+  "familiares": [
+    {
+      "nombre": "Leonel",
+      "apellido": "Villa",
+      "edad": "53",
+      "informacion": {
+        "email": "l2v2blue@gmail.com",
+        "facebook": "ingl2v2"
+      },
+      "fecha": "2024-04-27T01:00:32.449Z",
+      "id": "1"
+    },
+    {
+      "nombre": "Edgar",
+      "apellido": "Villa",
+      "edad": "44",
+      "informacion": {
+        "email": "edgarvillaec@gmail.com",
+        "facebook": "profile.php?id=61555469785094"
+      },
+      "fecha": "2024-04-27T00:18:20.567Z",
+      "id": "2"
+    },
+    {
+      "nombre": "Sebastián",
+      "apellido": "Villa",
+      "edad": "24",
+      "informacion": {
+        "email": "svilla@live.com.ar",
+        "facebook": "sebastianleonel.villagarcia"
+      },
+      "fecha": "2024-04-27T01:00:55.694Z",
+      "id": "3"
+    },
+    {
+      "nombre": "Elena",
+      "apellido": "Vintimilla",
+      "edad": "75",
+      "informacion": {
+        "email": "evintimilla@gmail.com",
+        "facebook": "elena.vintimilla"
+      },
+      "fecha": "2024-04-27T01:01:09.284Z",
+      "id": "4"
+    },
+    {
+      "nombre": "Ruth",
+      "apellido": "García",
+      "edad": "53",
+      "informacion": {
+        "email": "rgarcialcivar@gmail.com",
+        "facebook": "ruth.garciaalcivar.7"
+      },
+      "fecha": "2024-04-27T01:01:26.407Z",
+      "id": "5"
+    },
+    {
+      "nombre": "Leonardo",
+      "apellido": "Villa",
+      "edad": "77",
+      "informacion": {
+        "email": "lvillaorellana@yahoo.com",
+        "facebook": "leonardoefrain.villaorellana"
+      },
+      "fecha": "2024-04-27T01:01:43.140Z",
+      "id": "6"
+    },
+    {
+      "id": "c434",
+      "nombre": "Diego",
+      "apellido": "Quito",
+      "edad": "45",
+      "informacion": {
+        "email": "dquito@gmail.com",
+        "facebook": "#dquito"
+      },
+      "fecha": "2024-04-27T00:00:03.640Z"
+    },
+    {
+      "nombre": "Moises",
+      "apellido": "García",
+      "edad": "19",
+      "informacion": {
+        "email": "mgarcia@gmail.com",
+        "facebook": "moises.garcia"
+      },
+      "fecha": "2024-04-29T01:40:16.896Z",
+      "id": "f0f3"
+    },
+    {
+      "nombre": "Ernesto",
+      "apellido": "Guevara",
+      "edad": "97",
+      "informacion": {
+        "email": "eguevara@gmail.com",
+        "facebook": "ernesto.guevara"
+      },
+      "fecha": "2024-04-29T22:26:49.547Z",
+      "id": "d87e"
+    }
+  ],
+  "dias": [
+    {
+      "id": "1",
+      "dia": "lunes"
+    },
+    {
+      "id": "2",
+      "dia": "martes"
+    },
+    {
+      "id": "3",
+      "dia": "miércoles"
+    },
+    {
+      "id": "4",
+      "dia": "jueves"
+    },
+    {
+      "id": "5",
+      "dia": "viernes"
+    },
+    {
+      "id": "6",
+      "dia": "sábado"
+    },
+    {
+      "id": "7",
+      "dia": "domingo"
+    }
+  ]
+}

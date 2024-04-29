@@ -75,6 +75,7 @@
           <div class="hr-line"></div>
           <h2>12. APIs REST</h2>
         </div>
+
         <section id="seccion1" class="seccion" data-scroll-spy>
           <div class="cv-seccion-h3">
             <!--div class="hr-line"></div-->
@@ -82,12 +83,1259 @@
           </div>
           <article class="cv-articulo">
             <div class="cv-card">
-              <p></p>
+              <p>
+                <b>API (Application Programming Interface)</b>, o Interfaz de
+                Programación de Aplicaciones, conjunto de rutinas que provee
+                acceso a funciones desde un determinado software, ej. acceso a
+                las funciones de nuestros sitios y aplicaciones web. <br />
+                En navegadores web se tienen 2 tipos de APIs: <br />
+                APIs nativas.- DOM es la API que permite acceder al código HTML
+                de documentos a través de JS o la Geolocalización que permite
+                acceder a coordendas terrestres de ubicación actual; <br />
+                APIs externas.- Provistas como Twitter (obtiene tweets de un
+                usuario), GitHub (obtener información de repositorios de una
+                cuenta) o WordPress (acceder a información de páginas y entradas
+                de un sito). La mayoría de las actuales funcionan con
+                Arquitectura REST<br />
+              </p>
+              <p>
+                <b>REST (Representational State Transfer)</b> Transferencia de
+                Estado Representacional
+              </p>
+              <p>
+                Un servicio REST es un conjunto de restricciones con las que se
+                pueden crear estilos de arquitectura de software, el cual se
+                puede usar para crear aplicaciones web respetando el protocolo
+                HTTP.
+              </p>
+              <p>
+                Según Fielding las
+                <b>
+                  restricciones que definen a un sistema API REST o RESTful
+                </b>
+                como también se le conoce, son:
+              </p>
+              <ol>
+                <li>
+                  <b>Cliente-Servidor</b>, mantiene al cliente y al servidor
+                  débilmente acoplados. Esto quiere decir que el cliente no
+                  necesita conocer los detalles de implementación del servidor y
+                  el servidor se olvida de entender cómo son usados los datos
+                  que envía al cliente.
+                </li>
+                <li>
+                  <b>Sin Estado</b>, significa que cada petición recibida por el
+                  servidor debería ser independiente, es decir, no es necesario
+                  mantener sesiones.
+                </li>
+                <li>
+                  <b>Cacheable</b>, debe admitir un sistema de almacenamiento en
+                  caché, lo que evitará repetir varias conexiones entre el
+                  servidor y el cliente para recuperar un mismo recurso.
+                </li>
+                <li>
+                  <b>Interfaz Uniforme</b>, significa una interfaz genérica para
+                  administrar cada interacción que se produzca entre el cliente
+                  y el servidor de manera uniforme, lo cual simplifica y separa
+                  la arquitectura. Esta restricción indica que cada recurso del
+                  servicio <b>REST</b> debe tener una única dirección ( URL )
+                  web , a estas rutas se les da el nombre de <b>endpoints</b>.
+                </li>
+                <li>
+                  <b>Sistema de Capas</b>, el servidor puede disponer de varias
+                  capas para su implementación. Esto ayuda a mejorar la
+                  escalabilidad, el rendimiento y la seguridad.
+                </li>
+              </ol>
+              <p>
+                Al crear aplicaciones web con JS, las API REST probablemente
+                serán la forma principal de obtener datos para tus aplicaciones,
+                así como la de enviar datos hacia una base de datos.
+              </p>
+              <p>
+                Las API REST, son el nuevo <b>CRUD</b> (<b>C</b>reate,
+                <b>R</b>ead, <b>U</b>pdate, <b>D</b>elete) del desarrollo
+                moderno, con la ventaja de poder desacoplar la lógica del
+                cliente de la del servidor y la base de datos. <br />
+                <b>Operaciones CRUD</b> &emsp;&emsp;<b>Peticiones REST</b>
+                <br />
+                INSERT &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; POST
+                <br />
+                SELECT &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; GET
+                <br />
+                UPDATE &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;PUT o
+                PATCH
+                <br />
+                DELETE &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; DELETE
+                <br />
+              </p>
+              <img src="assets/img/mvc.jpg" alt="Modelo Vista Controlador" />
+              <img
+                src="assets/img/crud.jpg"
+                alt="Crear Leer Actualizar y Eliminar"
+              />
+              <p>
+                Otra ventaja de este modelo de desarrollo es que se puede usar
+                un mismo origen de datos para distintos clientes, por ejemplo un
+                cliente nativo (iOS, Android), un cliente de escritorio
+                (Windows) o un cliente web (Navegadores).
+              </p>
+              <img
+                src="assets/img/RESTAPIArchitecture.jpg"
+                alt="Arquitectura API REST"
+              />
+              <p>
+                Para continuar el temario se requiere instalar NodeJS, Insomnia,
+                nvm
+              </p>
             </div>
           </article>
         </section>
+
+        <section id="seccion2" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>12.2. JSON Server - API falsa local</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Instalar el Json Server referencia en
+                <a href="#seccion8">
+                  Instalación de NodeJS y otras referencias
+                </a>
+                , luego crear el archivo db.json en assets/json/db.json, cada
+                elemento debe tener un atributo <b>id</b>, para levantar el json
+                server usaríamos <br />
+                <b>json-server --watch cap_12/assets/json/db.json</b>,<br />
+                para definir en un puerto diferente al 3000 <br />
+                <b>json-server -p 3003 -w cap_12/assets/json/db.json</b>. <br />
+                Respuesta generada visible en el código. En la terminal para
+                detenerlo usar CTRL+C
+              </p>
+              <pre><code>    --watch/-w can be omitted, JSON Server 1+ watches for file changes by default
+    JSON Server started on PORT :3000
+    Press CTRL-C to stop
+    Watching cap_12/assets/json/db.json...
+
+    ♡( ◡‿◡ )
+
+    Index:
+    http://localhost:3000/
+
+    Static files:
+    Serving ./public directory if it exists
+
+    Endpoints:
+    http://localhost:3000/familiares
+    http://localhost:3000/dias </code></pre>
+              <p>
+                Con alt+click en el index http://localhost:300 o en los
+                Endpoints se visualiza en el el navegador, la url para
+                visualizar un elemento seria ej.:
+                http://localhost:3000/familiares/2
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion3" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>12.3. Consumo de datos con cliente REST</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Primero levantar el servidor creado JSON SERVER json-server -p
+                5555 -w cap_12/assets/json/db.json
+              </p>
+              <ol>
+                <li>
+                  Levantar el servidor creado JSON SERVER en el puerto 5555
+                  <br />
+                  <b>json-server -p 5555 -w cap_12/assets/json/db.json</b>
+                </li>
+                <li>Abrir la aplicación Insomnia instalada en el equipo.</li>
+                <li>
+                  En la <b>Base Environmet</b> definir el json
+                  {"<b>urldesarrollo</b>":
+                  "https://http://localhost:5555/familiares"} para no repetir la
+                  url en los comandos a definir si aún no está establecido.
+                </li>
+                <li>
+                  Definir un folder con el nombre personalizado "CursoJS
+                  JSONServer"
+                </li>
+                <li>
+                  Dentro del folder crear cinco HTTP Request con los nombres:
+                  CREATE familiar, READ familiares, READ familiar, UPDATE
+                  familiar, DELETE familiar
+                </li>
+                <li>
+                  Para el CREATE familiar de tipo <b>POST</b> la url se debe
+                  obtener pulsando la tecla CTRL+SPACE y ubicar
+                  <b>urldesarrollo</b> y en la pestaña Body establecer el JSON
+                  para luego pulsar <b>Send</b> y produccir como resultado un
+                  código 201
+                  <pre><code>    {
+      "id":6,
+      "nombre": "LeonardoS",
+      "apellido": "Villa",
+      "edad": 79,
+      "informacion": {
+        "email": "lvillaorellana@yahoo.com",
+        "facebook": "@leonardo"
+      }
+    }</code></pre>
+                </li>
+                <li>
+                  Para el READ familiares de tipo <b>GET</b> la url se debe
+                  obtener pulsando la tecla CTRL+SPACE y ubicar
+                  <b>urldesarrollo</b>, luego pulsar <b>Send</b> y produccir
+                  como resultado un listado de todos los registros existentes en
+                  el json
+                </li>
+                <li>
+                  Para el READ familiar de tipo <b>GET</b> la url se debe
+                  obtener pulsando la tecla CTRL+SPACE y ubicar
+                  <b>urldesarrollo</b> con el agregado de /id ej.
+                  _.urldesarrollo/6, luego pulsar <b>Send</b> y produccir como
+                  resultado elemento del json correspondiente al del id
+                  consultado.
+                </li>
+                <li>
+                  El UPDATE familiar de tipo <b>PUT</b> la url más el id del
+                  registro en el json, Ej.: _.urldesarrollo/6, con un body/json
+                  que contiene solo los datos modificables, luego pulsar
+                  <b>Send</b> y produccir como resultado el script de lo
+                  modificado.
+                  <pre><code>    {	
+      "nombre": "Leonardo",
+      "edad": 77,
+      "informacion": {		
+        "facebook": "@LeonardoVilla"
+      }
+    }</code></pre>
+                </li>
+                <li>
+                  El DELTE familiar de tipo <b>DELETE</b> la url más el id del
+                  registro en el json, Ej.: _.urldesarrollo/6, luego pulsar
+                  <b>Send</b> y produccir como resultado un {} que representa
+                  una eliminación
+                </li>
+              </ol>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion4" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>12.4. API REST: CRUD</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                En cada uno de los casos xhr, fetch y axios se crearán html
+                similares únicamente con el cambio de las clases .crud-XXXX,
+                .crud-XXXX-title, .crud-XXXX-form, .crud-XXXX-table y del id
+                #crud-XXXX-template <br />
+                El html para XMLHttpRequest o AJAX
+              </p>
+              <pre><code>    section<b>.crud-xhr</b>>(article>(h4<b>.crud-xhr-title</b>{Agregar Familiar}+form<b>.crud-xhr-form</b>>input[name="nombre" placeholder="Nombre" required]+input[name="apellido" placeholder="Apellido" required]+input[name="edad" placeholder="Edad" required]+input[name="email" placeholder="Email" required]+input[name="facebook" placeholder="Facebook" required]+input[type="submit" value="Enviar"]+input[type="hidden" name="id"]))+article>h4{Ver familiares}+table<b>.crud-xhr-table</b>>(thead>tr>th{Nombre}+th{Apellido}+th{Edad}+th{Email}+th{Facebook}+th{Acciones})+tbody
+
+    template<b>#crud-xhr-template</b>>tr>td.nombre+td.apellido+td.edad+td.email+td.facebook+td>button.edit{Editar}+button.delete{Eliminar}</code></pre>
+              <p>El html para FETCH</p>
+              <pre><code>    section<u><b>.crud-fetch</b></u>>(article>(h4<u><b>.crud-fetch-title</b></u>{Agregar Familiar}+form<u><b>.crud-fetch-form</b></u>>input[name="nombre" placeholder="Nombre" required]+input[name="apellido" placeholder="Apellido" required]+input[name="edad" placeholder="Edad" required]+input[name="email" placeholder="Email" required]+input[name="facebook" placeholder="Facebook" required]+input[type="submit" value="Enviar"]+input[type="hidden" name="id"]))+article>h4{Ver familiares}+table<u><b>.crud-fetch-table</b></u>>(thead>tr>th{Nombre}+th{Apellido}+th{Edad}+th{Email}+th{Facebook}+th{Acciones})+tbody
+    
+    template<u><b>#crud-fetch-template</b></u>>tr>td.nombre+td.apellido+td.edad+td.email+td.facebook+td>button<u><b>.edit-fech</b></u>{Editar}+button<u><b>.delete-fetch</b></u>{Eliminar}</code></pre>
+              <p>El html para AXIOS</p>
+              <pre><code>    section<u><b>.crud-axios</b></u>>(article>(h4<u><b>.crud-axios-title</b></u>{Agregar Familiar}+form<u><b>.crud-axios-form</b></u>>input[name="nombre" placeholder="Nombre" required]+input[name="apellido" placeholder="Apellido" required]+input[name="edad" placeholder="Edad" required]+input[name="email" placeholder="Email" required]+input[name="facebook" placeholder="Facebook" required]+input[type="submit" value="Enviar"]+input[type="hidden" name="id"]))+article>h4{Ver familiares}+table<u><b>.crud-axios-table</b></u>>(thead>tr>th{Nombre}+th{Apellido}+th{Edad}+th{Email}+th{Facebook}+th{Acciones})+tbody
+
+    template<u><b>#crud-axios-template</b></u>>tr>td.nombre+td.apellido+td.edad+td.email+td.facebook+td>button<u><b>.edit-axios</b></u>{Editar}+button<u><b>.delete-axios</b></u>{Eliminar}</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion5" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>12.5. API REST: CRUD con AJAX o XMLHttpRequest</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                JSON Server debe estar levantado
+                <b> json-server -p 5555 -w cap_12/assets/json/db.json </b>.
+                <br />
+                Definir las variables de los objetos a operar formulario
+                (in|out), tabla (out), title (out), template, fragmento, la
+                función principal para generar las operaciones GET, POST, PUT y
+                DELETE <b>fncXhr</b> que recibe los parámetros comunes para el
+                json mediante un objeto <u><b>objOpciones</b></u> el cual
+                mediante destructuración recibe url (String), tipo de método
+                method (String), función para el caso de éxito (success),
+                función para el caso de error (error) y la data mediante un
+                objeto de tipo json.
+              </p>
+              <p>
+                En la función fncXhr se crea el objeto <b>XMLHttpRequest</b> al
+                que se le aplica una escucha <b>readystatechange</b> para los
+                códigos doscientos se parsean las respuestas del atributo
+                <b>responseText</b> y se ejecuta la función expresada
+                <b>success</b> en caso de error se ejecuta la función expresada
+                error. Luego se realizan las operaciones open y send pero tomar
+                en consideración el
+                <u
+                  ><b
+                    >.setRequestHeader("Content-type", "application/json,
+                    charset=utf-8");</b
+                  ></u
+                >
+                que establece la cabecera del formato de transferencia.
+              </p>
+              <p>
+                La función expresada <u><b>getTodosFamiliares</b></u> invoca a
+                la función principal <b>fncXhr</b> el cual recibe el objOpciones
+                detallado. La función success ingresa como parámetro las
+                <u><b>respuestas</b></u> de la consulta y las pinta en el tag
+                table.
+              </p>
+              <p>
+                Se crea el escucha
+                <u><b>DOMContentLoaded</b></u> para ejecutar la función
+                expresada <u><b>getTodosFamiliares</b></u> la cual devuelve en
+                pantalla el listado en la clase $table
+              </p>
+              <p>
+                Se crea el escucha para el botón submit que almacena los POST y
+                los PUT dependiendo de si existe id o no.
+              </p>
+              <p>
+                Se crea el escucha para todos los botones Editar y Eliminar
+                existentes en la página por la clase <b>.edit</b> y
+                <b>.delete</b> .
+              </p>
+              <pre><code>    const d = document,
+      $form = d.querySelector(".crud-xhr-form"),
+      $table = d.querySelector(".crud-xhr-table"),
+      $title = d.querySelector(".crud-xhr-title"),
+      $template = d.getElementById("crud-xhr-template").content,
+      $fragmento = d.createDocumentFragment();
+
+    const <u><b>fncXhr</b></u> = (objOpciones) => {
+      // Mediante destructuración
+      // url, method son String, data es un object, success y error son funciones.
+      let { url, method, success, error, data } = objOpciones;
+      const xhr = <u><b>new XMLHttpRequest()</b></u>;
+
+      <u><b>xhr.addEventListener("readystatechange"</b></u>, (e) => {
+        if (xhr.readyState !== 4) return;
+        if (xhr.status >= 200 && xhr.status < 300) {
+          let <u><b>json</b></u> = <u><b>JSON.parse(<b>xhr.responseText</b>)</b></u>;
+          <u><b>success(json)</b></u>;
+        } else {
+          let mensaje = <u><b>xhr.statusText ||</b></u> "Posible error de conexión";
+          error(`Error ${xhr<u><b>.status</b></u>}: ${mensaje}`);
+        }
+      });
+
+      xhr<u><b>.open(method || "GET", url)</b></u>; // Sin method entonces GET
+
+      xhr<u><b>.setRequestHeader("Content-type", "application/json, charset=utf-8");</b></u>
+
+      xhr<u><b>.send(JSON.stringify(data))</b></u>;
+    };
+
+    const <b>getTodosFamiliares</b> = () => {
+      <u><b>fncXhr(</b></u>{
+        <b>method</b>: "GET", // Si se obvia será GET
+        <b>url</b>: "http://localhost:5555/familiares",
+        <b>success: (<u>respuestas</u>)</b> => {
+          //      console.log(respuesta);
+          respuestas.forEach((resp) => {
+            $template.querySelector(".nombre").textContent = resp.nombre;
+            $template.querySelector(".apellido").textContent = resp.apellido;
+            $template.querySelector(".edad").textContent = resp.edad;
+            $template.querySelector(".email").textContent = resp.informacion.email;
+            $template.querySelector(".facebook").textContent =
+              resp.informacion.facebook;
+
+            // Creacion de data-attributes con valores para el boton editar
+            $template.querySelector(".edit").dataset.id = resp.id;
+            $template.querySelector(".edit").dataset.nombre = resp.nombre;
+            $template.querySelector(".edit").dataset.apellido = resp.apellido;
+            $template.querySelector(".edit").dataset.edad = resp.edad;
+            $template.querySelector(".edit").dataset.email = resp.informacion.email;
+            $template.querySelector(".edit").dataset.facebook =
+              resp.informacion.facebook;
+            $template.querySelector(".edit").dataset.fecha = resp.fecha;
+
+            // Creacion de data-attributes con valores para el boton eliminar
+            $template.querySelector(".delete").dataset.id = resp.id;
+
+            let $cloneTemplate = d.importNode($template, true);
+            $fragmento.appendChild($cloneTemplate);
+          });
+          $table.querySelector("tbody").appendChild($fragmento);
+        },
+        <b>error: (<u>err</u>)</b> => {
+          console.error(err);
+          const $p = d.createElement("p"),
+            $b = d.createElement("b");
+          $b.textContent = err;
+          $p.insertAdjacentElement("afterbegin", $b);
+          $table.insertAdjacentElement("afterend", $p);
+        },
+        data: null, // puede obviarse data por ser GET
+      });
+    };
+
+    <u><b>d.addEventListener("DOMContentLoaded"</b></u>, <b>getTodosFamiliares</b>);
+
+    d<u><b>.addEventListener("submit"</b></u>, (e) => {
+      if (<b>e.target === $form</b>) {
+        e.preventDefault();
+        if (<u><b>!e.target.id.value</b></u>) {
+          // Create - POST
+          <b>fncXhr</b>({
+            <b>method</b>: "POST", // Si se obvia será GET
+            <b>url</b>: "http://localhost:5555/familiares",
+            <b>success</b>: (respuesta) => location.reload,
+            <b>error</b>: (error) =>
+              $form.insertAdjacentHTML("afterend", `&lt;p&gt;&lt;b&gt;${error}&lt;/b&gt;&lt;/p&gt;`),
+            <b>data</b>: {
+              nombre: e.target.nombre.value,
+              apellido: e.target.apellido.value,
+              edad: e.target.edad.value,
+              informacion: {
+                email: e.target.email.value,
+                facebook: e.target.facebook.value,
+              },
+              fecha: new Date(),
+            },
+          });
+        } else {
+          // Update - PUT
+          <b>fncXhr</b>({
+            <b>method</b>: "PUT", // Si se obvia será GET
+            <b>url</b>: `http://localhost:5555/familiares/${e.target.id.value}`,
+            <b>success</b>: (respuesta) => location.reload,
+            <b>error</b>: (error) =>
+              $form.insertAdjacentHTML("afterend", `&lt;p&gt;&lt;b&gt;${error}&lt;/b&gt;&lt;/p&gt;`),
+            <b>data</b>: {
+              nombre: e.target.nombre.value,
+              apellido: e.target.apellido.value,
+              edad: e.target.edad.value,
+              informacion: {
+                email: e.target.email.value,
+                facebook: e.target.facebook.value,
+              },
+              fecha: new Date(),
+            },
+          });
+        }
+      }
+    });
+
+    d<u><b>.addEventListener("click"</b></u>, (e) => {
+      if (<u><b>e.target.matches(".edit")</b></u>) {
+        $title.textContent = `Editar familiar ${e.target.dataset.nombre}`;
+        $form.nombre.value = e.target.dataset.nombre;
+        $form.apellido.value = e.target.dataset.apellido;
+        $form.edad.value = e.target.dataset.edad;
+        $form.email.value = e.target.dataset.email;
+        $form.facebook.value = e.target.dataset.facebook;
+        $form.id.value = e.target.dataset.id;
+      }
+      if (<u><b>e.target.matches(".delete")</b></u>) {
+        if (confirm(`Seguro desea eliminar entrada id ${e.target.dataset.id}?`)) {
+          // Delete - DELETE
+          fncXhr({
+            method: "DELETE", // Si se obvia será GET
+            url: `http://localhost:5555/familiares/${e.target.dataset.id}`,
+            success: (respuesta) => location.reload,
+            error: (error) =>
+              $form.insertAdjacentHTML("afterend", `&lt;p&gt;&lt;b&gt;${error}&lt;/b&gt;&lt;/p&gt;`),
+          });
+        }
+      }
+    });</code></pre>
+              <section class="crud-xhr">
+                <article>
+                  <h4 class="crud-xhr-title">Agregar Familiar</h4>
+                  <form class="crud-xhr-form">
+                    <input
+                      type="text"
+                      name="nombre"
+                      placeholder="Nombre"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="apellido"
+                      placeholder="Apellido"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="edad"
+                      placeholder="Edad"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="email"
+                      placeholder="Email"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="facebook"
+                      placeholder="Facebook"
+                      required
+                    />
+                    <input type="submit" value="Enviar" />
+                    <input type="hidden" name="id" />
+                  </form>
+                </article>
+                <article>
+                  <h4>Ver familiares</h4>
+                  <table class="crud-xhr-table">
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                        <th>Email</th>
+                        <th>Facebook</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </article>
+              </section>
+
+              <template id="crud-xhr-template">
+                <tr>
+                  <td class="nombre"></td>
+                  <td class="apellido"></td>
+                  <td class="edad"></td>
+                  <td class="email"></td>
+                  <td class="facebook"></td>
+                  <td>
+                    <button class="edit">Editar</button
+                    ><button class="delete">Eliminar</button>
+                  </td>
+                </tr>
+              </template>
+              <!--
+                section.crud-xhr>(article>(h4.crud-xhr-title{Agregar Familiar}+form.crud-xhr-form>input[name="nombre" placeholder="Nombre" required]+input[name="apellido" placeholder="Apellido" required]+input[name="edad" placeholder="Edad" required]+input[name="email" placeholder="Email" required]+input[name="facebook" placeholder="Facebook" required]+input[type="submit" value="Enviar"]+input[type="hidden" name="id"]))+article>h4{Ver familiares}+table.crud-xhr-table>(thead>tr>th{Nombre}+th{Apellido}+th{Edad}+th{Email}+th{Facebook}+th{Acciones})+tbody
+
+                template#crud-xhr-template>tr>td.nombre+td.apellido+td.edad+td.email+td.facebook+td>button.edit{Editar}+button.delete{Eliminar}
+              -->
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion6" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>12.6. API REST: CRUD con Fetch + Async-Await</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                JSON Server debe estar levantado <br />
+                <b> json-server -p 5555 -w cap_12/assets/json/db.json </b> .
+                <br />
+                Definir las variables de los objetos a operar formulario
+                (in|out), tabla (out), title (out), template, fragmento, no hay
+                una función principal para generar las operaciones GET, POST,
+                PUT y DELETE.
+              </p>
+              <p>Partiendo por el esquema básico</p>
+              <pre><code>    const d = document,
+      $formFech = d.querySelector(".crud-fech-form"),
+      $tableFech = d.querySelector(".crud-fech-table"),
+      $titleFech = d.querySelector(".crud-fech-title"),
+      $templateFech = d.getElementById("crud-fech-template").content,
+      $fragmentoFech = d.createDocumentFragment();
+
+    const getAllFamiliares = () => { };
+
+    d.addEventListener("DOMContentLoaded", getAllFamiliares);
+    d.addEventListener("submit", (e) => {});
+    d.addEventListener("click", (e) => {});</code></pre>
+              <p>
+                La función expresada getAllFamiliares de tipo
+                <u><b>async</b></u> en su try invoca a la función principal
+                <u><b> await fetch </b></u> el cual recibe unicamente la url del
+                repositorio sin el objOpciones detallado. Notese los dos await
+                presentes en la función uno para fetch y otro para recibir como
+                json(), también observar el objeto throw, además de la creación
+                de dataset y pintado de resultados en la tabla.
+              </p>
+              <p>
+                Se crea el escucha DOMContentLoaded para ejecutar la función
+                expresada getAllFamiliares la cual devuelve en pantalla el
+                listado en la clase $tableFetch
+              </p>
+              <p>
+                Se crea el escucha para el botón submit de tipo <b>async</b> que
+                almacena los POST y los PUT dependiendo de si existe id o no
+                como evento async, observar los <u><b>await</b></u> presentes,
+                el <u><b>objOpciones</b></u> generado con sus atributos
+                <b>method</b>, <b>headers</b> y <b>body</b>, el retorno esta en
+                el método <b>respuestas.json()</b> y el objeto
+                <u><b>throw</b></u> que gestiona errores.
+              </p>
+              <p>
+                Se crea el escucha para los botones Editar y Eliminar del
+                formulario Fetch, observar los <u><b>await</b></u> presentes, el
+                <u><b>objOpciones</b></u> generado y el objeto
+                <u><b>throw</b></u> que gestiona errores.
+              </p>
+              <p></p>
+              <pre><code>    const //d = document,
+      $formFetch = d.querySelector(".crud-fetch-form"),
+      $tableFetch = d.querySelector(".crud-fetch-table"),
+      $titleFetch = d.querySelector(".crud-fetch-title"),
+      $templateFetch = d.getElementById("crud-fetch-template").content,
+      $fragmentoFetch = d.createDocumentFragment();
+
+    const <b>getAllFamiliares</b> = <u><b>async</b></u> () => {
+      try {
+        let respuestas = <u><b>await</b></u> <b>fetch</b>("http://localhost:5555/familiares"),
+          json = <u><b>await respuestas.json()</b></u> ;
+        // console.log(json);
+        if (!respuestas.ok) <u><b>throw { status: respuestas.status, statusText: respuestas.statusText }</b></u>;
+
+        json.forEach((el) => {
+          $templateFetch.querySelector(".nombre").textContent = el.nombre;
+          $templateFetch.querySelector(".apellido").textContent = el.apellido;
+          $templateFetch.querySelector(".edad").textContent = el.edad;
+          $templateFetch.querySelector(".email").textContent = el.informacion.email;
+          $templateFetch.querySelector(".facebook").textContent = el.informacion.facebook;
+
+          // Creación de data-attributes con valores para el botón "Editar"
+          $templateFetch.querySelector(".edit-fetch").dataset.id = el.id;
+          $templateFetch.querySelector(".edit-fetch").dataset.nombre = el.nombre;
+          $templateFetch.querySelector(".edit-fetch").dataset.apellido = el.apellido;
+          $templateFetch.querySelector(".edit-fetch").dataset.edad = el.edad;
+          $templateFetch.querySelector(".edit-fetch").dataset.email = el.informacion.email;
+          $templateFetch.querySelector(".edit-fetch").dataset.facebook = el.informacion.facebook;
+          $templateFetch.querySelector(".edit-fetch").dataset.fecha = el.fecha;
+
+          // Creación de data-attributes con valores para el botón "Eliminar"
+          $templateFetch.querySelector(".delete-fetch").dataset.id = el.id;
+
+          $cloneTemplate = d.importNode($templateFetch, true);
+          $fragmentoFetch.appendChild($cloneTemplate);
+        });
+        $tableFetch.querySelector("tbody").appendChild($fragmentoFetch);
+      } catch (err) {
+        let mensaje = err.statusText || "Posible error de conexión";
+        const $p = d.createElement("p"),      $b = d.createElement("b");
+        $b.textContent = `Error ${err.status}: ${mensaje}`;
+        $p.insertAdjacentElement("afterbegin", $b);
+        $tableFetch.insertAdjacentElement("afterend", $p);
+      }
+    };
+
+    d<u><b>.addEventListener("DOMContentLoaded"</b></u>, getAllFamiliares);
+
+    d<u><b>.addEventListener("submit"</b></u>, <u><b>async</b></u> (e) => {
+      if (e.target === $formFetch) {
+        e.preventDefault();
+        if (!e.target.id.value) {
+          // Create - POST
+          try {
+            let <u><b>objOpciones</b></u> = {
+              <b>method</b>: "POST",
+              <b>headers</b>: {<u><b>"Content-type": "Application/json;charset=utf-8"</b></u>},
+              <b>body</b>: <b>JSON.stringify</b>({
+                nombre: e.target.nombre.value,
+                apellido: e.target.apellido.value,
+                edad: e.target.edad.value,
+                informacion: {
+                  email: e.target.email.value,
+                  facebook: e.target.facebook.value,
+                },
+                fecha: new Date(),
+              }),
+            },
+            respuestas = <u><b>await</b></u> <b>fetch</b>(
+              `http://localhost:5555/familiares`,
+              objOpciones
+            ),
+            json = <u><b>await</b></u> respuestas.json();
+            if (!respuestas.ok) {<u><b>throw { status: respuestas.status, statusText: respuestas.statusText };</b></u>}
+            <u><b>location.reload()</b></u>;
+          } catch (err) {
+            let mensaje = err.statusText || "Posible error de conexión";
+            const $p = d.createElement("p"),      $b = d.createElement("b");
+            $b.textContent = `Error ${err.status}: ${mensaje}`;
+            $p.insertAdjacentElement("afterbegin", $b);
+            $formFetch.insertAdjacentElement("afterend", $p);
+          }
+        } else {
+          // Update - PUT
+          try {
+            let <u><b>objOpciones</b></u> = {
+              <b>method</b>: "PUT",
+              <b>headers</b>: { "Content-type": "Application/json;charset=utf-8",},
+              <b>body</b>: <b>JSON.stringify</b>({
+                nombre: e.target.nombre.value,
+                apellido: e.target.apellido.value,
+                edad: e.target.edad.value,
+                informacion: {
+                  email: e.target.email.value,
+                  facebook: e.target.facebook.value,
+                },
+                fecha: new Date(),
+              }),
+            },
+            respuestas = <u><b>await fetch</b></u> (
+              `http://localhost:5555/familiares/${e.target.id.value}`,
+              objOpciones
+            ),
+            json = <u><b>await</b></u> respuestas.json();
+
+            if (!respuestas.ok) {<u><b>throw { status: respuestas.status, statusText: respuestas.statusText }</b></u>; }
+            <u><b>location.reload();</b></u>
+          } catch (err) {
+            let mensaje = err.statusText || "Posible error de conexión";
+            const $p = d.createElement("p"),
+              $b = d.createElement("b");
+            $b.textContent = `Error ${err.status}: ${mensaje}`;
+            $p.insertAdjacentElement("afterbegin", $b);
+            $formFetch.insertAdjacentElement("afterend", $p);
+          }
+        }
+      }
+    });
+
+    d<u><b>.addEventListener("click"</b></u>, <u><b>async</b></u> (e) => {
+      if (<u><b>e.target.matches(".edit-fetch")</b></u>) {
+        $titleFetch.textContent = "Editar familiar";
+        $formFetch.nombre.value = e.target.dataset.nombre;
+        $formFetch.apellido.value = e.target.dataset.apellido;
+        $formFetch.edad.value = e.target.dataset.edad;
+        $formFetch.email.value = e.target.dataset.email;
+        $formFetch.facebook.value = e.target.dataset.facebook;
+        $formFetch.id.value = e.target.dataset.id;
+      }
+      if (<u><b>e.target.matches(".delete-fetch")</b></u>) {
+        if (confirm(`Estás seguro de eliminar el id ${e.target.dataset.id}?`)) {
+          // Delete - DELETE
+          try {
+            let <u><b>objOpciones</b></u> = {
+              <b>method</b>: "DELETE",
+              <u><b>headers: {"Content-type": "Application/json;charset=utf-8" }</b></u>
+            };
+            let respuestas = <u><b>await fetch</b></u>(
+              `http://localhost:5555/familiares/<u><b>${e.target.dataset.id}</b></u>`,
+              objOpciones
+            );
+            let json = <u><b>await respuestas.json()</b></u>;
+            
+            if (!respuestas.ok) {<u><b>throw { status: respuestas.status, statusText: respuestas.statusText }</b></u>; }
+
+            <u><b>location.reload()</b></u>;
+          } catch (err) {
+            let mensaje =
+              err.statusText ||
+              `Posible error de conexión, instalar y levantar JSON Server :: "json-server -p 5555 -w cap_12/assets/json/db.json"; verificar Endpoint`;
+            const $p = d.createElement("p"),
+              $b = d.createElement("b");
+            $b.textContent = `Error ${err.status}: ${mensaje}`;
+            $p.insertAdjacentElement("afterbegin", $b);
+            $formFetch.insertAdjacentElement("afterend", $p);
+          }
+        }
+      }
+    });</code></pre>
+              <section class="crud-fetch">
+                <article>
+                  <h4 class="crud-fetch-title">Agregar Familiar</h4>
+                  <form class="crud-fetch-form">
+                    <input
+                      type="text"
+                      name="nombre"
+                      placeholder="Nombre"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="apellido"
+                      placeholder="Apellido"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="edad"
+                      placeholder="Edad"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="email"
+                      placeholder="Email"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="facebook"
+                      placeholder="Facebook"
+                      required
+                    />
+                    <input type="submit" value="Enviar" />
+                    <input type="hidden" name="id" />
+                  </form>
+                </article>
+                <article>
+                  <h4>Ver familiares</h4>
+                  <table class="crud-fetch-table">
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                        <th>Email</th>
+                        <th>Facebook</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </article>
+              </section>
+              <template id="crud-fetch-template">
+                <tr>
+                  <td class="nombre"></td>
+                  <td class="apellido"></td>
+                  <td class="edad"></td>
+                  <td class="email"></td>
+                  <td class="facebook"></td>
+                  <td>
+                    <button class="edit-fetch">Editar</button>
+                    <button class="delete-fetch">Eliminar</button>
+                  </td>
+                </tr>
+              </template>
+              <!--
+                section.crud-fetch>(article>(h4.crud-fetch-title{Agregar Familiar}+form.crud-fetch-form>input[name="nombre" placeholder="Nombre" required]+input[name="apellido" placeholder="Apellido" required]+input[name="edad" placeholder="Edad" required]+input[name="email" placeholder="Email" required]+input[name="facebook" placeholder="Facebook" required]+input[type="submit" value="Enviar"]+input[type="hidden" name="id"]))+article>h4{Ver familiares}+table.crud-fetch-table>(thead>tr>th{Nombre}+th{Apellido}+th{Edad}+th{Email}+th{Facebook}+th{Acciones})+tbody
+              
+                template#crud-fetch-template>tr>td.nombre+td.apellido+td.edad+td.email+td.facebook+td>button.edit{Editar}+button.delete{Eliminar}
+              -->
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion7" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>12.7. API REST: CRUD con Axios + Async-Await</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                JSON Server debe estar levantado <br />
+                <b> json-server -p 5555 -w cap_12/assets/json/db.json </b> .
+                <br />
+                Invocar a la librería de Axios: <br />
+                &lt;script
+                src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"&gt;&lt;/script&gt;
+                <br />
+                Definir las variables de los objetos a operar formulario
+                (in|out), tabla (out), title (out), template, fragmento, la
+                función principal para generar las operaciones GET, POST, PUT y
+                DELETE.
+              </p>
+              <p>Partiendo por el esquema básico</p>
+              <pre><code>    const d = document, 
+      $formAxios = d.querySelector(".crud-axios-form"),
+      $tableAxios = d.querySelector(".crud-axios-table"),
+      $titleAxios = d.querySelector(".crud-axios-title"),
+      $templateAxios = d.getElementById("crud-axios-template").content,
+      $fragmentoAxios = d.createDocumentFragment();
+
+    const getAllFamily = () => { };
+
+    d.addEventListener("DOMContentLoaded", getAllFamily);
+    d.addEventListener("submit", (e) => {});
+    d.addEventListener("click", (e) => {}); </code></pre>
+              <p>
+                La función expresada getAllFamily de tipo <b>async</b> en su try
+                invoca a la función principal <b>await axios.get()</b> el cual
+                recibe únicamente la url del repositorio sin el
+                <b>objOpciones</b>. Notese los dos <b>await</b> presentes en la
+                función uno para <b>axios.get</b> y otro para recibir como
+                <b>respuestas.data</b> (a diferencia del Fetch que usa el método
+                <b>respuestas.json()</b>), también observar que
+                <b>no se implementa objeto throw</b>, por no ser necesario,
+                además de la creación de dataset y pintado de resultados en la
+                tabla.
+              </p>
+              <p>
+                Se crea el escucha DOMContentLoaded para ejecutar la función
+                expresada getAllFamily la cual devuelve en pantalla el listado
+                en la clase $tableAxios
+              </p>
+              <p>
+                Se crea el escucha para el botón submit de tipo <b>async</b> que
+                almacena los POST y los PUT dependiendo de si existe id o no
+                como evento async, observar los <b>await</b> presentes, el
+                <b>objOpciones</b> generado con sus atributos <b>method</b>,
+                <b>headers</b> y <b>data</b>. A diferencia de Fetch el atributo
+                <u><b>body</b> cambia por <b>data</b> </u>. El retorno a
+                diferencia de Fetch que lo tiene en la función
+                <b>respuesta.ajax()</b> en Axios viene en el objeto atributo
+                <b>respuestas.data</b> Ausencia de objeto throw.
+              </p>
+              <p>
+                Se crea el escucha <b>async</b> para los botones Editar y
+                Eliminar del formulario Axios, observar los
+                <b>await</b> presentes, el <b>objOpciones</b> sin data generado
+                y la ausencia del objeto throw.
+              </p>
+              <p>No olvidar el método <b>location.reload()</b></p>
+
+              <pre><code>  const d = document,
+    $formAxios = d.querySelector(".crud-axios-form"),
+    $tableAxios = d.querySelector(".crud-axios-table"),
+    $titleAxios = d.querySelector(".crud-axios-title"),
+    $templateAxios = d.getElementById("crud-axios-template").content,
+    $fragmentoAxios = d.createDocumentFragment();
+
+  const getAllFamily = <i><u><b>async</b></u></i> () => {
+    try {
+      let respuestas = <u><b>await axios.get</b></u>("http://localhost:5555/familiares"),
+        json = <u><b>await</b></u> <b>respuestas.data</b>;
+
+      <b>json</b>.forEach((el) => {
+        $templateAxios.querySelector(".nombre").textContent = el.nombre;
+        $templateAxios.querySelector(".apellido").textContent = el.apellido;
+        $templateAxios.querySelector(".edad").textContent = el.edad;
+        $templateAxios.querySelector(".email").textContent = el.informacion.email;
+        $templateAxios.querySelector(".facebook").textContent =
+          el.informacion.facebook;
+
+        // Creación de data-attributes con valores para el botón editar
+        $templateAxios.querySelector(".edit-axios").dataset.id = el.id;
+        $templateAxios.querySelector(".edit-axios").dataset.nombre = el.nombre;
+        $templateAxios.querySelector(".edit-axios").dataset.apellido =
+          el.apellido;
+        $templateAxios.querySelector(".edit-axios").dataset.edad = el.edad;
+        $templateAxios.querySelector(".edit-axios").dataset.email =
+          el.informacion.email;
+        $templateAxios.querySelector(".edit-axios").dataset.facebook =
+          el.informacion.facebook;
+        $templateAxios.querySelector(".edit-axios").dataset.fecha = el.fecha;
+
+        // Creación de data-attributes con valores para el botón eliminar
+        $templateAxios.querySelector(".delete-axios").dataset.id = el.id;
+
+        let $cloneTemplate = d.importNode($templateAxios, true);
+        $fragmentoAxios.<b>appendChild</b>($cloneTemplate);
+      });
+      $tableAxios.querySelector("tbody").<b>appendChild</b>($fragmentoAxios);
+    } catch (err) {
+      let mensaje =
+        err.statusText ||
+        `Posible error de conexión, instalar y levantar JSON Server :: "json-server -p 5555 -w cap_12/assets/json/db.json"; verificar Endpoint`;
+      $tableAxios.insertAdjacentHTML(
+        "afterend",
+        `&lt;p&gt;&lt;b&gt;Error ${err.status || 0}: ${mensaje}&lt;/b&gt;&lt;/p&gt;`
+      );
+    }
+  };
+
+  d.<u><b>addEventListener("DOMContentLoaded"</b></u>, getAllFamily);
+
+  d<u><b>.addEventListener("submit"</b></u>, <u><b>async</b></u> (e) => {
+    if (e.target === $formAxios) {
+      e.preventDefault();
+      if ( <b>! e.target.id.value</b> ) {
+        // Create - POST
+        try {
+          let <u><b>objOpciones</b></u> = {
+              <b>method</b>: "POST",
+              <b>headers</b>: { "Content-type": "Application/json;charset=utf-8" },
+              <b>data</b>: JSON.stringify({
+                nombre: e.target.nombre.value,
+                apellido: e.target.apellido.value,
+                edad: e.target.edad.value,
+                informacion: {
+                  email: e.target.email.value,
+                  facebook: e.target.facebook.value,
+                },
+                fecha: new Date(),
+              }),
+            },
+            respuestas = <u><b>await axios</b></u>( `http://localhost:5555/familiares`, <b>objOpciones</b> ),
+            json = <b><u>await</u> respuestas.data</b>;
+          <b>location.reload()</b>;
+        } catch (error) {
+          let mensaje =
+            err.statusText ||
+            `Posible error de conexión, instalar y levantar JSON Server :: "json-server -p 5555 -w cap_12/assets/json/db.json"; verificar Endpoint`;
+          const $p = d.createElement("p"),
+            $b = d.createElement("b");
+          $b.textContent = `Error ${err.status}: ${mensaje}`;
+          $p.insertAdjacentElement("afterbegin", $b);
+          $formFetch.insertAdjacentElement("afterend", $p);
+        }
+      } else {
+        // Create - PUT
+        try {
+          let <u><b>objOpciones</b></u> = {
+              <b>method</b>: "PUT",
+              <b>headers</b>: { "Content-type": "Application/json;charset=utf-8" },
+              <b>data</b>: JSON.stringify({
+                nombre: e.target.nombre.value,
+                apellido: e.target.apellido.value,
+                edad: e.target.edad.value,
+                informacion: {
+                  email: e.target.email.value,
+                  facebook: e.target.facebook.value,
+                },
+                fecha: new Date(),
+              }),
+            },
+            respuestas = <u><b>await axios</b></u>( `http://localhost:5555/familiares/${<b>e.target.id.value</b>}`, <b>objOpciones</b> ),
+            json = <u><b>await respuestas.data</b></u>;
+          <b>location.reload()</b>;
+        } catch (error) {
+          let mensaje =
+            err.statusText ||
+            `Posible error de conexión, instalar y levantar JSON Server :: "json-server -p 5555 -w cap_12/assets/json/db.json"; verificar Endpoint`;
+          const $p = d.createElement("p"),
+            $b = d.createElement("b");
+          $b.textContent = `Error ${err.status}: ${mensaje}`;
+          $p.insertAdjacentElement("afterbegin", $b);
+          $formFetch.insertAdjacentElement("afterend", $p);
+        }
+      }
+    }
+  });
+
+  d<u><b>.addEventListener("click"</b></u>, <u><b>async</b></u> (e) => {
+    if (e.target.matches(".edit-axios")) {
+      $titleAxios.textContent = "Editar familiar";
+      $formAxios.nombre.value = e.target.dataset.nombre;
+      $formAxios.apellido.value = e.target.dataset.apellido;
+      $formAxios.edad.value = e.target.dataset.edad;
+      $formAxios.email.value = e.target.dataset.email;
+      $formAxios.facebook.value = e.target.dataset.facebook;
+      $formAxios.id.value = e.target.dataset.id;
+    }
+
+    if (e.target.matches(".delete-axios")) {
+      if (confirm(`Estás seguro de eliminar el id ${<b>e.target.dataset.id</b>}?`)) {
+        // Delete - DELETE
+        try {        
+          let <u><b>objOpciones</b></u> = {
+            <b>method</b>: "DELETE",
+            <b>headers</b>: { "Content-type": "Application/json;charset=utf-8" }
+          };
+          let respuestas = <u><b>await axios</b></u>( `http://localhost:5555/familiares/<b>${e.target.dataset.id}</b>`, <b>objOpciones</b> );
+          let json = <b>await respuestas.data</b>;
+          <b>location.reload()</b>;
+        } catch (err) {
+          let mensaje =
+            err.statusText ||
+            `Posible error de conexión, instalar y levantar JSON Server :: "json-server -p 5555 -w cap_12/assets/json/db.json"; verificar Endpoint`;
+          const $p = d.createElement("p"),
+            $b = d.createElement("b");
+          $b.textContent = `Error ${err.status}: ${mensaje}`;
+          $p.insertAdjacentElement("afterbegin", $b);
+          $formFetch.insertAdjacentElement("afterend", $p);
+        }
+      }
+    }
+  });
+              </code></pre>
+
+              <section class="crud-axios">
+                <article>
+                  <h4 class="crud-axios-title">Agregar Familiar</h4>
+                  <form class="crud-axios-form">
+                    <input
+                      type="text"
+                      name="nombre"
+                      placeholder="Nombre"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="apellido"
+                      placeholder="Apellido"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="edad"
+                      placeholder="Edad"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="email"
+                      placeholder="Email"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="facebook"
+                      placeholder="Facebook"
+                      required
+                    />
+                    <input type="submit" value="Enviar" />
+                    <input type="hidden" name="id" />
+                  </form>
+                </article>
+                <article>
+                  <h4>Ver familiares</h4>
+                  <table class="crud-axios-table">
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                        <th>Email</th>
+                        <th>Facebook</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </article>
+              </section>
+              <template id="crud-axios-template">
+                <tr>
+                  <td class="nombre"></td>
+                  <td class="apellido"></td>
+                  <td class="edad"></td>
+                  <td class="email"></td>
+                  <td class="facebook"></td>
+                  <td>
+                    <button class="edit-axios">Editar</button>
+                    <button class="delete-axios">Eliminar</button>
+                  </td>
+                </tr>
+              </template>
+              <!--
+                section.crud-axios>(article>(h4.crud-axios-title{Agregar Familiar}+form.crud-axios-form>input[name="nombre" placeholder="Nombre" required]+input[name="apellido" placeholder="Apellido" required]+input[name="edad" placeholder="Edad" required]+input[name="email" placeholder="Email" required]+input[name="facebook" placeholder="Facebook" required]+input[type="submit" value="Enviar"]+input[type="hidden" name="id"]))+article>h4{Ver familiares}+table.crud-axios-table>(thead>tr>th{Nombre}+th{Apellido}+th{Edad}+th{Email}+th{Facebook}+th{Acciones})+tbody
+  
+                template#crud-axios-template>tr>td.nombre+td.apellido+td.edad+td.email+td.facebook+td>button.edit-axios{Editar}+button.delete-axios{Eliminar}
+              -->
+            </div>
+          </article>
+        </section>
+
+        <section id="seccion8" class="seccion" data-scroll-spy>
+          <div class="cv-seccion-h3">
+            <h3>12.8. Instalación de NodeJS y otras referencias</h3>
+          </div>
+          <article class="cv-articulo">
+            <div class="cv-card">
+              <p>
+                Enlace de descarga de
+                <a
+                  href="https://nodejs.org/en/download/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >NodeJS versión LTS</a
+                >. Si estuviera instalado, desinstalar y eliminar la carpeta
+                C:\Users\%username%\AppData\Roaming\npm-cache, eliminar
+                C:\Program Files\node. elimine las variables de entorno, todas
+                las configuraciones para NPM y NODE. Hay múltiples entradas
+                tanto en el usuario como en el sistema. Para verificar la
+                versión instalada <b>c:\node -v</b> y debe tener integrado el
+                gestor de paquetes
+                <b>c:\npm -v</b>
+              </p>
+              <p>
+                <a
+                  href="https://github.com/nvm-sh/nvm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >nvm</a
+                >
+                Node Version Manager el enlace de descarga de la version
+                <a
+                  href="https://github.com/coreybutler/nvm-windows?tab=readme-ov-file"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Windows</a
+                >
+                y buscar latest installer. Luego para verificar instalación de
+                <b>nvm --version</b> y para instalar otras versiones de nodejs
+                <b>nvm install 10.16.3</b>. Para listar las versiones instaladas
+                <b>nvm list</b>. Para cambiar entre versiones
+                <b>nvm use 20.12.2</b>
+              </p>
+              <p>
+                JsonPlaceholder dispone de un
+                <a
+                  href="https://jsonplaceholder.typicode.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  JSON Server
+                </a>
+                , instalarlo localmente, para usarlo se requiere tener instalado
+                nodejs y npm, instalación
+                <b>npm install -g json-server</b> en modo global
+              </p>
+              <p>
+                Instalar el cliente
+                <a
+                  href="https://www.postman.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Postman
+                </a>
+                o el cliente
+                <a
+                  href="https://insomnia.rest/download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  * Insomnia core
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.youtube.com/watch?v=3Sn1X4M_za4"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Bots con personalidad para Twitter con ChatGPT </a
+                >,
+                <a
+                  href="https://www.youtube.com/watch?v=-YefH5sRVrc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🤖CHATGPT para crear ANUNCIOS EN FACEBOOK </a
+                >,
+                <a
+                  href="https://www.youtube.com/watch?v=7IeqwmwGaXM"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🤖 Como usar ChatGPT para CREAR UNA PÁGINA WEB para negocio
+                  [FÁCIL Y RÁPIDO] 🚀 l Crear un sitio web
+                </a>
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <br /><br />
+
         <!-- 
-          section#seccion1.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
+          section#seccion9.seccion[data-scroll-spy]>div.cv-seccion-h3>h3^article.cv-articulo>div.cv-card>p
         -->
       </section>
     </main>
@@ -100,9 +1348,32 @@
     <aside class="panel-dom">
       <nav class="menu-dom">
         <a href="#seccion1" data-scroll-spy>12.1. Introducción</a>
+        <a href="#seccion2" data-scroll-spy
+          >12.2. JSON Server - API falsa local</a
+        >
+        <a href="#seccion3" data-scroll-spy
+          >12.3. Consumo de datos con cliente REST</a
+        >
+        <a href="#seccion4" data-scroll-spy>12.4. API REST: CRUD</a>
+        <a href="#seccion5" data-scroll-spy
+          >12.5. API REST: CRUD con AJAX o XMLHttpRequest</a
+        >
+        <a href="#seccion6" data-scroll-spy
+          >12.6. API REST: CRUD con Fetch + Async-Await</a
+        >
+        <a href="#seccion7" data-scroll-spy
+          >12.7. API REST: CRUD con Axios + Async-Await</a
+        >
+        <a href="#seccion8" data-scroll-spy
+          >12.8. Instalación de NodeJS y otras referencias</a
+        >
         <a href="../index.html">Indice de contenidos</a>
       </nav>
     </aside>
     <script src="./assets/js/index_dom.js" type="module"></script>
+    <script src="./assets/js/xhr.js"></script>
+    <script src="./assets/js/fetch.js"></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="./assets/js/axios.js"></script>
   </body>
 </html>
