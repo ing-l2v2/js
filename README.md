@@ -8,7 +8,7 @@ En la hoja de vida se describe:
 
 ## Perfil humano y profesional
 
-Resumiendo las características propias en el desempeño de profesión
+Resumiendo las características propias en el desempeño de profesional
 
 ## Instrucción formal académica
 

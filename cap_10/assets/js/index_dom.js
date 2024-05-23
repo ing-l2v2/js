@@ -19,6 +19,7 @@ import scrollSpy from "./dom/scroll_espia.js";
 import smartVideo from "./dom/video_inteligente.js";
 import contactFormValidation from "./dom/validaciones_form.js";
 import speechReader from "./dom/narrador.js";
+import inputMask from "./dom/maskInput.js";
 
 const d = document;
 d.addEventListener("DOMContentLoaded", (e) => {
@@ -63,6 +64,7 @@ d.addEventListener("DOMContentLoaded", (e) => {
   smartVideo();
   contactFormValidation();
   iniciarBD();
+  inputMask("elinput", "(+000) 00-000-0000");
 });
 
 d.addEventListener("keydown", (e) => {
